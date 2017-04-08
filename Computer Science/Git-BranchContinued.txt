@@ -1,0 +1,37 @@
+This blog will cover the Git commands which to transfer the changes between branches. If you are not familiar with the basic Git branch commands, you can have a look of my previous blog: <a href="https://binweiblog.wordpress.com/2017/01/18/git-branch-basic/">Git: Branch Basic</a>.
+<h3>Merge Branch</h3>
+When you have two or more branches, you need to integrate some changes from one branch to another.
+
+<code>git merge f1</code>
+
+Git merge command will try to integrate all the changes from branch f1 into the current branch (HEAD points to). After run this command, you can check the status by <em>git status</em> and use <em>git add/commit</em> to check-in the changes.
+
+If f1 and current branch have changes on same files, conflict will happen in the <em>git merge</em> command. Git will present the conflicts directly in the files, see following example:
+<p class="p1" style="padding-left: 30px;"><em><span class="s1"><<<<<<< HEAD</span></em></p>
+<p class="p1" style="padding-left: 30px;"><em><span class="s1">current change</span></em></p>
+<p class="p1" style="padding-left: 30px;"><em><span class="s1">=======</span></em></p>
+<p style="padding-left: 30px;"><em>greeting from f1</em></p>
+<p class="p1" style="padding-left: 30px;"><em><span class="s1">>>>>>>> f1</span></em></p>
+You can use text editor tool to resolve the conflict manually or you can use <em>git mergetool</em> to resolve the conflict.
+<h3>Rebase Branch</h3>
+In most cases, git branch is created based on an existing branch by using <em>git branch</em> command. Then the newly created branch has relationship with the existing branch. If we want to change the relationship, e.g. let the current branch base on another branch, then you need to use the rebase command.
+
+<code>git rebase f2</code>
+
+This command will rebase your current branch on branch f2.
+<h3>Cherry Pick</h3>
+Sometimes, if you only want to integrate one specific commit from one branch into current branch, then you can use cherry pick command.
+
+<code>git cherry-pick 0ac3396</code>
+
+The above command will integrate the specific commit: 0ac3396 into the current branch.
+
+If you call merge/rebase command after cherry pick, git will understand the changes and will not re-apply the unnecessary changes.
+<h3>Summary</h3>
+Merge/Rebase/Cherry Pick are three basic commands to transfer changes from one branch to another.
+
+In order to use git branch in a correct way, you need to understand the good practice of using git flow. There is a good blog explains the <a href="http://nvie.com/posts/a-successful-git-branching-model/">git flow</a>.
+
+<em>Written by Binwei, 2017.01.30, Oslo</em>
+
+ 
