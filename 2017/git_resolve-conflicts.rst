@@ -1,5 +1,5 @@
 
-2017/Git_Resolve Conflicts
+Git: Resolve Conflicts
 ==========================
 
 .. post:: Apr 9, 2017
