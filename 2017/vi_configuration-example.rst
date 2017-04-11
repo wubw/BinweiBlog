@@ -47,19 +47,21 @@ set number
 Set the font
 set guifont=courier_new:h12
 Maximize the window on startup
+::
 if has("gui_running")
-  " GUI is running or is about to start.
-  " Maximize gvim window (for an alternative on Windows, see simalt below).
-  set lines=999 columns=999
+" GUI is running or is about to start.
+" Maximize gvim window (for an alternative on Windows, see simalt below).
+set lines=999 columns=999
 else
-  " This is console Vim.
-  if exists("+lines")
-    set lines=50
-  endif
-  if exists("+columns")
-    set columns=100
-  endif
+" This is console Vim.
+if exists("+lines")
+set lines=50
 endif
+if exists("+columns")
+set columns=100
+endif
+endif
+
 Easy approach is to get the example _vimrc file from: https://github.com/wubw/DevScripts/blob/master/_vimrc
 
 

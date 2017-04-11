@@ -39,38 +39,39 @@ In order to have a clear picture of the current repository, the branching situat
 git log --oneline --all --decorate --graph
 
 You will see console output like following:
+::
 
-* 660caea (HEAD -> feature2) f2
+	* 660caea (HEAD -> feature2) f2
 
-| * 90e5174 (feature4, feature3) feature 3 changes
+	| * 90e5174 (feature4, feature3) feature 3 changes
 
-|/ 
+	|/	 
 
-| * cf54ec8 (feature1) modification from feature1
+	| * cf54ec8 (feature1) modification from feature1
 
-| | *   a51f214 (master) Merge branch 'feature2'
+	| | *   a51f214 (master) Merge branch 'feature2'
 
-| | |\ 
+	| | |\ 
 
-| |/ / 
+	| |/ / 
 
-| | /   
+	| | /   
 
-| |/    
+	| |/    
 
-|/|     
+	|/|     
 
-* | bb32dd5 commit feature2
+	* | bb32dd5 commit feature2
 
-| * 0ac3396 commit feature1
+	| * 0ac3396 commit feature1
 
-| * 3fb48f2 feature1 first commit
+	| * 3fb48f2 feature1 first commit
 
-|/ 
+	|/ 
 
-* d3033b2 Add more file and change main.txt
+	* d3033b2 Add more file and change main.txt
 
-* 6b07c39 First commit
+	* 6b07c39 First commit
 
 The numbers are the short version hash for commits. For simplicity, you can regard these numbers as commit id now. From the output, you can see how many branches are in current repository and their relationship. The commit HEAD point to means the current branch.
 
