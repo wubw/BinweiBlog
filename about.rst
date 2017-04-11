@@ -4,5 +4,7 @@
 About binwei
 ============================
 
-The world wants to know more about you.
+.. image:: profile.jpg
+
+A software architect, a leader and a thinker
 
