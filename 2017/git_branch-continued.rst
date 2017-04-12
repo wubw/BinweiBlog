@@ -8,6 +8,8 @@ Git: Branch Continue
    
 This blog will cover the Git commands which to transfer the changes between branches. If you are not familiar with the basic Git branch commands, you can have a look of my previous blog: :ref:`git_branch-basic` 
 
+.. contents::
+
 =============
 Merge Branch
 =============

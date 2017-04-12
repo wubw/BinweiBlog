@@ -8,6 +8,8 @@ Git: Branch Basic
 
 One of the biggest advantage of Git is branching. Git is very strong at handling branches, no matter on functionality or on efficiency. Let's try out the Git branch commands.
 
+.. contents::
+
 ==============
 Create Branch
 ==============

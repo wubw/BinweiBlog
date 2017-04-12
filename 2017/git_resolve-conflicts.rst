@@ -8,6 +8,8 @@ Git: Resolve Conflicts
 
 Git provides various tools to resolve conflicts during the merge process, and in this blog we only discuss one of them gvimdiff in Windows Operating System.
 
+.. contents::
+
 ======================
 Software installation
 ======================

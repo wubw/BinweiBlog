@@ -15,6 +15,8 @@ Git has four areas:
 
 To understand these four areas is essential to learn the git workflow. The following paragraphs will go through these four areas and explain the git workflow. If you are new to git and not familiar with the basic git commands, it is recommended to read my blog post :ref:`git_getting-started` first.
 
+.. contents::
+
 =============
 Working area
 =============
