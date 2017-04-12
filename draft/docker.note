@@ -1,0 +1,120 @@
+Setup Docker environment in unbuntu
+https://github.com/docker/labs/tree/master/beginner/
+
+https://docs.docker.com/engine/installation/linux/ubuntu/#install-using-the-repository
+ - create docker repository (repository is a unbuntu concept for security)
+ - architecture armhf is mainly for mobile device, and arm64 can meet most x86/x64 platform
+
+sudo docker run hello-world
+
+docker client, docker image
+
+if you want to run interactive program, you can use the -it option. Otherwise the command will exit immediately
+sudo docker run -it alpine /bin/sh
+
+docker ps: list all the running processes
+docker inspect [image_name]: list the details of image
+
+Terminology:
+    Images - The file system and configuration of our application which are used to create containers. To find out more about a Docker image, run docker inspect alpine. In the demo above, you used the docker pull command to download the alpine image. When you executed the command docker run hello-world, it also did a docker pull behind the scenes to download the hello-world image.
+    Containers - Running instances of Docker images — containers run the actual applications. A container includes an application and all of its dependencies. It shares the kernel with other containers, and runs as an isolated process in user space on the host OS. You created a container using docker run which you did using the alpine image that you downloaded. A list of running containers can be seen using the docker ps command.
+    Docker daemon - The background service running on the host that manages building, running and distributing Docker containers.
+    Docker client - The command line tool that allows the user to interact with the Docker daemon.
+    Docker Hub - A registry of Docker images. You can think of the registry as a directory of all available Docker images. You'll be using this later in this tutorial.
+
+docker run -d [image_name]
+-d means detached mode
+
+docker stop [container_id]
+
+docker run --name static-site -e AUTHOR="Your Name" -d -P dockersamples/static-site
+docker run -p 8888:5000 --name myfirstapp wubw/myfirstapp
+
+    -d will create a container with the process detached from our terminal
+    -P will publish all the exposed container ports to random ports on the Docker host
+    -e is how you pass environment variables to the container
+    --name allows you to specify a container name
+    AUTHOR is the environment variable name and Your Name is the value that you can pass
+
+docker port [docker_name]
+You can run several web server dockers at the same time
+
+For simplicity, you can think of an image akin to a git repository - images can be committed with changes and have multiple versions. When you do not provide a specific version number, the client defaults to latest.
+TAG shows the version number
+
+
+Base images are images that have no parent images, usually images with an OS like ubuntu, alpine or debian.
+Child images are images that build on base images and add additional functionality.
+
+Dockerfile content:
+# our base image
+FROM alpine:3.5
+
+# Install python and pip
+RUN apk add --update py2-pip
+
+# install Python modules needed by the Python app
+COPY requirements.txt /usr/src/app/
+RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt
+
+# copy files required for the app to run
+COPY app.py /usr/src/app/
+COPY templates/index.html /usr/src/app/templates/
+
+# tell the port number the container should expose
+EXPOSE 5000
+
+# run the application
+CMD ["python", "/usr/src/app/app.py"]
+
+Here's a quick summary of the few basic commands we used in our Dockerfile.
+
+    FROM starts the Dockerfile. It is a requirement that the Dockerfile must start with the FROM command. Images are created in layers, which means you can use another image as the base image for your own. The FROM command defines your base layer. As arguments, it takes the name of the image. Optionally, you can add the Docker Hub username of the maintainer and image version, in the format username/imagename:version.
+
+    RUN is used to build up the Image you're creating. For each RUN command, Docker will run the command then create a new layer of the image. This way you can roll back your image to previous states easily. The syntax for a RUN instruction is to place the full text of the shell command after the RUN (e.g., RUN mkdir /user/local/foo). This will automatically run in a /bin/sh shell. You can define a different shell like this: RUN /bin/bash -c 'mkdir /user/local/foo'
+
+    COPY copies local files into the container.
+
+    CMD defines the commands that will run on the Image at start-up. Unlike a RUN, this does not create a new layer for the Image, but simply runs the command. There can only be one CMD per a Dockerfile/Image. If you need to run multiple commands, the best way to do that is to have the CMD run a script. CMD requires that you tell it where to run the command, unlike RUN. So example CMD commands would be:
+
+  CMD ["python", "./app.py"]
+
+  CMD ["/bin/bash", "echo", "Hello World"]
+
+    EXPOSE creates a hint for users of an image which ports provide services. It is included in the information which can be retrieved via $ docker inspect <container-id>.
+
+    Note: The EXPOSE command does not actually make any ports accessible to the host! Instead, this requires publishing ports by means of the -p flag when using $ docker run.
+
+    PUSH pushes your image to Docker Hub, or alternately to a [private registry](TODO: add URL)
+
+    Note: If you want to learn more about Dockerfiles, check out Best practices for writing Dockerfiles.
+
+
+Build a docker image:
+docker build -t <YOUR_USERNAME>/myfirstapp .
+
+Push docker image:
+wubw@ubuntu:~/Documents/Docker/flask-app$ sudo docker push wubw/myfirstapp
+The push refers to a repository [docker.io/wubw/myfirstapp]
+ad4d954fd36e: Preparing 
+a1f8695eff58: Preparing 
+c93b91713c70: Preparing 
+92fc3cd4109a: Preparing 
+55b59c0615de: Preparing 
+23b9c7b43573: Waiting 
+denied: requested access to the resource is denied
+
+If you encounter the above error, maybe you need to login first:
+sudo docker login
+
+Swarm mode is the cluster management and orchestration features embedded in the Docker
+ You can easily deploy to a swarm using a file that declares your desired state for the app. Swarm allows you to run your containers on more than one machine. 
+Docker compose file, see example:
+https://github.com/docker/labs/blob/master/beginner/chapters/votingapp.md
+deploy:
+docker stack deploy --compose-file docker-stack.yml vote
+verify the deployment:
+docker stack services vote
+The Compose file also defines two networks, front-tier and back-tier. Each container is placed on one or two networks. Once on those networks, they can access other services on that network in code just by using the name of the service. Services can be on any number of networks. Services are isolated on their network. Services are only able to discover each other by name if they are on the same network. 
+redeploy after changes in the yml configure file:
+docker stack deploy --compose-file docker-stack.yml vote
