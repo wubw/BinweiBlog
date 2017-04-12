@@ -6,10 +6,7 @@ Vi: Configuration Example
    :tags: vi
    :category: ComputerScience
 
-Written by Binwei@Oslo
-
 Among various text editors, I like Vi a lot. It help me a lot if I work on various operating systems and different environment since Vi is installed by default on most operating systems.
-
 There is GUI Vi tool available on Windows called Gvim, which can be downloaded from here: http://www.vim.org/download.php
 
 The configuration file is named as _vimrc which is located around ProgramFiles(x86)\Vim. Just open and edit the _vimrc file, but you need to restart Gvim to see the changes.
@@ -111,4 +108,5 @@ The following settings will be very helpful but not set-on by default.
 Easy approach is to get the example _vimrc file from: https://github.com/wubw/DevScripts/blob/master/_vimrc
 
 
+*Written by Binwei@Oslo*
 

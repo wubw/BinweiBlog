@@ -6,8 +6,6 @@ Git: Resolve Conflicts
    :tags: git
    :category: ComputerScience
 
-Written by Binwei@Oslo
-
 Git provides various tools to resolve conflicts during the merge process, and in this blog we only discuss one of them gvimdiff in Windows Operating System.
 
 ======================
@@ -188,4 +186,5 @@ save the changes then quit with :wqa to close all the splits. Remember to commit
     git commit -am 'merged from several branches'
 
 
+*Written by Binwei@Oslo*
 

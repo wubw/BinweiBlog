@@ -6,8 +6,6 @@ Git: Branch Continue
    :tags: git
    :category: ComputerScience
    
-Written by Binwei@Oslo
-
 This blog will cover the Git commands which to transfer the changes between branches. If you are not familiar with the basic Git branch commands, you can have a look of my previous blog: :ref:`git_branch-basic` 
 
 =============
@@ -73,5 +71,5 @@ Merge/Rebase/Cherry Pick are three basic commands to transfer changes from one b
 In order to use git branch in a correct way, you need to understand the good practice of using git flow. There is a good blog explains the `git flow <http://nvie.com/posts/a-successful-git-branching-model/>`_.
 
 
-
+*Written by Binwei@Oslo*
 

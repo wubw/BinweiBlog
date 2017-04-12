@@ -248,7 +248,10 @@ html_theme = 'alabaster'
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    'github_button': False,
+    'github_button': True,
+    'github_user': 'wubw',
+    'github_repo': 'BinweiBlog',
+    'logo':'logo.jpg',
 }
 
 # Add any paths that contain custom themes here, relative to this directory.

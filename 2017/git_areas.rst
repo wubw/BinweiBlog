@@ -6,8 +6,6 @@ Git: Areas
    :tags: git
    :category: ComputerScience
 
-Written by Binwei@Oslo
-
 Git has four areas:
 
 * Working area
@@ -80,3 +78,4 @@ In order to use git efficiently, it is necessary to understand the areas your fi
 It is not easy to remember all the commands and arguments. Just remember the basic and visit `git doc <https://git-scm.com/doc/>`_ when necessary will help.
 
 
+*Written by Binwei@Oslo*

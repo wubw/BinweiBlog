@@ -6,8 +6,6 @@ Git: Branch Basic
    :tags: git
    :category: ComputerScience
 
-Written by Binwei@Oslo
-
 One of the biggest advantage of Git is branching. Git is very strong at handling branches, no matter on functionality or on efficiency. Let's try out the Git branch commands.
 
 ==============
@@ -149,3 +147,4 @@ This blog only covers the basic branch commands, e.g. create a new branch, modif
 In next blog, I will show how to do the merge, rebase and other advance branch commands.
 
 
+*Written by Binwei@Oslo*

@@ -6,10 +6,7 @@ Git: Getting Started
    :tags: git
    :category: ComputerScience
 
-Written by Binwei@Oslo
-
 Git is an open source distributed version control system, which plays important role in current software ecosystem.
-
 You may find many GUI Git tools like SourceTree, Github Desktop, TortoiseGit etc, however the best way to learn Git is to deep dive into the Git commands and understand the fundamental. Let's start the 'Git journey' by using the basic commands.
 
 =============
@@ -117,4 +114,4 @@ Git commands are the best way to learn git, but it is not straight forward to un
 
 There will be following blogs explain further how to use git well and the git fundamental.
 
-
+*Written by Binwei@Oslo*
