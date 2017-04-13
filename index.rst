@@ -11,7 +11,7 @@ Hello World! Find more about me here: :ref:`about`
 
 Here is a list of most recent posts:
 
-.. postlist:: 10
+.. postlist:: 5
    :excerpts:
 
 
