@@ -342,3 +342,6 @@ html_static_path = ['_static']
 htmlhelp_basename = 'binweidoc'
 
 github_pages = 'wubw'
+
+analytics_id = 'UA-97414429-1'
+
