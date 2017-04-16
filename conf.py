@@ -252,6 +252,7 @@ html_theme_options = {
     'github_user': 'wubw',
     'github_repo': 'BinweiBlog',
     'logo':'logo.jpg',
+    'analytics_id':'UA-97414429-1',
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -343,5 +344,4 @@ htmlhelp_basename = 'binweidoc'
 
 github_pages = 'wubw'
 
-analytics_id = 'UA-97414429-1'
 
