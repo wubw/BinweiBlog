@@ -178,6 +178,24 @@ When I run *ablog deploy* on Windows 10, it fails due to some mysterious errors.
 
 Currently, I cannot figure out what is the root course of the error. Then the workaround is to deploy from Mac or Ubuntu, or setup some virtual machines?
 
+Chinese blog issue
+--------------------
+
+When my blog contains Chinese characters, I encounter mysterious errors in atom feed generation.
+After some investigation, the error disappears if excerpt does not contain Chinese characters.
+
+Enhance the blog
+-----------------
+
+You can enhance/customize your blog, e.g. support discussion by using Disqus, monitoring usage by using Google Analytics.
+See:
+
+* http://ablog.readthedocs.io/manual/ablog-configuration-options/?highlight=disqu
+
+* http://alabaster.readthedocs.io/en/latest/customization.html#theme-options
+
+.. image:: images/googleanalytics.png
+
 Useful links
 ------------------
 
