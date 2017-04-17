@@ -169,7 +169,7 @@ It is an encoding issue in the ablog library, open the commands.py mentioned in 
     if isfile(conf) and 'ablog' in open(conf, encoding="utf8").read():
         return confdir
 
-In Linux/Mac, the build process may complain about fail to create a _website/blog. Manually create it should bypass the issue.
+In Linux/Mac and some Windows OS, the build process may complain about fail to create a _website/blog. Manually create it should bypass the issue.
 
 ablog deploy error
 -------------------
