@@ -182,18 +182,27 @@ At the meantime, it is also important to keep the balance to become expert in on
 Hotspots?
 ==========
 
-If you are having fun, the money is a bonus!
-When an area is immature, there can be a lot of opportunities. The opportunities will be less when the area becomes mature
+What will be the next technology hotspots? If you catch-up the hotspots, there will be plenty opportunities for you, high salary, good position, many choices. At the meantime, it is also important you do have interests in that specific technology area. 
 
-There will be more cyberattack, security path can be hot (or backup path)
-Outliers? Functional programming; Multiple threads/process; 
-3D printing can change the model of massive production and emphasize the customization and produce on demand
-Build domain expertise out of IT?
-Virtual world, mind control
-Artificial intelligence (assistance app) & Robotics
-The Internet of things & Big data
-Mobile or desktop. in the long term, there will be no difference on programming side between mobile and desktop
-Functional search. Search for functionality rather than information
-Big data, Pattern recognition, security, cryptography, biometrics = job security
+Remember: if you are having fun, the money is a bonus!
+
+The following areas may have good opportunities to become the next hotspots.
+
+* Security & cryptography: there will be more cyberattack, security path can be hot.
+
+* 3D printing: can change the model of massive production and emphasize the customization and produce on demand.
+
+* Virtual reality & mixed reality & augmented reality
+
+* High performance computation: multiple thread/process, functional programming, distributed computation
+
+* The internet of things & Big data
+
+* Pattern recognition
+
+* Artificial intelligence & Robotics
+ 
+Be careful to spend too much energy on all kinds of latest front-end web/mobile/desktop technology. I will assume there will be no difference on programming side between mobile and desktop in the long term. 
+Believe it or not?
 
 *Written by Binwei@Oslo*
