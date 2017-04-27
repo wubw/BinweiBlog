@@ -92,7 +92,7 @@ The above command is cumbersome to type, you can use git alias in stead.
 
 .. code-block:: bash
 
-    git config --global alias.loadg 'log --oneline --all --decorate --graph'
+    git config --global alias.loadg "log --oneline --all --decorate --graph"
 
 It will create an alias 'loadg' for the long parameters. Then you can simply type to get the history graph:
 
