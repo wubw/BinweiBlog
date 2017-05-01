@@ -21,7 +21,7 @@ Simplicity of design
 ---------------------
 
 In relational database, the application developers need to design the database scheme to store the data.
-There is difference between the schema and the in-memory data structure. Then the developers need to handle this 'gap', this effort is not delivering business value. 
+There is difference between the schema and the in-memory data structure. Then the developers need to handle this 'gap'. This effort is not delivering business value. 
 
 Relational database world invents ORM (Object-Relational-Mapping) to mitigate this challenge.
 
