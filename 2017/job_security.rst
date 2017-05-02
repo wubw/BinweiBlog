@@ -4,7 +4,7 @@ Job Security
 
 .. post:: Apr 29, 2017
    :tags: career
-   :category: Life
+   :category: Management
 
 In your company, there is only one should care about your job security: that is yourself. Many people treat the company as their home, put all their energy and be 100% loyal to the company, but seldom to think about themselves. There is nothing wrong with the attitude only if you are aware of the job security.
 Marketing is up-and-down and most companies needs to be profitable to survive. They have to lay off people if necessary, these people can be you no matter you treat the company as home or not. 

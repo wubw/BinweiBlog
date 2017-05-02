@@ -4,7 +4,7 @@ Book Notes: Cai Gen Tan
 
 .. post:: Apr 14, 2017
    :tags: booknotes, chinese
-   :category: Life
+   :category: Literature
 
 'Cai Gen Tan' is an old Chinese book written in Ming dynasty. This book contains the wisdom from Confucianism, Taoists and Buddhism. It is a compact book but providing a lot of life advices.
 

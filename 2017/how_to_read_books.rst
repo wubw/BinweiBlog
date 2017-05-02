@@ -4,7 +4,7 @@ How to Read Books
 
 .. post:: Apr 16, 2017
    :tags: reading
-   :category: Life
+   :category: Literature
 
 I like the following Quota post a lot: 
 *When I was a child I ate a lot of food. Most of it is long gone and forgotten, but certainly some of it became my very bones and flesh.* 
