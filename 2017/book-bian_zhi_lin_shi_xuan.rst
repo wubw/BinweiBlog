@@ -1,12 +1,12 @@
 
 Book notes: Bian Zhi Lin Anthology
-===============================
+=====================================
 
 .. post:: May 02, 2017
    :tags: booknotes, chinese
    :category: Literature
 
-Bian Zhi Lin is modern poet, and is also alumnus of my high school (浦东中学，1929年毕业). His poems are graceful, the most famous one is 'The Fragment' (断章).
+Bian Zhi Lin is modern poet, and is also alumnus of my high school (PuDong High School, Graduated in 1929). His poems are graceful, the most famous one is 'The Fragment' (DuanZhang).
 
 断章
 ==========
