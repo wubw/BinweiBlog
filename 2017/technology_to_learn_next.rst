@@ -4,7 +4,7 @@ Technology to Learn Next
 
 .. post:: Apr 18, 2017
    :tags: career
-   :category: Technology
+   :category: Management
 
 Nowadays, we are in a rapid changing world, and the velocity of the change is increasing. Especially in some young industries like Information technology, new opportunities and exciting news keep popping-up everyday. If you are in IT industry like the me (Binwei, the author), you are lucky. 
 And it is simply too many technologies for you to learn, this blog will discuss the topic: what to learn next.
