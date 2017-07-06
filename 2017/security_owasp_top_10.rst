@@ -204,6 +204,24 @@ The password database uses unsalted hashes to store everyone’s passwords.
 A file upload flaw allows an attacker to retrieve the password file. 
 All of the unsalted hashes can be exposed with a rainbow table of precalculated hashes.
 
+Insufficient use of SSL
+
+* login not loaded over HTTPS
+* Mixed mode
+* Cookies not sent securely
+
+Bad crypto
+
+* Incorrect password storage
+* Poor protection of keys
+* Weak algorithm chosen
+
+Other exposure risks
+
+* Browser auto-complete
+* Leaked via logs
+* Disclosure via URL
+
 How to prevent
 ------------------
 
@@ -211,6 +229,8 @@ How to prevent
 * Secured control only over HTTPS
 * HTTP content in HTTPS pages
 * Use cookie's Secure attribute
+* Minimize sensitive data collection
+* Use strong crypto storage
 
 Use Javascript Cryptography:
 
@@ -230,6 +250,14 @@ Relevant types:
 * Checking permissions only in UI
 * Missing permissions check in helper services
 
+Relevant questions:
+
+* Does the UI show navigation to unauthorised functions?
+* Are server side authentication or authorization checks missing?
+* Are server side checks done that solely rely on information provided by the attacker?
+* Are system or diagnostic resources accessible without proper authorisation?
+* Will "force browsing" disclosure unsecured resources?
+
 Example
 ----------
 
@@ -241,6 +269,9 @@ How to prevent
 * Check permission on all application's layer
 * Authentication middleware
 * Testing & Code review
+* Define a clear authorisation model
+* Check for forced browsing
+* Always test unprivileged roles
 
 8. Cross-site request forgery (CSRF)
 =======================================
@@ -271,10 +302,11 @@ BTW, iframe means inline frame is used to embed another document within the curr
 How to prevent
 ------------------
 
-The preferred option is to include the unique token in a hidden field. 
+* Include the unique token in a hidden field. 
 This includes the value in the body of the HTTP request, avoiding its exposure in the URL.
-
-Or use csurf
+* Employ anti-forgery tokens
+* Validate the referrer
+* Use csurf
 
 9. Using components with known vulnerabilities
 =================================================
@@ -312,6 +344,9 @@ Hacker can provide a url which looks exactly the same as the original web page w
 How to prevent
 ------------------
 
+* Use a URL whitelist
+* Use indirect references
+* Check the referrer
 * Do not use redirects
 * Do not use parameters to create redirect link
 * Validate destination parameter: valid-url
