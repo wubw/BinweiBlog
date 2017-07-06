@@ -302,8 +302,7 @@ BTW, iframe means inline frame is used to embed another document within the curr
 How to prevent
 ------------------
 
-* Include the unique token in a hidden field. 
-This includes the value in the body of the HTTP request, avoiding its exposure in the URL.
+* Include the unique token in a hidden field. This includes the value in the body of the HTTP request, avoiding its exposure in the URL.
 * Employ anti-forgery tokens
 * Validate the referrer
 * Use csurf
