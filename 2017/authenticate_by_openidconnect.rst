@@ -151,5 +151,8 @@ If everything goes well, you are suppose to see the following response content.
 
 Congratulations, you managed to get your Node.JS app authenticated by your google account!
 
+You can also have a check of the following git repository, which is a simplified version.
+https://github.com/wubw/Codelab/tree/master/openidconnect
+
 *Written by Binwei@Oslo*
 
