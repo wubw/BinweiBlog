@@ -3,7 +3,7 @@ Work in Big Company
 ========================
 
 .. post:: May 17, 2017
-   :tags: chinese, booknote
+   :tags: chinese, booknotes
    :category: Management
 
 'Hacker and Painter' is a fantastic book for people work in IT industry, which enlightens me quite a lot. 
