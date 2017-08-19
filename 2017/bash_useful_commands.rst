@@ -245,3 +245,4 @@ var1='hello'
 echo $var1
 
 *Written by Binwei@Oslo*
+
