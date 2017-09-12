@@ -6,28 +6,30 @@ Introduction to Javascript
    :tags: web, frontend
    :category: ComputerScience
 
+Javascript is the fundumantal programming language for frontend development. 
+This blog introduces the basic concept of Javascript language. 
+
 .. contents::
 
 Javascript Basic
 ====================
 
-Comparison between C# and Javascript
---------------------------------------
+First, let's compare Javascript with a OOP programming language C#.
 
 +-----------------------+-----------------------+
 | C#	                | Javascript            |
 +-----------------------+-----------------------+
-| Strongly-Typed	    | Loosely-typed         |
+| Strongly-Typed        | Loosely-typed         |
 +-----------------------+-----------------------+
-| Static	            | Dynamic               |
+| Static                | Dynamic               |
 +-----------------------+-----------------------+
 | Classical Inheritance	| Prototypal            |
 +-----------------------+-----------------------+
-| Classes	            | Functions             |
+| Classes               | Functions             |
 +-----------------------+-----------------------+
 | Constructors	        | Functions             |
 +-----------------------+-----------------------+
-| Methods	            | Functions             |
+| Methods               | Functions             |
 +-----------------------+-----------------------+
 
 Strongly typed or weakly typed (loosely typed)
@@ -43,9 +45,7 @@ On the other hand, a weakly typed language may produce unpredictable results or 
 
 Duck typing
 ---------------
-
-* Type is less important, but shape is important
-* Classic Duck Type
+Type is less important, but shape is important
 
 .. code-block:: javascript
 
@@ -56,8 +56,6 @@ Dynamic Typing
 
 A language is statically typed if the type of a variable is known at compile time.
 A language is dynamically typed if the type is associated with run-time values, and not named variables/fields/etc.
-
-Dynamic Typing Can be Powerful with much power comes much responsibility
 
 .. code-block:: javascript
 
@@ -75,7 +73,7 @@ Type
 
 Type Coalescing
 ------------------
-Javascript wants to coalesce values
+Javascript wants to coalesce values.
 
 .. code-block:: javascript
 
@@ -86,11 +84,9 @@ Javascript wants to coalesce values
 	100 + "25" // 10025
 
 Most operators in Javascript are identical to .net, except…
-Equality/NotEqual (==, !=)
-The means determines equality with coalescing (if necessary)
 
-Javascript's identically Equality operators (===, !==) which is similar to .Equal()
-Determines quality without coalescing
+* Equality/NotEqual (==, !=): The means determines equality with coalescing (if necessary)
+* Javascript's identically Equality operators (===, !==) which is similar to .Equal(). Determines quality without coalescing
 
 .. code-block:: javascript
 
@@ -162,10 +158,10 @@ Javascript does not support function overload.
 .. code-block:: javascript
 
     function foo(one) {
-    	alert('first);
+        alert('first);
     }
     function foo(one, two) {
-    	alert('second');
+        alert('second');
     }
     foo(1); // second
 
@@ -239,36 +235,35 @@ Function Body Variable
     var f = obj.myFunc.bind(this);
     f(); // this == global object
 
-bind() lets you change the owner
+bind() lets you change the owner.
+
 For details, see:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
 
 Closures
 ----------
-Allows access to outer variable within inner scopes, regardless of Lifetime
+JavaScript closure makes it possible for a function to have "private" variables.
 
 .. code-block:: javascript
 
-    var x = 1;
-    
-    function func() {
-        var y = x;
-    }
+    var add = (function () {
+        var counter = 0;
+        return function () {return counter += 1;}
+    })();
 
-    func();
+    add();
+    add();
+    add();
 
-There is a critical difference between a C pointer to a function and a JavaScript reference to a function. 
-In JavaScript, you can think of a function reference variable as having both a pointer to a function as well as a hidden pointer to a closure.
+    // the counter is now 3
 
-.. code-block:: javascript
+The variable add is assigned the return value of a self-invoking function.
 
-    function sayHello2(name) {
-    	var text = 'Hello ' + name; 
-    	var say = function() { console.log(text); }
-    	return say;
-    }
-    var say2 = sayHello2('Bob');
-    say2();
+The self-invoking function only runs once. It sets the counter to zero (0), and returns a function expression.
+
+This way add becomes a function. The "wonderful" part is that it can access the counter in the parent scope.
+
+The counter is protected by the scope of the anonymous function, and can only be changed using the add function.
 
 The magic is that in JavaScript a function reference also has a secret reference to the closure it was created in — similar to how delegates are a method pointer plus a secret reference to an object.
 
@@ -305,14 +300,17 @@ The magic is that in JavaScript a function reference also has a secret reference
     oldLog() //5
 
 Note that in the above example, if you call setupSomeGlobals() again, then a new closure (stack-frame!) is created. 
+
 The old gLogNumber, gIncreaseNumber, gSetNumber variables are overwritten with new functions that have the new closure.
+
+Closure can also introduce tricky bugs if not used correctly.
 
 .. code-block:: javascript
 
     function buildList(list) {
     	var result = [];
-    	for (var I = 0; I < list.length; i++) {
-    		var item = 'item' + I;
+    	for (var i = 0; i < list.length; i++) {
+    		var item = 'item' + i;
     		result.push(function() { console.log(item + ' ' + list[i]) });
     	}
     	return result;
@@ -330,22 +328,22 @@ When the anonymous functions are called on the line fnlist[j](); they all use t
 Note we are indexing from 0 hence item has a value of item2. 
 And the i++ will increment i to the value 3.
 
+Self-executing function
+---------------------------
+
+.. code-block:: javascript
+
+    (function() {
+    	var private_variable = 'private';
+    })();
+
 Scope
 -------------
 Javascript has scope chain. 
 When looking for the definition of a variable, the javascript engine first looks at the local execution context object. 
 If the definition isn't there, it jumps up the scope chain to the execution context it was created in and looks for the variable definition in that execution context object, and so on until it finds the definition or reaches the global scope.
 
-Global scope. Objects at root are 'global'
-
-.. code-block:: javascript
-
-	var x = 1;
-	function someFunction(arg1, arg2) {
-	}
-    someFunction(1,x);
-
-C# is different than javascript
+Global scope. Objects at root are 'global'.
 
 .. code-block:: javascript
 
@@ -353,33 +351,18 @@ C# is different than javascript
     if(true) {
     	var b = a;
     }
-    var c = b;
-    
+    var c = b; //this works
+
+.. code-block:: javascript
+
     var a = 'hello';
-    
     function() {
     	var b = a;
     }
     var c = b; //this doesn't work
 
-Polluting the global scope
-Anonymous self-executing functions: protects the global namespace by function scope
-
-.. code-block:: javascript
-
-    function(w) {
-    	var appName = 'foo';
-    	var compileTime = new Date();
-    	
-    	w.printAppInfo = function() {
-    		return appName + ' : ' + compileTime;
-    	}
-    }(window);
-    
-    console.log(printAppInfo());
-
-Javascript lacks real namespaces
-Can create with objects
+Javascript lacks real namespaces.
+We can mimic by creating with objects to avoid polluting the global scope.
 
 .. code-block:: javascript
 
@@ -389,8 +372,8 @@ Can create with objects
     	return new Date();
     };
 
+Anonymous self-executing functions: protects the global namespace by function scope
 All Together: Namespaces and Anonymous Self-Executing Functions
-Handles the global pollution and scoping of functionality
 
 .. code-block:: javascript
 
@@ -401,14 +384,10 @@ Handles the global pollution and scoping of functionality
     	};
     })(window.WilderMinds = window.WilderMinds || {});
 
-Self-executing function
----------------------------
+OOP in Javascript
+===================
 
-.. code-block:: javascript
-
-    (function() {
-    	var private_variable = 'private';
-    })();
+Javascript also support OOP paradiam.
 
 Inheritance
 ------------
@@ -432,6 +411,9 @@ Inheritance
 Object.Create can also do the same thing
 
 Javascript also has prototype chain. __proto__
+
+__proto__ is the actual object that is used in the lookup chain to resolve methods, etc. 
+prototype is the object that is used to build __proto__ when you create an object with new().
 
 'Class' in Javascript
 -----------------------------
@@ -497,12 +479,6 @@ Can Fake Abstract Classes with some caveats
     };
     var a = new Animal(); //Fails (not a constructor)
 
-then the above 
-
-.. code-block:: javascript
-
-    var test = c instanceof Animal; // error
-
 Object Reflection
 ---------------------
 Property Syntaxes
@@ -524,13 +500,8 @@ Enumerating members: simplest version of reflection
     	alert(cust[prop]);
     }
 
-Detecting properties
-
-.. code-block:: javascript
-
-    var c = new Customer();
-    var has = c.hasOwnProperty('name');
-    var isEnum = c.propertyIsEnumerable('name');
+    var has = cust.hasOwnProperty('name');
+    var isEnum = cust.propertyIsEnumerable('name');
 
 Extension methods
 ----------------------
@@ -544,48 +515,6 @@ Add to existing type's prototype
     };
     var a = ['one', 'two'];
     var count = a.calculateCount();
-
-Architecting Large Javascript Codebase
---------------------------------------------
-Require.js: http://requirejs.org
-Uses the Asynchronous Module Definition(AMD) pattern
-Dependency Injection for Javascript
-Loads Script as they are needed instead of all at start
-
-.. code-block:: javascript
-
-    require(['Customer'],
-    	function(Customer) { 
-    	var c = new Customer('A customer');
-    }
-
-Module Defined in similar way with define()
-
-.. code-block:: javascript
-
-    define([], 
-    	function() {
-    		function Customer(name) {
-    			this.name = name
-    		}
-    		return Customer;
-    	}
-    }
-
-Knockout: MVVM pattern
-
-Webpack: module bundler
-
-
-
-Caching:
-
-* Web storage stores strings in the client and is accessible to the application. Use these to store finished HTML from data already retrieved from the server and processed.
-* HTTP caching is client side caching that stores responses from the server. There's a lot of detail to learn in order to properly control the style of caching, but after learning and implementing it, we'll get a lot of caching almost for free.
-* Server caching with Memcached and Redis are often used to cache processed server resonses. This is the first form of caching that can store data for different users so that if one user requests some information, it's already cached the next time someone else requests it, saving a trip to the database.
-Database caching, or query caching, is used by database to cache the results of a query so that if it's turned on, subsequent identical queries return the cache instead of gathering the data again.            
-
-window.onerror fires for runtime errors, but not for compilation errors
 
 *Written by Binwei@Trondheim*
 
