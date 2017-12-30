@@ -1,0 +1,1298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Xunit Test Patterns &#8212; binwei  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../about/" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="binwei Blog">
+  
+  
+  <link href="True" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="xunit-test-patterns">
+<h1><a class="toc-backref" href="#id1">Xunit Test Patterns</a><a class="headerlink" href="#xunit-test-patterns" title="Permalink to this headline">¶</a></h1>
+<p>Xunit Test Pattern is a fantastic book which shares the experience and good practice to write tests.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#xunit-test-patterns" id="id1">Xunit Test Patterns</a></li>
+<li><a class="reference internal" href="#test-introduction" id="id2">Test Introduction</a><ul>
+<li><a class="reference internal" href="#easy-to-run-tests" id="id3">Easy to run tests</a></li>
+<li><a class="reference internal" href="#purpose-of-tests" id="id4">Purpose of Tests</a></li>
+<li><a class="reference internal" href="#tests-and-continuous-integration" id="id5">Tests and Continuous Integration</a></li>
+<li><a class="reference internal" href="#way-of-capturing-tests" id="id6">Way of capturing tests</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#anti-patterns" id="id7">Anti-Patterns</a><ul>
+<li><a class="reference internal" href="#obscure-test" id="id8">Obscure Test</a></li>
+<li><a class="reference internal" href="#conditional-test-logic" id="id9">Conditional Test Logic</a></li>
+<li><a class="reference internal" href="#hard-to-test-code" id="id10">Hard-to-Test Code</a></li>
+<li><a class="reference internal" href="#test-code-duplication" id="id11">Test Code Duplication</a></li>
+<li><a class="reference internal" href="#test-logic-in-production" id="id12">Test Logic in Production</a></li>
+<li><a class="reference internal" href="#assertion-roulette" id="id13">Assertion Roulette</a></li>
+<li><a class="reference internal" href="#erratic-test" id="id14">Erratic Test</a></li>
+<li><a class="reference internal" href="#fragile-test" id="id15">Fragile Test</a></li>
+<li><a class="reference internal" href="#frequent-debugging" id="id16">Frequent Debugging</a></li>
+<li><a class="reference internal" href="#manual-intervention" id="id17">Manual Intervention</a></li>
+<li><a class="reference internal" href="#slow-tests" id="id18">Slow Tests</a></li>
+<li><a class="reference internal" href="#buggy-tests" id="id19">Buggy Tests</a></li>
+<li><a class="reference internal" href="#developers-not-writing-tests" id="id20">Developers Not Writing Tests</a></li>
+<li><a class="reference internal" href="#high-test-maintenance-cost" id="id21">High Test Maintenance Cost</a></li>
+<li><a class="reference internal" href="#production-bugs" id="id22">Production Bugs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#patterns" id="id23">Patterns</a><ul>
+<li><a class="reference internal" href="#recorded-test" id="id24">Recorded Test</a></li>
+<li><a class="reference internal" href="#scripted-test" id="id25">Scripted Test</a></li>
+<li><a class="reference internal" href="#data-driven-test" id="id26">Data-Driven Test</a></li>
+<li><a class="reference internal" href="#test-automation-framework" id="id27">Test Automation Framework</a></li>
+<li><a class="reference internal" href="#minimal-fixture" id="id28">Minimal Fixture</a></li>
+<li><a class="reference internal" href="#standard-fixture" id="id29">Standard Fixture</a></li>
+<li><a class="reference internal" href="#fresh-fixture" id="id30">Fresh Fixture</a></li>
+<li><a class="reference internal" href="#shared-fixture" id="id31">Shared Fixture</a></li>
+<li><a class="reference internal" href="#back-door-manipulation" id="id32">Back Door Manipulation</a></li>
+<li><a class="reference internal" href="#layer-test" id="id33">Layer Test</a></li>
+<li><a class="reference internal" href="#test-method" id="id34">Test Method</a></li>
+<li><a class="reference internal" href="#four-phase-test" id="id35">Four-Phase Test</a></li>
+<li><a class="reference internal" href="#assertion-method" id="id36">Assertion Method</a></li>
+<li><a class="reference internal" href="#assertion-message" id="id37">Assertion Message</a></li>
+<li><a class="reference internal" href="#testcase-class" id="id38">Testcase Class</a></li>
+<li><a class="reference internal" href="#test-runner" id="id39">Test Runner</a></li>
+<li><a class="reference internal" href="#testcase-object" id="id40">Testcase Object</a></li>
+<li><a class="reference internal" href="#test-suite-object" id="id41">Test Suite Object</a></li>
+<li><a class="reference internal" href="#test-discovery" id="id42">Test Discovery</a></li>
+<li><a class="reference internal" href="#test-enumeration" id="id43">Test Enumeration</a></li>
+<li><a class="reference internal" href="#test-selection" id="id44">Test Selection</a></li>
+<li><a class="reference internal" href="#in-line-setup" id="id45">In-line Setup</a></li>
+<li><a class="reference internal" href="#delegated-setup" id="id46">Delegated Setup</a></li>
+<li><a class="reference internal" href="#creation-method" id="id47">Creation Method</a></li>
+<li><a class="reference internal" href="#implicit-setup" id="id48">Implicit Setup</a></li>
+<li><a class="reference internal" href="#prebuilt-fixture" id="id49">Prebuilt Fixture</a></li>
+<li><a class="reference internal" href="#lazy-setup" id="id50">Lazy Setup</a></li>
+<li><a class="reference internal" href="#suite-fixture-setup" id="id51">Suite Fixture Setup</a></li>
+<li><a class="reference internal" href="#setup-decorator" id="id52">Setup Decorator</a></li>
+<li><a class="reference internal" href="#chained-tests" id="id53">Chained Tests</a></li>
+<li><a class="reference internal" href="#state-verification" id="id54">State Verification</a></li>
+<li><a class="reference internal" href="#behavior-verification" id="id55">Behavior Verification</a></li>
+<li><a class="reference internal" href="#custom-assertion" id="id56">Custom Assertion</a></li>
+<li><a class="reference internal" href="#delta-assertion" id="id57">Delta Assertion</a></li>
+<li><a class="reference internal" href="#guard-assertion" id="id58">Guard Assertion</a></li>
+<li><a class="reference internal" href="#unfinished-test-assertion" id="id59">Unfinished Test Assertion</a></li>
+<li><a class="reference internal" href="#garbage-collected-teardown" id="id60">Garbage-Collected Teardown</a></li>
+<li><a class="reference internal" href="#automated-teardown" id="id61">Automated Teardown</a></li>
+<li><a class="reference internal" href="#in-line-teardown" id="id62">In-line Teardown</a></li>
+<li><a class="reference internal" href="#implicit-teardown" id="id63">Implicit Teardown</a></li>
+<li><a class="reference internal" href="#test-double" id="id64">Test Double</a></li>
+<li><a class="reference internal" href="#test-stub" id="id65">Test Stub</a></li>
+<li><a class="reference internal" href="#test-spy" id="id66">Test Spy</a></li>
+<li><a class="reference internal" href="#mock-object" id="id67">Mock Object</a></li>
+<li><a class="reference internal" href="#fake-object" id="id68">Fake Object</a></li>
+<li><a class="reference internal" href="#configurable-test-double" id="id69">Configurable Test Double</a></li>
+<li><a class="reference internal" href="#hard-coded-test-double" id="id70">Hard-Coded Test Double</a></li>
+<li><a class="reference internal" href="#test-specific-subclass" id="id71">Test-Specific Subclass</a></li>
+<li><a class="reference internal" href="#named-test-suite" id="id72">Named Test Suite</a></li>
+<li><a class="reference internal" href="#test-utility-method" id="id73">Test Utility Method</a></li>
+<li><a class="reference internal" href="#parameterized-test" id="id74">Parameterized Test</a></li>
+<li><a class="reference internal" href="#testcase-class-per-class" id="id75">Testcase Class per Class</a></li>
+<li><a class="reference internal" href="#testcase-class-per-feature" id="id76">Testcase Class per Feature</a></li>
+<li><a class="reference internal" href="#testcase-superclass" id="id77">Testcase Superclass</a></li>
+<li><a class="reference internal" href="#test-helper" id="id78">Test Helper</a></li>
+<li><a class="reference internal" href="#database-sandbox" id="id79">Database Sandbox</a></li>
+<li><a class="reference internal" href="#stored-procedure-test" id="id80">Stored Procedure Test</a></li>
+<li><a class="reference internal" href="#table-truncation-teardown" id="id81">Table Truncation Teardown</a></li>
+<li><a class="reference internal" href="#transaction-rollback-teardown" id="id82">Transaction Rollback Teardown</a></li>
+<li><a class="reference internal" href="#dependency-injection" id="id83">Dependency Injection</a></li>
+<li><a class="reference internal" href="#dependency-lookup" id="id84">Dependency Lookup</a></li>
+<li><a class="reference internal" href="#humble-object" id="id85">Humble Object</a></li>
+<li><a class="reference internal" href="#test-hook" id="id86">Test Hook</a></li>
+<li><a class="reference internal" href="#literal-value" id="id87">Literal Value</a></li>
+<li><a class="reference internal" href="#derived-value" id="id88">Derived Value</a></li>
+<li><a class="reference internal" href="#generated-value" id="id89">Generated Value</a></li>
+<li><a class="reference internal" href="#dummy-object" id="id90">Dummy Object</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary" id="id91">Summary</a></li>
+</ul>
+</div>
+<img alt="../../_images/xunittestgoalsprinciplesandsmells.jpg" src="../../_images/xunittestgoalsprinciplesandsmells.jpg" />
+</div>
+<div class="section" id="test-introduction">
+<h1><a class="toc-backref" href="#id2">Test Introduction</a><a class="headerlink" href="#test-introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="easy-to-run-tests">
+<h2><a class="toc-backref" href="#id3">Easy to run tests</a><a class="headerlink" href="#easy-to-run-tests" title="Permalink to this headline">¶</a></h2>
+<p>What makes tests easy to run? Four specific goals answer this question:</p>
+<ul class="simple">
+<li>They must be Fully Automated Tests so they can be run without any effort.</li>
+<li>They must be Self-Checking Tests so they can detect and report any errors without manual inspection.</li>
+<li>They must be Repeatable Tests so they can be run multiple times with the same result.</li>
+<li>Ideally, each test should be an Independent Test that can be run by itself.</li>
+</ul>
+<p>Our tests should be small and test one thing at a time.</p>
+<p>The major exception to the mandate to keep Test Methods short occurs with customer tests that express real usage scenarios of the application.
+Such extended tests offer a useful way to document how a potential user of the software would go about using it; if these interactions involve long sequences of steps, the Test Methods should reflect this reality.</p>
+</div>
+<div class="section" id="purpose-of-tests">
+<h2><a class="toc-backref" href="#id4">Purpose of Tests</a><a class="headerlink" href="#purpose-of-tests" title="Permalink to this headline">¶</a></h2>
+<img alt="../../_images/purposeoftests.jpg" src="../../_images/purposeoftests.jpg" />
+<p><strong>Customer tests</strong></p>
+<p>Verify the behavior of the entire system or application.</p>
+<p>They typically correspond to scenarios of one or more use cases, features, or user stories.
+These tests often go by other names such as functional tests, acceptance tests, or end-user tests.
+Although they may be automated by developers, their key characteristic is that an end user should be able to recognize the behavior specified by the test even if the user cannot read the test representation.</p>
+<p><strong>Unit tests</strong></p>
+<p>Verify the behavior of a single class or method that is a consequence of a design decision.</p>
+<p>This behavior is typically not directly related to the requirements except when a key chunk of business logic is encapsulated within the class or method in question.
+These tests are written by developers for their own use; they help developers describe what “done looks like” by summarizing the behavior of the unit in the form of tests.</p>
+<p><strong>Component tests</strong></p>
+<p>Verify components consisting of groups of classes that collectively provide some service.</p>
+<p>They fit somewhere between unit tests and customer tests in terms of the size of the SUT (System under test) being verified.
+Although some people call these “integration tests” or “subsystem tests,” those terms can mean something entirely different from “tests of a specific larger-grained subcomponent of the overall system.”</p>
+<p><strong>Fault insertion tests</strong></p>
+<p>Typically show up at all three levels of granularity within these functional tests, with different kinds of faults being inserted at each level.</p>
+<p>From a test automation strategy point of view, fault insertion is just another set of tests at the unit and component test levels.
+Things get more interesting at the whole-application level, however. Inserting faults here can be hard to automate because it is challenging to automate insertion of the faults without replacing parts of the application.</p>
+<p><strong>Property Tests</strong></p>
+<p>Performance tests verify various “nonfunctional” (also known as “extra-functional” or “cross-functional”) requirements of the system.</p>
+<p>These requirements are different in that they span the various kinds of functionality.
+They often correspond to the architectural “-ilities.”
+These kinds of tests include</p>
+<ul class="simple">
+<li>Response time tests</li>
+<li>Capacity tests</li>
+<li>Stress tests</li>
+</ul>
+<p>From a test automation perspective, many of these tests must be automated (at least partially) because human testers would have a hard time creating enough load to verify the behavior under stress.
+While we can run the same test many times in a row in xUnit, the xUnit framework is not particularly well suited to automating performance tests.</p>
+<p><strong>Usability Tests</strong></p>
+<p>Usability tests verify “fitness for purpose” by confirming that real users can use the software application to achieve the stated goals.</p>
+<p>These tests are very difficult to automate because they require subjective assessment by people regarding how easy it is to use the SUT.
+For this reason, usability tests are rarely automated and will not be discussed further in this book.</p>
+<p><strong>Exploratory Testing</strong></p>
+<p>Exploratory testing is a way to determine whether the product is self-consistent.</p>
+<p>The testers use the product, observe how it behaves, form hypotheses, design tests to verify those hypotheses, and exercise the product with them.
+By its very nature, exploratory testing cannot be automated, although automated tests can be used to set up the SUT in preparation for doing exploratory testing.</p>
+</div>
+<div class="section" id="tests-and-continuous-integration">
+<h2><a class="toc-backref" href="#id5">Tests and Continuous Integration</a><a class="headerlink" href="#tests-and-continuous-integration" title="Permalink to this headline">¶</a></h2>
+<p>By organizing the unit tests and customer tests into separate test suites, we ensure that we can run just the unit tests or just the customer tests if necessary.</p>
+<ul class="simple">
+<li>The unit tests should always pass before we check them in.</li>
+<li>To ensure that the unit tests are run frequently, we can include them in the Smoke Tests that are run as part of the Integration Build.</li>
+<li>Although many of the customer tests will fail until the corresponding functionality is built, it is nevertheless useful to run all the passing customer tests as part of the integration build phase—but only if this step does not slow the build down too much.</li>
+<li>In that case, we can leave them out of the check-in build and simply run them every night.</li>
+</ul>
+<p>System level tests cannot be thorough</p>
+<p>TDD unit tests can be thorough</p>
+</div>
+<div class="section" id="way-of-capturing-tests">
+<h2><a class="toc-backref" href="#id6">Way of capturing tests</a><a class="headerlink" href="#way-of-capturing-tests" title="Permalink to this headline">¶</a></h2>
+<img alt="../../_images/wayofcapturingtests.jpg" src="../../_images/wayofcapturingtests.jpg" />
+<img alt="../../_images/comparisiononwayofcapturingtests.jpg" src="../../_images/comparisiononwayofcapturingtests.jpg" />
+</div>
+</div>
+<div class="section" id="anti-patterns">
+<h1><a class="toc-backref" href="#id7">Anti-Patterns</a><a class="headerlink" href="#anti-patterns" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="obscure-test">
+<h2><a class="toc-backref" href="#id8">Obscure Test</a><a class="headerlink" href="#obscure-test" title="Permalink to this headline">¶</a></h2>
+<p>It is difficult to understand the test at a glance.</p>
+<p>Automated tests should serve at least two purposes.</p>
+<ul class="simple">
+<li>First, they should act as documentation of how the SUT should behave; we call this Tests as Documentation.</li>
+<li>Second, they should be a self-verifying executable specification.</li>
+</ul>
+<p><strong>Cause: Mystery Guest</strong></p>
+<p>The test reader is not able to see the cause and effect between fixture and verification logic because part of it is done outside the Test Method.</p>
+<p><strong>Cause: General Fixture</strong></p>
+<p>The test builds or references a larger fixture than is needed to verify the functionality in question.</p>
+<p><strong>Cause: Irrelevant Information</strong></p>
+<p>The test exposes a lot of irrelevant details about the fixture that distract the test reader from what really affects the behavior of the SUT.</p>
+<p><strong>Cause: Hard-Coded Test Data</strong></p>
+<p>Data values in the fixture, assertions, or arguments of the SUT are hard-coded in the Test Method, obscuring cause–effect relationships between inputs and expected outputs.</p>
+<p><strong>Cause: Indirect Testing</strong></p>
+<p>The Test Method interacts with the SUT indirectly via another object, thereby making the interactions more complex.</p>
+</div>
+<div class="section" id="conditional-test-logic">
+<h2><a class="toc-backref" href="#id9">Conditional Test Logic</a><a class="headerlink" href="#conditional-test-logic" title="Permalink to this headline">¶</a></h2>
+<p>A test contains code that may or may not be executed.</p>
+<p>In general, the tests should try to:</p>
+<ul class="simple">
+<li>Eliminating “if” Statements</li>
+<li>Eliminating Loops</li>
+</ul>
+<p><strong>Cause: Flexible Test</strong></p>
+<p>The test code verifies different functionality depending on when or where it is run.</p>
+<p><strong>Cause: Conditional Verification Logic</strong></p>
+<p>Conditional Test Logic may also create problems when it is used to verify the expected outcome.
+This issue usually arises when the tester tries to prevent the execution of assertions if the SUT fails to return the right objects or uses loops to verify the contents of collections returned by the SUT.</p>
+<p><strong>Cause: Production Logic in Test</strong></p>
+<p>Symptoms:
+Some forms of Conditional Test Logic are found in the result verification section of our tests.</p>
+<p><strong>Cause: Complex Teardown</strong></p>
+<p>Symptoms:
+Complex fixture teardown code is more likely to leave the test environment corrupted if it does not clean up after itself correctly.</p>
+<p>It is hard to verify that teardown code has been written correctly, and such code can easily result in “data leaks” that may later cause this or other tests to fail for no apparent reason.</p>
+<p><strong>Cause: Multiple Test Conditions</strong></p>
+<p>Symptoms:
+A test tries to apply the same test logic to many sets of input values, each with its own corresponding expected result.</p>
+</div>
+<div class="section" id="hard-to-test-code">
+<h2><a class="toc-backref" href="#id10">Hard-to-Test Code</a><a class="headerlink" href="#hard-to-test-code" title="Permalink to this headline">¶</a></h2>
+<p>Code is difficult to test.</p>
+<p><strong>Cause: Highly Coupled Code</strong></p>
+<p>Symptoms:
+A class cannot be tested without also testing several other classes.</p>
+<p><strong>Cause: Asynchronous Code</strong></p>
+<p>Symptoms:
+A class cannot be tested via direct method calls.</p>
+<p>The test must start an executable (such as a thread, process, or application) and wait until its start-up has finished before interacting with the executable.</p>
+<p><strong>Cause: Untestable Test Code</strong></p>
+<p>Symptoms:
+The body of a Test Method is obscure enough (Obscure Test) or contains enough Conditional Test Logic that we wonder whether the test is correct.</p>
+</div>
+<div class="section" id="test-code-duplication">
+<h2><a class="toc-backref" href="#id11">Test Code Duplication</a><a class="headerlink" href="#test-code-duplication" title="Permalink to this headline">¶</a></h2>
+<p>The same test code is repeated many times.</p>
+<p><strong>Cause: Cut-and-Paste Code Reuse</strong></p>
+<p><strong>Cause: Reinventing the Wheel</strong></p>
+<p>While Cut-and-Paste Code Reuse deliberately makes copies of existing code to reduce the effort of writing tests, it is also possible to accidentally write the same sequence of statements in different tests.</p>
+</div>
+<div class="section" id="test-logic-in-production">
+<h2><a class="toc-backref" href="#id12">Test Logic in Production</a><a class="headerlink" href="#test-logic-in-production" title="Permalink to this headline">¶</a></h2>
+<p>The code that is put into production contains logic that should be exercised only during tests.</p>
+<p>The SUT may contain logic that cannot be run in a test environment. Tests may require the SUT to behave in specific ways to allow full test coverage.</p>
+<p><strong>Cause: Test Hook</strong></p>
+<p>Conditional logic within the SUT determines whether the “real” code or test specific logic is run.</p>
+<p><strong>Cause: For Tests Only</strong></p>
+<p>Code exists in the SUT strictly for use by tests.</p>
+<p><strong>Cause: Test Dependency in Production</strong></p>
+<p>Production executables depend on test executables.</p>
+<p><strong>Cause: Equality Pollution</strong></p>
+<p>Another cause of Test Logic in Production is the implementation of test-specific equality in the equals method of the SUT.</p>
+</div>
+<div class="section" id="assertion-roulette">
+<h2><a class="toc-backref" href="#id13">Assertion Roulette</a><a class="headerlink" href="#assertion-roulette" title="Permalink to this headline">¶</a></h2>
+<p>It is hard to tell which of several assertions within the same test method caused a test failure.</p>
+<p><strong>Cause: Eager Test</strong></p>
+<p>A single test verifies too much functionality.</p>
+<p><strong>Cause: Missing Assertion Message</strong></p>
+<p>Symptoms:
+A test fails. Upon examining the output of the Test Runner, we cannot determine exactly which assertion failed.</p>
+</div>
+<div class="section" id="erratic-test">
+<h2><a class="toc-backref" href="#id14">Erratic Test</a><a class="headerlink" href="#erratic-test" title="Permalink to this headline">¶</a></h2>
+<p>One or more tests behave erratically; sometimes they pass and sometimes they fail.</p>
+<p><strong>Cause: Interacting Tests</strong></p>
+<p>Tests depend on other tests in some way. Note that Interacting Test Suites and Lonely Test are specific variations of Interacting Tests.</p>
+<p><strong>Cause: Interacting Test Suites</strong></p>
+<p>In this special case of Interacting Tests, the tests are in different test suites.</p>
+<p><strong>Cause: Lonely Test</strong></p>
+<p>A Lonely Test is a special case of Interacting Tests.</p>
+<p>In this case, a test can be run as part of a suite but cannot be run by itself because it depends on something in a Shared Fixture that was created by another test or by suite-level fixture setup logic.
+We can address this problem by converting the test to use a Fresh Fixture or by adding Lazy Setup logic to the Lonely Test to allow it to run by itself.</p>
+<p><strong>Cause: Resource Leakage</strong></p>
+<p>Tests or the SUT consume finite resources.</p>
+<p><strong>Cause: Resource Optimism</strong></p>
+<p>A test that depends on external resources has non deterministic results depending on when or where it is run.</p>
+<p><strong>Cause: Unrepeatable Test</strong></p>
+<p>A test behaves differently the first time it is run compared with how it behaves on subsequent test runs.
+In effect, it is interacting with itself across test runs.</p>
+<p><strong>Cause: Test Run War</strong></p>
+<p>Test failures occur at random when several people are running tests simultaneously.</p>
+<p><strong>Cause: Non deterministic Test</strong></p>
+<p>Test failures occur at random, even when only a single Test Runner is running tests.</p>
+</div>
+<div class="section" id="fragile-test">
+<h2><a class="toc-backref" href="#id15">Fragile Test</a><a class="headerlink" href="#fragile-test" title="Permalink to this headline">¶</a></h2>
+<p>A test fails to compile or run when the SUT is changed in ways that do not affect the part the test is exercising.</p>
+<p><strong>Cause: Interface Sensitivity</strong></p>
+<p>Interface Sensitivity occurs when a test fails to compile or run because some part of the interface of the SUT that the test uses has changed.</p>
+<p><strong>Cause: Behavior Sensitivity</strong></p>
+<p>Behavior Sensitivity occurs when changes to the SUT cause other tests to fail.</p>
+<p><strong>Cause: Data Sensitivity</strong></p>
+<p>Data Sensitivity occurs when a test fails because the data being used to test the SUT has been modified.
+This sensitivity most commonly arises when the contents of the test database change.</p>
+<p><strong>Cause: Context Sensitivity</strong></p>
+<p>Context Sensitivity occurs when a test fails because the state or behavior of the context in which the SUT executes has changed in some way.</p>
+<p><strong>Cause: Overspecified Software</strong></p>
+<p>A test says too much about how the software should be structured or behave.</p>
+<p>This form of Behavior Sensitivity is associated with the style of testing called Behavior Verification.
+It is characterized by extensive use of Mock Objects to build layer-crossing tests.</p>
+<p>The main issue is that the tests describe how the software should do something, not what it should achieve.
+That is, the tests will pass only if the software is implemented in a particular way.
+This problem can be avoided by applying the principle Use the Front Door First whenever possible to avoid encoding too much knowledge about the implementation of the SUT into the tests.</p>
+<p><strong>Cause: Sensitive Equality</strong></p>
+<p>Objects to be verified are converted to strings and compared with an expected string.</p>
+<p>This is an example of Behavior Sensitivity in that the test is sensitive to behavior that it is not in the business of verifying.
+We could also think of it as a case of Interface Sensitivity where the semantics of the interface have changed.
+Either way, the problem arises from the way the test was coded; using the string representations of objects for verifying them against expected values is just asking for trouble.</p>
+<p><strong>Cause: Fragile Fixture</strong></p>
+<p>When a Standard Fixture is modified to accommodate a new test, several other tests fail.</p>
+<p>This is an alias for either Data Sensitivity or Context Sensitivity depending on the nature of the fixture in question.</p>
+</div>
+<div class="section" id="frequent-debugging">
+<h2><a class="toc-backref" href="#id16">Frequent Debugging</a><a class="headerlink" href="#frequent-debugging" title="Permalink to this headline">¶</a></h2>
+<p>Manual debugging is required to determine the cause of most test failures.</p>
+</div>
+<div class="section" id="manual-intervention">
+<h2><a class="toc-backref" href="#id17">Manual Intervention</a><a class="headerlink" href="#manual-intervention" title="Permalink to this headline">¶</a></h2>
+<p>A test requires a person to perform some manual action each time it is run.</p>
+<p><strong>Cause: Manual Fixture Setup</strong></p>
+<p>Symptoms:
+A person has to set up the test environment manually before the automated tests can be run.</p>
+<p>This activity may take the form of configuring servers, starting server processes, or running scripts to set up a Prebuilt Fixture.</p>
+<p><strong>Cause: Manual Result Verification</strong></p>
+<p>Symptoms:
+We can run the tests but they almost always pass—even when we know that the SUT is not returning the correct results.</p>
+<p><strong>Cause: Manual Event Injection</strong>
+Symptoms:
+A person must intervene during test execution to perform some manual action before the test can proceed.</p>
+</div>
+<div class="section" id="slow-tests">
+<h2><a class="toc-backref" href="#id18">Slow Tests</a><a class="headerlink" href="#slow-tests" title="Permalink to this headline">¶</a></h2>
+<p>The tests take too long to run.</p>
+<p><strong>Cause: Slow Component Usage</strong></p>
+<p>A component of the SUT has high latency.</p>
+<p><strong>Cause: General Fixture</strong></p>
+<p>Symptoms:
+Tests are consistently slow because each test builds the same over-engineered fixture.</p>
+<p><strong>Cause: Asynchronous Test</strong></p>
+<p>Symptoms:
+A few tests take inordinately long to run; those tests contain explicit delays.</p>
+<p><strong>Cause: Too Many Tests</strong></p>
+<p>Symptoms:
+There are so many tests that they are bound to take a long time to run regardless of how fast they execute.</p>
+</div>
+<div class="section" id="buggy-tests">
+<h2><a class="toc-backref" href="#id19">Buggy Tests</a><a class="headerlink" href="#buggy-tests" title="Permalink to this headline">¶</a></h2>
+<p>Bugs are regularly found in the automated tests.</p>
+<p><strong>Cause: Fragile Test</strong></p>
+<p><strong>Cause: Obscure Test</strong></p>
+<p><strong>Cause: Hard-to-Test Code</strong></p>
+</div>
+<div class="section" id="developers-not-writing-tests">
+<h2><a class="toc-backref" href="#id20">Developers Not Writing Tests</a><a class="headerlink" href="#developers-not-writing-tests" title="Permalink to this headline">¶</a></h2>
+<p>Developers aren’t writing automated tests.</p>
+<p><strong>Cause: Not Enough Time</strong></p>
+<p>Developers may have trouble writing tests in the time they are given to do the development.</p>
+<p>This problem could be caused by an overly aggressive development schedule or supervisors/team leaders who instruct developers, “Don’t waste time writing tests.”
+Alternatively, developers may not have the skills needed to write tests efficiently and may not be allocated the time required to work their way up the learning curve.</p>
+<p><strong>Cause: Hard-to-Test Code</strong></p>
+<p><strong>Cause: Wrong Test Automation Strategy</strong></p>
+<p>Another cause of Developers Not Writing Tests may be a test environment or test automation strategy that leads to Fragile Tests or Obscure Tests that take too long to write.</p>
+<p>We need to ask the “five why’s” to find the root causes.
+Then we can address those causes and get the ship back on course.</p>
+</div>
+<div class="section" id="high-test-maintenance-cost">
+<h2><a class="toc-backref" href="#id21">High Test Maintenance Cost</a><a class="headerlink" href="#high-test-maintenance-cost" title="Permalink to this headline">¶</a></h2>
+<p>Too much effort is spent maintaining existing tests.</p>
+<p><strong>Cause: Fragile Test</strong></p>
+<p><strong>Cause: Obscure Test</strong></p>
+<p><strong>Cause: Hard-to-Test Code</strong></p>
+</div>
+<div class="section" id="production-bugs">
+<h2><a class="toc-backref" href="#id22">Production Bugs</a><a class="headerlink" href="#production-bugs" title="Permalink to this headline">¶</a></h2>
+<p>We find too many bugs during formal tests or in production.</p>
+<p><strong>Cause: Infrequently Run Tests</strong></p>
+<p>Symptoms:
+We hear that our developers aren’t running the tests very often.</p>
+<p>When we ask some questions, we discover that running the tests takes too long (Slow Tests) or produces too many extraneous failures (Buggy Tests).</p>
+<p><strong>Cause: Lost Test</strong></p>
+<p>Symptoms:
+The number of tests being executed in a test suite has declined (or has not increased as much as expected).</p>
+<p>We may notice this directly if we are paying attention to test counts.
+Alternatively, we may find a bug that should have been caused by a test that we know exists but, upon poking around, we discover that the test has been disabled.</p>
+<p><strong>Cause: Missing Unit Test</strong></p>
+<p>Symptoms:
+All the unit tests pass but a customer test continues to fail.</p>
+<p>At some point, the customer test passed—but no unit tests were written to verify the behavior of the individual classes.
+Then, a subsequent code change modified the behavior of one of the classes, which broke its functionality.</p>
+<p><strong>Cause: Untested Code</strong></p>
+<p>Symptoms:
+We may just “know” that some piece of code in the SUT is not being exercised by any tests.</p>
+<p>Perhaps we have never seen that code execute, or perhaps we used code coverage tools to prove this fact beyond a doubt.</p>
+<p><strong>Cause: Untested Requirement</strong></p>
+<p>Symptoms:
+We may just “know” that some piece of functionality is not being tested.</p>
+<p>Alternatively, we may be trying to test a piece of software but cannot see any visible functionality that can be tested via the public interface of the software.
+All the tests we have written pass, however.</p>
+<p><strong>Cause: Neverfail Test</strong></p>
+<p>Symptoms:
+We may just “know” that some piece of functionality is not working, even though the tests for that functionality pass.</p>
+<p>When doing test-driven development, we have added a test for functionality we have not yet written but we cannot get the test to fail.</p>
+</div>
+</div>
+<div class="section" id="patterns">
+<h1><a class="toc-backref" href="#id23">Patterns</a><a class="headerlink" href="#patterns" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="recorded-test">
+<h2><a class="toc-backref" href="#id24">Recorded Test</a><a class="headerlink" href="#recorded-test" title="Permalink to this headline">¶</a></h2>
+<p>How do we prepare automated tests for our software?</p>
+<p>We automate tests by recording interactions with the application and playing them back using a test tool.</p>
+<p>Most Recorded Test tools interact with the SUT through the user interface.
+Once an application is up and running and we don’t expect a lot of changes to it, we can use Recorded Tests to do regression testing.
+If we want to use the Tests as Documentation or if we want to use the tests to drive new development, we should consider using Scripted Tests.
+These goals are difficult to address with commercial Recorded Test tools because most do not let us define a Higher-Level Language for the test recording.
+This issue can be addressed by building the Recorded Test capability into the application itself or by using Refactored Recorded Test.</p>
+</div>
+<div class="section" id="scripted-test">
+<h2><a class="toc-backref" href="#id25">Scripted Test</a><a class="headerlink" href="#scripted-test" title="Permalink to this headline">¶</a></h2>
+<p>How do we prepare automated tests for our software?</p>
+<p>We automate the tests by writing test programs by hand.</p>
+<p>Scripted Tests allow us to prepare our tests before the software is developed so they can help drive the design.
+Unlike Recorded Tests, these tests can be either customer tests or unit tests.
+These test programs are often called “test scripts” to distinguish them from the production code they test.
+An opensource framework for defining Data-Driven Tests is Fit and its wiki-based cousin, FitNesse. Canoo WebTest is another tool that supports this style of testing.</p>
+<p>In case of an existing legacy application, we can consider using Recorded Tests as a way of quickly creating a suite of regression tests that will protect us while we refactor the code to introduce testability.
+We can then prepare Scripted Tests for our now testable application.</p>
+</div>
+<div class="section" id="data-driven-test">
+<h2><a class="toc-backref" href="#id26">Data-Driven Test</a><a class="headerlink" href="#data-driven-test" title="Permalink to this headline">¶</a></h2>
+<p>How do we prepare automated tests for our software?
+How do we reduce Test Code Duplication?</p>
+<p>We store all the information needed for each test in a data file and write an interpreter that reads the file and executes the tests.</p>
+<p>A Data-Driven Test is an ideal strategy for getting business people involved in writing automated tests.
+By keeping the format of the data file simple, we make it possible for the business person to populate the file with data and execute the tests without having to ask a technical person to write test code for each test.
+In general, xUnit is a more appropriate framework for unit testing than Fit; the reverse is true for customer tests.</p>
+</div>
+<div class="section" id="test-automation-framework">
+<h2><a class="toc-backref" href="#id27">Test Automation Framework</a><a class="headerlink" href="#test-automation-framework" title="Permalink to this headline">¶</a></h2>
+<p>How do we make it easy to write and run tests written by different people?</p>
+<p>We use a framework that provides all the mechanisms needed to run the test logic so the test writer needs to provide only the test-specific logic.
+They can be classified into two main categories: “robot user” test tools and Scripted Tests.
+The latter category can be further subdivided into the xUnit and Data-Driven Tests families of Test Automation Frameworks.</p>
+</div>
+<div class="section" id="minimal-fixture">
+<h2><a class="toc-backref" href="#id28">Minimal Fixture</a><a class="headerlink" href="#minimal-fixture" title="Permalink to this headline">¶</a></h2>
+<p>Which fixture strategy should we use?</p>
+<p>We use the smallest and simplest fixture possible for each test.</p>
+</div>
+<div class="section" id="standard-fixture">
+<h2><a class="toc-backref" href="#id29">Standard Fixture</a><a class="headerlink" href="#standard-fixture" title="Permalink to this headline">¶</a></h2>
+<p>Which fixture strategy should we use?</p>
+<p>We reuse the design of the text fixture across the many tests.</p>
+<p>A Standard Fixture is more about attitude than about technology.
+It requires us to decide early on in the testing process that we will design a Standard Fixture that can be used by several or many tests rather than mining a common fixture from tests that were designed independently.</p>
+</div>
+<div class="section" id="fresh-fixture">
+<h2><a class="toc-backref" href="#id30">Fresh Fixture</a><a class="headerlink" href="#fresh-fixture" title="Permalink to this headline">¶</a></h2>
+<p>Which fixture strategy should we use?</p>
+<p>Each test constructs its own brand-new test fixture for its own private use.</p>
+<p><strong>Variation: Transient Fresh Fixture</strong></p>
+<p>If we need to refer to the fixture from several places in the test, we should use only local variables or instance variables to refer to the fixture.</p>
+<p>In most cases we can depend on Garbage-Collected Teardown to destroy the fixture without any effort on our part.</p>
+<p><strong>Variation: Persistent Fresh Fixture</strong></p>
+<p>If we do end up using a Persistent Fresh Fixture, either we need to tear down the fixture or we need to take special measures to avoid the need for its teardown.</p>
+<p>We can tear down the fixture using In-line Teardown, Implicit Teardown, Delegated Teardown (see In-line Teardown), or Automated Teardown to leave the test environment in the same state as when we entered it.</p>
+</div>
+<div class="section" id="shared-fixture">
+<h2><a class="toc-backref" href="#id31">Shared Fixture</a><a class="headerlink" href="#shared-fixture" title="Permalink to this headline">¶</a></h2>
+<p>How can we avoid Slow Tests?</p>
+<p>Which fixture strategy should we use?</p>
+<p>We reuse the same instance of the test fixture across many tests.</p>
+<p><strong>Variation: Immutable Shared Fixture</strong></p>
+<p>The problem with Shared Fixtures is that they lead to Erratic Tests if tests modify the Shared Fixture.</p>
+<p>Shared Fixtures violate the Independent Test principle.
+We can avoid this problem by making the Shared Fixture immutable; that is, we partition the fixture needed by tests into two logical parts.</p>
+<ul class="simple">
+<li>The first part is the stuff every test needs to have present but is never modified by any tests—that is, the Immutable Shared Fixture.</li>
+<li>The second part is the objects that any test needs to modify or delete; these objects should be built by each test as Fresh Fixtures.</li>
+</ul>
+<img alt="../../_images/transientpersistentfixture.jpg" src="../../_images/transientpersistentfixture.jpg" />
+<p>Shared Fixture Setup:</p>
+<ul class="simple">
+<li>Prebuilt Fixture</li>
+<li>Lazy Setup</li>
+<li>Setup Decorator</li>
+<li>Suite Fixture Setup</li>
+<li>Chained Tests</li>
+</ul>
+<p>A useful trick for keeping our fixture from becoming persistent during data access layer testing is to use Transaction Rollback Teardown.</p>
+<p>To do so, we rely on the Humble Transaction Controller pattern when constructing our data access layer.
+That is, the code that reads or writes the database should never commit a transaction; this allows the code to be exercised by a test that rolls back the transaction to prevent any of the changes made by the SUT from being applied.</p>
+</div>
+<div class="section" id="back-door-manipulation">
+<h2><a class="toc-backref" href="#id32">Back Door Manipulation</a><a class="headerlink" href="#back-door-manipulation" title="Permalink to this headline">¶</a></h2>
+<p>How can we verify logic independently when we cannot use a round-trip test?</p>
+<p>We set up the test fixture or verify the outcome by going through a back door (such as direct database access).</p>
+</div>
+<div class="section" id="layer-test">
+<h2><a class="toc-backref" href="#id33">Layer Test</a><a class="headerlink" href="#layer-test" title="Permalink to this headline">¶</a></h2>
+<p>How can we verify logic independently when it is part of a layered architecture?</p>
+<p>We write separate tests for each layer of the layered architecture.</p>
+</div>
+<div class="section" id="test-method">
+<h2><a class="toc-backref" href="#id34">Test Method</a><a class="headerlink" href="#test-method" title="Permalink to this headline">¶</a></h2>
+<p>Where do we put our test code?</p>
+<p>We encode each test as a single Test Method on some class.</p>
+</div>
+<div class="section" id="four-phase-test">
+<h2><a class="toc-backref" href="#id35">Four-Phase Test</a><a class="headerlink" href="#four-phase-test" title="Permalink to this headline">¶</a></h2>
+<p>How do we structure our test logic to make what we are testing obvious?</p>
+<p>We structure each test with four distinct parts executed in sequence:
+fixture setup, exercise SUT, result verification, and fixture teardown.</p>
+</div>
+<div class="section" id="assertion-method">
+<h2><a class="toc-backref" href="#id36">Assertion Method</a><a class="headerlink" href="#assertion-method" title="Permalink to this headline">¶</a></h2>
+<p>How do we make tests self-checking?</p>
+<p>We call a utility method to evaluate whether an expected outcome has been achieved.</p>
+<ul class="simple">
+<li>Single-Outcome Assertions such as fail; these take no arguments because they always behave the same way.</li>
+<li>Stated Outcome Assertions such as assertNotNull(anObjectReference) and assertTrue(aBooleanExpression); these compare a single argument to an outcome implied by the method name.</li>
+<li>Expected Exception Assertions such as assert_raises(expectedError) { codeToExecute }; these evaluate a block of code and a single expected exception argument.</li>
+<li>Equality Assertions such as assertEqual(expected, actual); these compare two objects or values for equality.</li>
+<li>Fuzzy Equality Assertions such as assertEqual(expected, actual, tolerance); these determine whether two values are “close enough” to each other by using a “tolerance” or “comparison mask.”</li>
+</ul>
+</div>
+<div class="section" id="assertion-message">
+<h2><a class="toc-backref" href="#id37">Assertion Message</a><a class="headerlink" href="#assertion-message" title="Permalink to this headline">¶</a></h2>
+<p>How do we structure our test logic to know which assertion failed?</p>
+<p>We include a descriptive string argument in each call to an Assertion Method.</p>
+</div>
+<div class="section" id="testcase-class">
+<h2><a class="toc-backref" href="#id38">Testcase Class</a><a class="headerlink" href="#testcase-class" title="Permalink to this headline">¶</a></h2>
+<p>Where do we put our test code?</p>
+<p>We group a set of related Test Methods on a single Testcase Class.</p>
+</div>
+<div class="section" id="test-runner">
+<h2><a class="toc-backref" href="#id39">Test Runner</a><a class="headerlink" href="#test-runner" title="Permalink to this headline">¶</a></h2>
+<p>How do we run the tests?</p>
+<p>We define an application that instantiates a Test Suite Object and executes all the Testcase Objects it contains.</p>
+</div>
+<div class="section" id="testcase-object">
+<h2><a class="toc-backref" href="#id40">Testcase Object</a><a class="headerlink" href="#testcase-object" title="Permalink to this headline">¶</a></h2>
+<p>How do we run the tests?</p>
+<p>We create a Command object for each test and call the run method when we wish to execute it.</p>
+</div>
+<div class="section" id="test-suite-object">
+<h2><a class="toc-backref" href="#id41">Test Suite Object</a><a class="headerlink" href="#test-suite-object" title="Permalink to this headline">¶</a></h2>
+<p>How do we run the tests when we have many tests to run?</p>
+<p>We define a collection class that implements the standard test interface and use it to run a set of related Testcase Objects.</p>
+</div>
+<div class="section" id="test-discovery">
+<h2><a class="toc-backref" href="#id42">Test Discovery</a><a class="headerlink" href="#test-discovery" title="Permalink to this headline">¶</a></h2>
+<p>How does the Test Runner know which tests to run?</p>
+<p>The Test Automation Framework discovers all tests that belong to the test suite automatically.</p>
+</div>
+<div class="section" id="test-enumeration">
+<h2><a class="toc-backref" href="#id43">Test Enumeration</a><a class="headerlink" href="#test-enumeration" title="Permalink to this headline">¶</a></h2>
+<p>How does the Test Runner know which tests to run?</p>
+<p>The test automater manually writes the code that enumerates all tests that belong to the test suite.</p>
+</div>
+<div class="section" id="test-selection">
+<h2><a class="toc-backref" href="#id44">Test Selection</a><a class="headerlink" href="#test-selection" title="Permalink to this headline">¶</a></h2>
+<p>How does the Test Runner know which tests to run?</p>
+<p>The Test Automation Framework selects the Test Methods to be run at runtime based on attributes of the tests.</p>
+</div>
+<div class="section" id="in-line-setup">
+<h2><a class="toc-backref" href="#id45">In-line Setup</a><a class="headerlink" href="#in-line-setup" title="Permalink to this headline">¶</a></h2>
+<p>How do we construct the Fresh Fixture?</p>
+<p>Each Test Method creates its own Fresh Fixture by calling the appropriate constructor methods to build exactly the test fixture it requires.</p>
+</div>
+<div class="section" id="delegated-setup">
+<h2><a class="toc-backref" href="#id46">Delegated Setup</a><a class="headerlink" href="#delegated-setup" title="Permalink to this headline">¶</a></h2>
+<p>How do we construct the Fresh Fixture?</p>
+<p>Each Test Method creates its own Fresh Fixture by calling Creation Methods from within the Test Methods.</p>
+</div>
+<div class="section" id="creation-method">
+<h2><a class="toc-backref" href="#id47">Creation Method</a><a class="headerlink" href="#creation-method" title="Permalink to this headline">¶</a></h2>
+<p>How do we construct the Fresh Fixture?</p>
+<p>We set up the test fixture by calling methods that hide the mechanics of building ready-to-use objects behind Intent-Revealing Names.</p>
+</div>
+<div class="section" id="implicit-setup">
+<h2><a class="toc-backref" href="#id48">Implicit Setup</a><a class="headerlink" href="#implicit-setup" title="Permalink to this headline">¶</a></h2>
+<p>How do we construct the Fresh Fixture?</p>
+<p>We build the test fixture common to several tests in the setUp method.</p>
+</div>
+<div class="section" id="prebuilt-fixture">
+<h2><a class="toc-backref" href="#id49">Prebuilt Fixture</a><a class="headerlink" href="#prebuilt-fixture" title="Permalink to this headline">¶</a></h2>
+<p>How do we cause the Shared Fixture to be built before the first test method that needs it?</p>
+<p>We build the Shared Fixture separately from running the tests.</p>
+</div>
+<div class="section" id="lazy-setup">
+<h2><a class="toc-backref" href="#id50">Lazy Setup</a><a class="headerlink" href="#lazy-setup" title="Permalink to this headline">¶</a></h2>
+<p>How do we cause the Shared Fixture to be built before the first test method that needs it?</p>
+<p>We use Lazy Initialization of the fixture to create it in the first test that needs it.</p>
+</div>
+<div class="section" id="suite-fixture-setup">
+<h2><a class="toc-backref" href="#id51">Suite Fixture Setup</a><a class="headerlink" href="#suite-fixture-setup" title="Permalink to this headline">¶</a></h2>
+<p>How do we cause the Shared Fixture to be built before the first test method that needs it?</p>
+<p>We build/destroy the shared fixture in special methods called by the Test Automation Framework before/after the first/last Test Method is called.</p>
+</div>
+<div class="section" id="setup-decorator">
+<h2><a class="toc-backref" href="#id52">Setup Decorator</a><a class="headerlink" href="#setup-decorator" title="Permalink to this headline">¶</a></h2>
+<p>How do we cause the Shared Fixture to be built before the first test method that needs it?</p>
+<p>We wrap the test suite with a Decorator that sets up the shared test fixture before running the tests and tears it down after all tests are done.</p>
+</div>
+<div class="section" id="chained-tests">
+<h2><a class="toc-backref" href="#id53">Chained Tests</a><a class="headerlink" href="#chained-tests" title="Permalink to this headline">¶</a></h2>
+<p>How do we cause the Shared Fixture to be built before the first test method that needs it?</p>
+<p>We let the other tests in a test suite set up the test fixture.</p>
+</div>
+<div class="section" id="state-verification">
+<h2><a class="toc-backref" href="#id54">State Verification</a><a class="headerlink" href="#state-verification" title="Permalink to this headline">¶</a></h2>
+<p>How do we make tests self-checking when there is state to be verified?</p>
+<p>We inspect the state of the system under test after it has been exercised and compare it to the expected state.</p>
+</div>
+<div class="section" id="behavior-verification">
+<h2><a class="toc-backref" href="#id55">Behavior Verification</a><a class="headerlink" href="#behavior-verification" title="Permalink to this headline">¶</a></h2>
+<p>How do we make tests self-checking when there is no state to verify?</p>
+<p>We capture the indirect outputs of the SUT as they occur and compare them to the expected behavior.</p>
+</div>
+<div class="section" id="custom-assertion">
+<h2><a class="toc-backref" href="#id56">Custom Assertion</a><a class="headerlink" href="#custom-assertion" title="Permalink to this headline">¶</a></h2>
+<p>How do we make tests self-checking when we have test-specific equality logic?</p>
+<p>How do we reduce Test Code Duplication when the same assertion logic appears in many tests?</p>
+<p>How do we avoid Conditional Test Logic?</p>
+<p>We create a purpose-built Assertion Method that compares only those attributes of the object that define test-specific equality.</p>
+</div>
+<div class="section" id="delta-assertion">
+<h2><a class="toc-backref" href="#id57">Delta Assertion</a><a class="headerlink" href="#delta-assertion" title="Permalink to this headline">¶</a></h2>
+<p>How do we make tests self-checking when we cannot control the initial contents of the fixture?</p>
+<p>We specify assertions based on differences between the pre- and post-exercise state of the SUT.</p>
+</div>
+<div class="section" id="guard-assertion">
+<h2><a class="toc-backref" href="#id58">Guard Assertion</a><a class="headerlink" href="#guard-assertion" title="Permalink to this headline">¶</a></h2>
+<p>How do we avoid Conditional Test Logic?</p>
+<p>We replace an if statement in a test with an assertion that fails the test if not satisfied.</p>
+</div>
+<div class="section" id="unfinished-test-assertion">
+<h2><a class="toc-backref" href="#id59">Unfinished Test Assertion</a><a class="headerlink" href="#unfinished-test-assertion" title="Permalink to this headline">¶</a></h2>
+<p>How do we structure our test logic to avoid leaving tests unfinished?</p>
+<p>We ensure that incomplete tests fail by executing an assertion that is guaranteed to fail.</p>
+</div>
+<div class="section" id="garbage-collected-teardown">
+<h2><a class="toc-backref" href="#id60">Garbage-Collected Teardown</a><a class="headerlink" href="#garbage-collected-teardown" title="Permalink to this headline">¶</a></h2>
+<p>How do we tear down the Test Fixture?</p>
+<p>We let the garbage collection mechanism provided by the programming language clean up after our test.</p>
+</div>
+<div class="section" id="automated-teardown">
+<h2><a class="toc-backref" href="#id61">Automated Teardown</a><a class="headerlink" href="#automated-teardown" title="Permalink to this headline">¶</a></h2>
+<p>How do we tear down the Test Fixture?</p>
+<p>We keep track of all resources that are created in a test and automatically destroy/free them during teardown.</p>
+</div>
+<div class="section" id="in-line-teardown">
+<h2><a class="toc-backref" href="#id62">In-line Teardown</a><a class="headerlink" href="#in-line-teardown" title="Permalink to this headline">¶</a></h2>
+<p>How do we tear down the Test Fixture?</p>
+<p>We include teardown logic at the end of the Test Method immediately after the result verification.</p>
+</div>
+<div class="section" id="implicit-teardown">
+<h2><a class="toc-backref" href="#id63">Implicit Teardown</a><a class="headerlink" href="#implicit-teardown" title="Permalink to this headline">¶</a></h2>
+<p>How do we tear down the Test Fixture?</p>
+<p>The Test Automation Framework calls our cleanup logic in the tearDown method after every Test Method.</p>
+</div>
+<div class="section" id="test-double">
+<h2><a class="toc-backref" href="#id64">Test Double</a><a class="headerlink" href="#test-double" title="Permalink to this headline">¶</a></h2>
+<p>Test Doubles to test indirect inputs and outputs</p>
+<img alt="../../_images/testdoubles.jpg" src="../../_images/testdoubles.jpg" />
+<p>How can we verify logic independently when code it depends on is unusable?
+How can we avoid Slow Tests?</p>
+<p>We replace a component on which the SUT depends with a “test-specific equivalent.”</p>
+<p><strong>Variation: Test Stub</strong></p>
+<p>We use a Test Stub to replace a real component on which the SUT depends so that the test has a control point for the indirect inputs of the SUT.</p>
+<p>Its inclusion allows the test to force the SUT down paths it might not otherwise execute.
+We can further classify Test Stubs by the kind of indirect inputs they are used to inject into the SUT.
+A Responder (see Test Stub) injects valid values, while a Saboteur (see Test Stub) injects errors or exceptions</p>
+<p><strong>Variation: Test Spy</strong></p>
+<p>We can use a more capable version of a Test Stub, the Test Spy, as an observation point for the indirect outputs of the SUT.</p>
+<p>Like a Test Stub, a Test Spy may need to provide values to the SUT in response to method calls.
+The Test Spy, however, also captures the indirect outputs of the SUT as it is exercised and saves them for later verification by the test.
+Thus, in many ways, the Test Spy is “just a” Test Stub with some recording capability.
+While a Test Spy is used for the same fundamental purpose as a Mock Object, the style of test we write using a Test Spy looks much more like a test written with a Test Stub.</p>
+<p><strong>Variation: Mock Object</strong></p>
+<p>We can use a Mock Object as an observation point to verify the indirect outputs of the SUT as it is exercised.</p>
+<p>Typically, the Mock Object also includes the functionality of a Test Stub in that it must return values to the SUT if it hasn’t already failed the tests but the emphasisis on the verification of the indirect outputs.
+Therefore, a Mock Object is a lot more than just a Test Stub plus assertions: It is used in a fundamentally different way.</p>
+<p><strong>Variation: Fake Object</strong></p>
+<p>We use a Fake Object to replace the functionality of a real DOC (Dependent-on Component) in a test for reasons other than verification of indirect inputs and outputs of the SUT.</p>
+<p>Typically, a Fake Object implements the same functionality as the real DOC but in a much simpler way.
+While a Fake Object is typically built specifically for testing, the test does not use it as either a control point or an observation point.</p>
+<p><strong>Variation: Dummy Object</strong></p>
+<p>Some method signatures of the SUT may require objects as parameters.</p>
+<p>If neither the test nor the SUT cares about these objects, we may choose to pass in a Dummy Object, which may be as simple as a null object reference, an instance of the Object class, or an instance of a Pseudo-Object.
+In this sense, a Dummy Object isn’t really a Test Double per se but rather an alternative to the value patterns Literal Value, Derived Value, and Generated Value.</p>
+<p><strong>Variation: Procedural Test Stub</strong></p>
+<p>A Test Double implemented in a procedural programming language is often called a “test stub,” but I prefer to call it a Procedural Test Stub (see Test Stub) to distinguish this usage from the modern Test Stub variation of Test Doubles.</p>
+<p>Typically, we use a Procedural Test Stub to allow testing/debugging to proceed while waiting for other code to become available.
+It is rare for these objects to be “swapped in” at runtime but sometimes we make the code conditional on a “Debugging” flag—a form of Test Logic in Production.</p>
+</div>
+<div class="section" id="test-stub">
+<h2><a class="toc-backref" href="#id65">Test Stub</a><a class="headerlink" href="#test-stub" title="Permalink to this headline">¶</a></h2>
+<p>How can we verify logic independently when it depends on indirect inputs from other software components?</p>
+<p>We replace a real object with a test-specific object that feeds the desired indirect inputs into the system under test.</p>
+</div>
+<div class="section" id="test-spy">
+<h2><a class="toc-backref" href="#id66">Test Spy</a><a class="headerlink" href="#test-spy" title="Permalink to this headline">¶</a></h2>
+<p>How do we implement Behavior Verification?
+How can we verify logic independently when it has indirect outputs to other software components?</p>
+<p>We use a Test Double to capture the indirect output calls made to another component by the SUT for later verification by the test.</p>
+</div>
+<div class="section" id="mock-object">
+<h2><a class="toc-backref" href="#id67">Mock Object</a><a class="headerlink" href="#mock-object" title="Permalink to this headline">¶</a></h2>
+<p>How do we implement Behavior Verification for indirect outputs of the SUT?
+How can we verify logic independently when it depends on indirect inputs from other software components?</p>
+<p>We replace an object on which the SUT depends on with a test-specific object that verifies it is being used correctly by the SUT.</p>
+</div>
+<div class="section" id="fake-object">
+<h2><a class="toc-backref" href="#id68">Fake Object</a><a class="headerlink" href="#fake-object" title="Permalink to this headline">¶</a></h2>
+<p>How can we verify logic independently when depended-on objects cannot be used?
+How can we avoid Slow Tests?</p>
+<p>We replace a component that the SUT depends on with a much lighter-weight implementation.</p>
+</div>
+<div class="section" id="configurable-test-double">
+<h2><a class="toc-backref" href="#id69">Configurable Test Double</a><a class="headerlink" href="#configurable-test-double" title="Permalink to this headline">¶</a></h2>
+<p>How do we tell a Test Double what to return or expect?</p>
+<p>We configure a reusable Test Double with the values to be returned or verified during the fixture setup phase of a test.</p>
+</div>
+<div class="section" id="hard-coded-test-double">
+<h2><a class="toc-backref" href="#id70">Hard-Coded Test Double</a><a class="headerlink" href="#hard-coded-test-double" title="Permalink to this headline">¶</a></h2>
+<p>How do we tell a Test Double what to return or expect?</p>
+<p>We build the Test Double by hard-coding the return values and/or expected calls.</p>
+</div>
+<div class="section" id="test-specific-subclass">
+<h2><a class="toc-backref" href="#id71">Test-Specific Subclass</a><a class="headerlink" href="#test-specific-subclass" title="Permalink to this headline">¶</a></h2>
+<p>How can we make code testable when we need to access private state of the SUT?</p>
+<p>We add methods that expose the state or behavior needed by the test to a subclass of the SUT.</p>
+</div>
+<div class="section" id="named-test-suite">
+<h2><a class="toc-backref" href="#id72">Named Test Suite</a><a class="headerlink" href="#named-test-suite" title="Permalink to this headline">¶</a></h2>
+<p>How do we run the tests when we have arbitrary groups of tests to run?</p>
+<p>We define a test suite, suitably named, that contains a set of tests that we wish to be able to run as a group.
+Example: smoke test</p>
+</div>
+<div class="section" id="test-utility-method">
+<h2><a class="toc-backref" href="#id73">Test Utility Method</a><a class="headerlink" href="#test-utility-method" title="Permalink to this headline">¶</a></h2>
+<p>How do we reduce Test Code Duplication?</p>
+<p>We encapsulate the test logic we want to reuse behind a suitably named utility method.</p>
+</div>
+<div class="section" id="parameterized-test">
+<h2><a class="toc-backref" href="#id74">Parameterized Test</a><a class="headerlink" href="#parameterized-test" title="Permalink to this headline">¶</a></h2>
+<p>How do we reduce Test Code Duplication when the same test logic appears in many tests?</p>
+<p>We pass the information needed to do fixture setup and result verification to a utility method that implements the entire test life cycle.</p>
+</div>
+<div class="section" id="testcase-class-per-class">
+<h2><a class="toc-backref" href="#id75">Testcase Class per Class</a><a class="headerlink" href="#testcase-class-per-class" title="Permalink to this headline">¶</a></h2>
+<p>How do we organize our Test Methods onto Testcase Classes?</p>
+<p>We put all the Test Methods for one SUT class onto a single Testcase Class.</p>
+</div>
+<div class="section" id="testcase-class-per-feature">
+<h2><a class="toc-backref" href="#id76">Testcase Class per Feature</a><a class="headerlink" href="#testcase-class-per-feature" title="Permalink to this headline">¶</a></h2>
+<p>How do we organize our Test Methods onto Testcase Classes?</p>
+<p>We group the Test Methods onto Testcase Classes based on which testable feature of the SUT they exercise.</p>
+</div>
+<div class="section" id="testcase-superclass">
+<h2><a class="toc-backref" href="#id77">Testcase Superclass</a><a class="headerlink" href="#testcase-superclass" title="Permalink to this headline">¶</a></h2>
+<p>Where do we put our test code when it is in reusable Test Utility Methods?</p>
+<p>We inherit reusable test-specific logic from an abstract Testcase Super class.</p>
+</div>
+<div class="section" id="test-helper">
+<h2><a class="toc-backref" href="#id78">Test Helper</a><a class="headerlink" href="#test-helper" title="Permalink to this headline">¶</a></h2>
+<p>Where do we put our test code when it is in reusable Test Utility Methods?</p>
+<p>We define a helper class to hold any Test Utility Methods we want to reuse in several tests.</p>
+</div>
+<div class="section" id="database-sandbox">
+<h2><a class="toc-backref" href="#id79">Database Sandbox</a><a class="headerlink" href="#database-sandbox" title="Permalink to this headline">¶</a></h2>
+<p>How do we develop and test software that depends on a database?</p>
+<p>We provide a separate test database for each developer or tester.</p>
+<p>Unfortunately, a database is a primary cause of Erratic Tests due to the fact that data may persist between tests.
+A Database Sandbox is one way to keep the tests from interacting by accidentally accessing the same records in the database.</p>
+<p>When there is any way to test without a database, test without the database!</p>
+<p>What kinds of database tests will we require? The answer to this question depends on how our application uses the database.</p>
+<ul class="simple">
+<li>If we have stored procedures, we should write unit tests to verify their logic.</li>
+<li>If a data access layer hides the database from the business logic, we should write tests for the data access functionality.</li>
+</ul>
+<p>Another way to tear down any changes made to the database during the fixture setup and exercise SUT phases of the test is Table Truncation Teardown.
+This “brute force” technique for deleting data works only when each developer has his or her own Database Sandbox and we want to clear out all the data in one or more tables.</p>
+</div>
+<div class="section" id="stored-procedure-test">
+<h2><a class="toc-backref" href="#id80">Stored Procedure Test</a><a class="headerlink" href="#stored-procedure-test" title="Permalink to this headline">¶</a></h2>
+<p>How can we verify logic independently when we have stored procedures?</p>
+<p>We write Fully Automated Tests for each stored procedure.</p>
+<img alt="../../_images/storeproceduretest.png" src="../../_images/storeproceduretest.png" />
+</div>
+<div class="section" id="table-truncation-teardown">
+<h2><a class="toc-backref" href="#id81">Table Truncation Teardown</a><a class="headerlink" href="#table-truncation-teardown" title="Permalink to this headline">¶</a></h2>
+<p>How do we tear down the Test Fixture when it is in a relational database?</p>
+<p>We truncate the tables modified during the test to tear down the fixture.
+Variation: Lazy Teardown =&gt;
+We simply issue the table truncation commands during fixture setup before setting up the new fixture.</p>
+</div>
+<div class="section" id="transaction-rollback-teardown">
+<h2><a class="toc-backref" href="#id82">Transaction Rollback Teardown</a><a class="headerlink" href="#transaction-rollback-teardown" title="Permalink to this headline">¶</a></h2>
+<p>How do we tear down the Test Fixture when it is in a relational database?</p>
+<p>We roll back the uncommitted test transaction as part of the teardown.</p>
+</div>
+<div class="section" id="dependency-injection">
+<h2><a class="toc-backref" href="#id83">Dependency Injection</a><a class="headerlink" href="#dependency-injection" title="Permalink to this headline">¶</a></h2>
+<p>How do we design the SUT so that we can replace its dependencies at runtime?</p>
+<p>The client provides the depended-on object to the SUT.</p>
+<p>The use of Singletons can be avoided through the use of an IOC tool or a manually coded Dependency Injection mechanism.</p>
+<ul class="simple">
+<li>Constructor Injection</li>
+<li>Parameter Injection</li>
+<li>Object Factory</li>
+<li>Service Locator</li>
+</ul>
+</div>
+<div class="section" id="dependency-lookup">
+<h2><a class="toc-backref" href="#id84">Dependency Lookup</a><a class="headerlink" href="#dependency-lookup" title="Permalink to this headline">¶</a></h2>
+<p>How do we design the SUT so that we can replace its dependencies at runtime?</p>
+<p>The SUT asks another object to return the depended-on object before it uses it.</p>
+</div>
+<div class="section" id="humble-object">
+<h2><a class="toc-backref" href="#id85">Humble Object</a><a class="headerlink" href="#humble-object" title="Permalink to this headline">¶</a></h2>
+<p>How can we make code testable when it is too closely coupled to its environment?</p>
+<p>We extract the logic into a separate, easy-to-test component that is decoupled from its environment.</p>
+</div>
+<div class="section" id="test-hook">
+<h2><a class="toc-backref" href="#id86">Test Hook</a><a class="headerlink" href="#test-hook" title="Permalink to this headline">¶</a></h2>
+<p>How do we design the SUT so that we can replace its dependencies at runtime?</p>
+<p>We modify the SUT to behave differently during the test.</p>
+</div>
+<div class="section" id="literal-value">
+<h2><a class="toc-backref" href="#id87">Literal Value</a><a class="headerlink" href="#literal-value" title="Permalink to this headline">¶</a></h2>
+<p>How do we specify the values to be used in tests?</p>
+<p>We use literal constants for object attributes and assertions.</p>
+<p>BigDecimal expectedTotal = new BigDecimal(&#8220;99.95&#8221;);</p>
+</div>
+<div class="section" id="derived-value">
+<h2><a class="toc-backref" href="#id88">Derived Value</a><a class="headerlink" href="#derived-value" title="Permalink to this headline">¶</a></h2>
+<p>How do we specify the values to be used in tests?</p>
+<p>We use expressions to calculate values that can be derived from other values.</p>
+<p>BigDecimal expectedTotal = itemPrice.multiply(QUANTITY);</p>
+</div>
+<div class="section" id="generated-value">
+<h2><a class="toc-backref" href="#id89">Generated Value</a><a class="headerlink" href="#generated-value" title="Permalink to this headline">¶</a></h2>
+<p>How do we specify the values to be used in tests?</p>
+<p>We generate a suitable value each time the test is run.</p>
+<p>BigDecimal uniqueCustomerNumber = getUniqueNumber();</p>
+</div>
+<div class="section" id="dummy-object">
+<h2><a class="toc-backref" href="#id90">Dummy Object</a><a class="headerlink" href="#dummy-object" title="Permalink to this headline">¶</a></h2>
+<p>How do we specify the values to be used in tests when the only usage is as irrelevant arguments of SUT method calls?</p>
+<p>We pass an object that has no implementation as an argument of a method called on the SUT.</p>
+<p>Invoice inv = new Invoice( new DummyCustomer() );</p>
+</div>
+</div>
+<div class="section" id="summary">
+<h1><a class="toc-backref" href="#id91">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<p>You can find all the information from the following url:</p>
+<p><a class="reference external" href="http://xunitpatterns.com/index.html">http://xunitpatterns.com/index.html</a></p>
+<p><em>Written by Binwei&#64;Oslo</em></p>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../specification_by_example/">
+    <i class="fa fa-arrow-circle-left"></i>
+    Specification by Example
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../the_art_of_simplicity/">
+    The Art of Simplicity
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'wubw-github-io';
+        var disqus_identifier = '/2017/xunit_test_patterns/';
+        var disqus_title = 'Xunit Test Patterns';
+        var disqus_url = 'https://wubw.github.io/2017/xunit_test_patterns';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../">
+    <img class="logo" src="../../_static/logo.jpg" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=wubw&repo=BinweiBlog&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+  
+  
+  <h2>
+  
+  <i class="fa fa-calendar"></i>
+    Aug 27, 2017
+  
+  </h2>
+
+  <ul>
+    
+
+  
+
+  
+
+  
+
+  
+  <li><i class="fa-fw fa fa-folder-open"></i>
+    
+      
+      <a href="../../blog/category/computerscience/">ComputerScience</a>
+      
+    </li>
+  
+
+  
+  <li><i class="fa-fw fa fa-tags"></i>
+      
+    
+      
+      <a href="../../blog/tag/booknotes/">booknotes</a>,
+      
+    
+      
+      <a href="../../blog/tag/architecture/">architecture</a>
+      
+    </li>
+  
+  
+  <li>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'wubw-github-io'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    <i class="fa-fw fa fa-comments"></i>
+    <a href="#disqus_thread" data-disqus-identifier="/2017/xunit_test_patterns/"> </a>
+  </li>
+  
+  </ul>
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About binwei</a></li>
+</ul>
+
+
+  <h3><a href="../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../the_effective_executive/">Dec 29 - The Effective Executive</a></li>
+    
+      <li><a href="../introduction_to_javascript/">Sep 09 - Introduction to Javascript</a></li>
+    
+      <li><a href="../blockchain_introduction/">Sep 06 - Blockchain Introduction</a></li>
+    
+      <li><a href="../cloud_for_dummy/">Sep 04 - Cloud for Dummy</a></li>
+    
+      <li><a href="../the_mckinsey_engagement/">Sep 03 - The Mckinsey Engagement</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag/">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/architecture/">architecture</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/blockchain/">blockchain</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/blog/">blog</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/booknote/">booknote</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-5">
+        <a href="../../blog/tag/booknotes/">booknotes</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/career/">career</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/chinese/">chinese</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/cloud/">cloud</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/continuousdelivery/">continuousdelivery</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/database/">database</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/devops/">devops</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/frontend/">frontend</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/git/">git</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/lean/">lean</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/nosql/">nosql</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/opensource/">opensource</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/process/">process</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/reading/">reading</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/security/">security</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/shell/">shell</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/telemetry/">telemetry</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/vi/">vi</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/web/">web</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/category/computerscience/">ComputerScience (20)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/life/">Life (1)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/literature/">Literature (3)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/management/">Management (10)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2017/">2017 (34)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, binwei.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/2017/xunit_test_patterns.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-97414429-1']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>
