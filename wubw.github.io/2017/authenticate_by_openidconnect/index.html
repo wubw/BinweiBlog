@@ -1,0 +1,562 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Authenticate Node.js App by OpenId Connect &#8212; binwei  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../about/" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="binwei Blog">
+  
+  
+  <link href="True" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="authenticate-node-js-app-by-openid-connect">
+<h1><a class="toc-backref" href="#id1">Authenticate Node.js App by OpenId Connect</a><a class="headerlink" href="#authenticate-node-js-app-by-openid-connect" title="Permalink to this headline">¶</a></h1>
+<p>OpenID Connect (OIDC) is an authentication layer on top of OAuth 2.0; while OAuth 2.0 is an authorization framework.
+The standard is controlled by the OpenID Foundation.
+This blog post will go through an example to use your google account to login a Node.js app by using OpenID Connect.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#authenticate-node-js-app-by-openid-connect" id="id1">Authenticate Node.js App by OpenId Connect</a></li>
+<li><a class="reference internal" href="#authentication-vs-authorization" id="id2">Authentication vs Authorization</a></li>
+<li><a class="reference internal" href="#jargon-explanations" id="id3">&#8216;Jargon&#8217; explanations</a><ul>
+<li><a class="reference internal" href="#openid" id="id4">OpenID</a></li>
+<li><a class="reference internal" href="#oauth" id="id5">OAuth</a></li>
+<li><a class="reference internal" href="#openid-connect" id="id6">OpenID Connect</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#setup-google-account" id="id7">Setup Google Account</a></li>
+<li><a class="reference internal" href="#setup-node-js-app" id="id8">Setup Node.Js App</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="authentication-vs-authorization">
+<h1><a class="toc-backref" href="#id2">Authentication vs Authorization</a><a class="headerlink" href="#authentication-vs-authorization" title="Permalink to this headline">¶</a></h1>
+<p>Authentication and Authorization are big topics, this blog only touches the basic and will have follow-up blogs to explain the details.
+If you are still confused about the difference between authentication and authorization, the followings are the explanations.</p>
+<p>Authentication:&nbsp;is the process of ascertaining that somebody really is who he claims to be.</p>
+<p>Authorization:&nbsp;refers to rules that determine who is allowed to do what.</p>
+</div>
+<div class="section" id="jargon-explanations">
+<h1><a class="toc-backref" href="#id3">&#8216;Jargon&#8217; explanations</a><a class="headerlink" href="#jargon-explanations" title="Permalink to this headline">¶</a></h1>
+<p>If you are confused about the difference between various protocols, e.g. OpenID, OAuth, OpenID Connect, don&#8217;t worry. It is a common challenge to most people.</p>
+<div class="section" id="openid">
+<h2><a class="toc-backref" href="#id4">OpenID</a><a class="headerlink" href="#openid" title="Permalink to this headline">¶</a></h2>
+<p>Authentication is delegated:</p>
+<p>Server A wants to authenticate user U, but U&#8217;s credentials (e.g. U&#8217;s name and password) are sent to another server, B, that A trusts (at least, trusts for authenticating users).</p>
+<p>Indeed, server B makes sure that U is indeed U, and then tells to A: &#8220;ok, that&#8217;s the genuine U&#8221;.</p>
+</div>
+<div class="section" id="oauth">
+<h2><a class="toc-backref" href="#id5">OAuth</a><a class="headerlink" href="#oauth" title="Permalink to this headline">¶</a></h2>
+<p>Authorization is delegated:</p>
+<p>Entity A obtains from entity B an &#8220;access right&#8221; which A can show to server S to be granted access; B can thus deliver temporary, specific access keys to A without giving them too much power.</p>
+<p>You can imagine an OAuth server as the key master in a big hotel; he gives to employees keys which open the doors of the rooms that they are supposed to enter, but each key is limited (it does not give access to all rooms); furthermore, the keys self-destruct after a few hours.</p>
+</div>
+<div class="section" id="openid-connect">
+<h2><a class="toc-backref" href="#id6">OpenID Connect</a><a class="headerlink" href="#openid-connect" title="Permalink to this headline">¶</a></h2>
+<p>To some extent, authorization can be abused into some pseudo-authentication, on the basis that if entity A obtains from B an access key through OAuth, and shows it to server S, then server S may infer that B authenticated A before granting the access key.
+So some people use OAuth where they should be using OpenID. This schema may or may not be enlightening; but I think this pseudo-authentication is more confusing than anything.</p>
+<p>OpenID Connect does just that: it abuses OAuth into an authentication protocol.</p>
+<p>In the hotel analogy: if I encounter a purported employee and that person shows me that he has a key which opens my room, then I suppose that this is a true employee, on the basis that the key master would not have given him a key which opens my room if he was not.</p>
+<p>OpenID Connect standardize how authentication with OAuth2 works</p>
+<ul class="simple">
+<li>OpenID connect is built on top of Oauth 2.0</li>
+<li>it contains authorization code flow and implicit flow</li>
+<li>standard scopes and claims</li>
+<li>token type is JWT (Json web token)</li>
+<li>ID token</li>
+<li>UserInfo endpoint</li>
+<li>Simple</li>
+<li>Supports multiple Relying Party (client) types</li>
+<li>Optional: encryption, discovery, dynamic client registration &amp; session management</li>
+</ul>
+<p><a class="reference external" href="http://openid.net/connect">http://openid.net/connect</a></p>
+</div>
+</div>
+<div class="section" id="setup-google-account">
+<h1><a class="toc-backref" href="#id7">Setup Google Account</a><a class="headerlink" href="#setup-google-account" title="Permalink to this headline">¶</a></h1>
+<p>Since this blog uses google account to do the login, so let&#8217;s setup the account first.</p>
+<p>Go to the following URL:</p>
+<p><a class="reference external" href="https://console.developers.google.com/apis/credentials">https://console.developers.google.com/apis/credentials</a></p>
+<ul class="simple">
+<li>Create credential</li>
+<li>Create OAuth client id</li>
+</ul>
+<p>Ensure the redirect URL is setup correctly, e.g. <a class="reference external" href="http://localhost:5000/oidc-client-sample.html">http://localhost:5000/oidc-client-sample.html</a></p>
+<p>This redirect URL will be used in the next chapter.</p>
+<p>Test the google authentication first by using auth0.com: <a class="reference external" href="https://auth0.com/docs/connections/social/google">https://auth0.com/docs/connections/social/google</a></p>
+<p>If your manage to connect to the google account, then it&#8217;s time to move to the next chapter.</p>
+</div>
+<div class="section" id="setup-node-js-app">
+<h1><a class="toc-backref" href="#id8">Setup Node.Js App</a><a class="headerlink" href="#setup-node-js-app" title="Permalink to this headline">¶</a></h1>
+<p>In this blog, the focus in on OpenID Connect, then we will not build Node.JS app from scratch.
+Let&#8217;s use the existing git repository:
+<a class="reference external" href="https://github.com/IdentityModel/oidc-client-js">https://github.com/IdentityModel/oidc-client-js</a></p>
+<p>Then follow the steps:</p>
+<ul class="simple">
+<li>Clone a local git repository</li>
+<li>Install the modules by: npm i</li>
+<li>Modify the code in example/oidc-client-sample.js</li>
+</ul>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">settings</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">authority</span><span class="p">:</span> <span class="s1">&#39;https://accounts.google.com&#39;</span><span class="p">,</span>
+    <span class="n">client_id</span><span class="p">:</span> <span class="s1">&#39;xxxxx&#39;</span><span class="p">,</span>
+    <span class="n">redirect_uri</span><span class="p">:</span> <span class="s1">&#39;http://localhost:5000/oidc-client-sample.html&#39;</span><span class="p">,</span>
+    <span class="n">post_logout_redirect_uri</span><span class="p">:</span> <span class="s1">&#39;http://localhost:5000/oidc-client-sample.html&#39;</span><span class="p">,</span>
+    <span class="n">response_type</span><span class="p">:</span> <span class="s1">&#39;id_token token&#39;</span><span class="p">,</span>
+    <span class="n">scope</span><span class="p">:</span> <span class="s1">&#39;openid email&#39;</span><span class="p">,</span>
+
+    <span class="n">filterProtocolClaims</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="n">loadUserInfo</span><span class="p">:</span> <span class="n">true</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Start the Node.JS app: npm start</li>
+<li>Test the app in browser: localhost:5000</li>
+<li>Click the signin button to sign by using your google account</li>
+<li>Click processignin response button to get the response</li>
+</ul>
+<p>If everything goes well, you are suppose to see the following response content.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">signin</span> <span class="n">response</span>
+<span class="p">{</span>
+  <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;bar&quot;</span><span class="p">:</span> <span class="mi">15</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;id_token&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJhbGciOiJSUzI1NiIsImtpZCI6IjAwOThiMzFlNDA2NTE0OTNjZDA4YzFkYjA1NmQ2ZGI2YWU5NTY1MzMifQ.eyJhenAiOiI2MjQyNjc2NTM5MDgtcTllNDZ2dmU2Mzk3aHBvcHZ2NzZ0azk4bWlkN2EwY3EuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI2MjQyNjc2NTM5MDgtcTllNDZ2dmU2Mzk3aHBvcHZ2NzZ0azk4bWlkN2EwY3EuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDc0Njc3ODM4NTgxMzE3ODA2MTAiLCJlbWFpbCI6InN1bW1lcnNub3dlQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoiZ3lzNm5uX2VobVVaR0FoV0FFZGFMUSIsIm5vbmNlIjoiMTc1ZDEyOTY2MzBkNGI2NmIzMDBlNDY0OTg1YzBiMjAiLCJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJpYXQiOjE0OTk2MDY4OTMsImV4cCI6MTQ5OTYxMDQ5M30.XJmRpaf5VLBZIV9EdlhR_m0zlmkkbwdf8_ekXjsseCzX1gMdTDgJSea4paIsakPkZbsoUz3y2yEg2qg5Had9aEicHqgU0YjEGIRmjAToYhDWsI20Eb0RVfNmKaHLS9R7SRoVuMsmO7cvpCZumr0UIWyX3ZY1lOpk0e2W-hJegLoya-esijp9ZajcFS-M3oNtPVZISVxRi0uTMaFvmSE3yM-_15YczLbkHiJWlblvEMbiCxbsi9J6AsEl5z8v5MYfuac0Nr7I3SHgbM2tUc0LFMhwCDGAAf7MomcuHLL6SVA73V7iS5Qiqe1DeYwXCf4JjiN9qqnMz5mI8BMI3v0i4g&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;session_state&quot;</span><span class="p">:</span> <span class="s2">&quot;6b51bc71b013627ec110cb21b7ce19846399ae2d..28cf&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;ya29.GluCBIpJ8UKUuTIdz9TIcIsBflxM66xnsPlEi66GBn_Putc3qnQeQnDYt7QKWkdoQr1nctU0Zkbz8cIPxujpnUabNY2GfgM0gELdeXMYmzj-Nua9GRUexq4_VO7N&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;token_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Bearer&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;profile&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;azp&quot;</span><span class="p">:</span> <span class="s2">&quot;624267653908-q9e46vve6397hpopvv76tk98mid7a0cq.apps.googleusercontent.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;107467783858131780610&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;summersnowe@gmail.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;email_verified&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Summer Snow&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;given_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Summer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;family_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Snow&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;profile&quot;</span><span class="p">:</span> <span class="s2">&quot;https://plus.google.com/107467783858131780610&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;picture&quot;</span><span class="p">:</span> <span class="s2">&quot;https://lh6.googleusercontent.com/-fC9bhpKev6k/AAAAAAAAAAI/AAAAAAAAATo/maihymGPzVM/photo.jpg&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;gender&quot;</span><span class="p">:</span> <span class="s2">&quot;male&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;expires_at&quot;</span><span class="p">:</span> <span class="mi">1499610496</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Congratulations, you managed to get your Node.JS app authenticated by your google account!</p>
+<p>You can also have a check of the following git repository, which is a simplified version.
+<a class="reference external" href="https://github.com/wubw/Codelab/tree/master/openidconnect">https://github.com/wubw/Codelab/tree/master/openidconnect</a></p>
+<p><em>Written by Binwei&#64;Oslo</em></p>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../security_owasp_top_10/">
+    <i class="fa fa-arrow-circle-left"></i>
+    Security: Owasp Top 10
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../bash_useful_commands/">
+    Bash: Useful Commands
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'wubw-github-io';
+        var disqus_identifier = '/2017/authenticate_by_openidconnect/';
+        var disqus_title = 'Authenticate Node.js App by OpenId Connect';
+        var disqus_url = 'https://wubw.github.io/2017/authenticate_by_openidconnect';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../">
+    <img class="logo" src="../../_static/logo.jpg" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=wubw&repo=BinweiBlog&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+  
+  
+  <h2>
+  
+  <i class="fa fa-calendar"></i>
+    Jul 09, 2017
+  
+  </h2>
+
+  <ul>
+    
+
+  
+
+  
+
+  
+
+  
+  <li><i class="fa-fw fa fa-folder-open"></i>
+    
+      
+      <a href="../../blog/category/computerscience/">ComputerScience</a>
+      
+    </li>
+  
+
+  
+  <li><i class="fa-fw fa fa-tag"></i>
+    
+      
+      <a href="../../blog/tag/security/">security</a>
+      
+    </li>
+  
+  
+  <li>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'wubw-github-io'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    <i class="fa-fw fa fa-comments"></i>
+    <a href="#disqus_thread" data-disqus-identifier="/2017/authenticate_by_openidconnect/"> </a>
+  </li>
+  
+  </ul>
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About binwei</a></li>
+</ul>
+
+
+  <h3><a href="../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../the_effective_executive/">Dec 29 - The Effective Executive</a></li>
+    
+      <li><a href="../introduction_to_javascript/">Sep 09 - Introduction to Javascript</a></li>
+    
+      <li><a href="../blockchain_introduction/">Sep 06 - Blockchain Introduction</a></li>
+    
+      <li><a href="../cloud_for_dummy/">Sep 04 - Cloud for Dummy</a></li>
+    
+      <li><a href="../the_mckinsey_engagement/">Sep 03 - The Mckinsey Engagement</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag/">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/architecture/">architecture</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/blockchain/">blockchain</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/blog/">blog</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/booknote/">booknote</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-5">
+        <a href="../../blog/tag/booknotes/">booknotes</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/career/">career</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/chinese/">chinese</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/cloud/">cloud</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/continuousdelivery/">continuousdelivery</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/database/">database</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/devops/">devops</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/frontend/">frontend</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/git/">git</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/lean/">lean</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/nosql/">nosql</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/opensource/">opensource</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/process/">process</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/reading/">reading</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/security/">security</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/shell/">shell</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/telemetry/">telemetry</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/vi/">vi</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/web/">web</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/category/computerscience/">ComputerScience (20)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/life/">Life (1)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/literature/">Literature (3)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/management/">Management (10)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2017/">2017 (34)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, binwei.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/2017/authenticate_by_openidconnect.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-97414429-1']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>

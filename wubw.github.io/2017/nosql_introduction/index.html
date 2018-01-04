@@ -1,0 +1,554 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NoSQL: Introduction &#8212; binwei  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../about/" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="binwei Blog">
+  
+  
+  <link href="True" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="nosql-introduction">
+<h1><a class="toc-backref" href="#id1">NoSQL: Introduction</a><a class="headerlink" href="#nosql-introduction" title="Permalink to this headline">¶</a></h1>
+<p>NoSQL originally refers to &#8220;non SQL&#8221;, &#8220;non relational&#8221;, or &#8220;not only SQL&#8221;. NoSQL databases are increasingly used in big data and real-time web applications.
+NoSQL databases are not replacing relational database, there are scenarios only fit for NoSQL database. This blog give a brief introduction of NoSQL databases.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#nosql-introduction" id="id1">NoSQL: Introduction</a><ul>
+<li><a class="reference internal" href="#motivation" id="id2">Motivation</a><ul>
+<li><a class="reference internal" href="#simplicity-of-design" id="id3">Simplicity of design</a></li>
+<li><a class="reference internal" href="#horizontal-scaling" id="id4">Horizontal scaling</a></li>
+<li><a class="reference internal" href="#finer-control-over-availability" id="id5">Finer control over availability</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#category" id="id6">Category</a><ul>
+<li><a class="reference internal" href="#key-value-store" id="id7">Key-value store</a></li>
+<li><a class="reference internal" href="#document-database" id="id8">Document database</a></li>
+<li><a class="reference internal" href="#column-family" id="id9">Column-family</a></li>
+<li><a class="reference internal" href="#graph-database" id="id10">Graph database</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#technical-concepts" id="id11">Technical concepts</a><ul>
+<li><a class="reference internal" href="#map-reduce-pattern" id="id12">Map-reduce pattern</a></li>
+<li><a class="reference internal" href="#eventual-consistency" id="id13">Eventual consistency</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references" id="id14">References</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="motivation">
+<h2><a class="toc-backref" href="#id2">Motivation</a><a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>The benefits you can get from NoSQL include:</p>
+<div class="section" id="simplicity-of-design">
+<h3><a class="toc-backref" href="#id3">Simplicity of design</a><a class="headerlink" href="#simplicity-of-design" title="Permalink to this headline">¶</a></h3>
+<p>In relational database, the application developers need to design the database scheme to store the data.
+There is difference between the schema and the in-memory data structure. Then the developers need to handle this &#8216;gap&#8217;. This effort is not delivering business value.</p>
+<p>Relational database world invents ORM (Object-Relational-Mapping) to mitigate this challenge.</p>
+</div>
+<div class="section" id="horizontal-scaling">
+<h3><a class="toc-backref" href="#id4">Horizontal scaling</a><a class="headerlink" href="#horizontal-scaling" title="Permalink to this headline">¶</a></h3>
+<p>Horizontal scaling means that you scale by adding more machines into your pool of resources whereas Vertical scaling means that you scale by adding more power (CPU, RAM) to an existing machine.</p>
+<p>NoSQL databases have better support for simpler &#8220;horizontal&#8221; scaling to clusters of machines (which is a problem for relational databases)</p>
+<p>A cluster of small machines can use commodity hardware and ends up being cheaper at these kinds of scale.</p>
+</div>
+<div class="section" id="finer-control-over-availability">
+<h3><a class="toc-backref" href="#id5">Finer control over availability</a><a class="headerlink" href="#finer-control-over-availability" title="Permalink to this headline">¶</a></h3>
+<p>There is a common need to ensure the service availability. When one node is down, the backup should take effect.</p>
+<p>It requires replication mechanism, which means to take the same data and copy it over multiple nodes</p>
+<p>There are two kinds of replication methods:</p>
+<p><em>Master-slave replication:</em>
+Is a one-way replication (from master to slave), only the master database is used for the write operations, while read operations may be spread on multiple slave databases. It reduces the chances of update conflict.</p>
+<p><em>Peer-to-peer replication:</em>
+It is bi-directional replication, each database (nodes) is publisher and subscriber. If any node goes down, the application will still be functional.
+Later, once the node is up it can be again brought in sync.
+This way we can achieve both high availability and fault tolerance.
+It can avoid loading all writes onto a single point of failure.</p>
+<p>Sharding is also important, which is to put different data on different nodes.</p>
+</div>
+</div>
+<div class="section" id="category">
+<h2><a class="toc-backref" href="#id6">Category</a><a class="headerlink" href="#category" title="Permalink to this headline">¶</a></h2>
+<p>In general, there are 4 categories NoSQL databases in NoSQL ecosystem:</p>
+<div class="section" id="key-value-store">
+<h3><a class="toc-backref" href="#id7">Key-value store</a><a class="headerlink" href="#key-value-store" title="Permalink to this headline">¶</a></h3>
+<p>Key-value store is the simplest NoSQL database. The basic data structure is a dictionary or map.
+Key-value databases are well-suited to applications that have frequent small reads and writes along with simple data models.</p>
+<p>Aggregate is a collection of related objects that we wish to treat as a unit, which is indexed by a key that you can use of lookup.
+Aggregate is opaque to database which is just some big blob of mostly meaningless bits.
+Key-value store cannot run query not retrieve a part of the aggregate.</p>
+<p>Examples: Riak, Redis, Memcached, Berkely DB, Hamster DB, Amazon&#8217;s Dynamo, Project Voldemort</p>
+</div>
+<div class="section" id="document-database">
+<h3><a class="toc-backref" href="#id8">Document database</a><a class="headerlink" href="#document-database" title="Permalink to this headline">¶</a></h3>
+<p>Document databases extend the concept of the key-value database. Document databases maintain sets of key-value pairs within a document.
+So document database is able to see a structure in the aggregate, which allows queries and partial retrievals.</p>
+<p>Document database is flexible which does not require schema.</p>
+<p>Examples: MongoDB, Couch DB, Terrastore, OrientDB, RavenDB, Notes Storage Facility</p>
+</div>
+<div class="section" id="column-family">
+<h3><a class="toc-backref" href="#id9">Column-family</a><a class="headerlink" href="#column-family" title="Permalink to this headline">¶</a></h3>
+<p>Column-family databases are designed for large volumes of data, read and write performance, and high availability. If your data is small enough to run with a single server, then a column family database is probably more than you need - consider a document or key-value database instead.</p>
+<p>Column-family databases store data in column families as rows that have many columns associated with a row key.
+Column-families are groups of related data that is often accessed together.</p>
+<p>Column-family database has two-level aggregate structure, which allows you to store data with keys mapped to values and the values grouped into multiple column families, each column family being a map of data.</p>
+<img alt="../../_images/nosqlcolumnfamily.png" src="../../_images/nosqlcolumnfamily.png" />
+<p>Each column family can be compared to a container of rows in an RDBMS table where the key identifies the row and the row consists of multiple columns.
+The differences are:
+* various rows do not have to have the same columns
+* columns can be added to any row at any time without having to add it to other rows.</p>
+<p>Examples: Cassandra, Hbase, Hypertable, Amazon SimpleDB</p>
+</div>
+<div class="section" id="graph-database">
+<h3><a class="toc-backref" href="#id10">Graph database</a><a class="headerlink" href="#graph-database" title="Permalink to this headline">¶</a></h3>
+<p>Graph databases allow you to store entities and relationships between these entities.</p>
+<p>In graph databases, traversing the joins or relationships is very fast. The relationship between nodes is not calculated at query time but is actually persisted as a relationship.
+It means graph databases do not allow dangling relationship, and nodes can only be deleted if they don&#8217;t have any relationships attached to them.</p>
+<p>Examples: Neo4j, OrientDB, Infinite Graph</p>
+</div>
+</div>
+<div class="section" id="technical-concepts">
+<h2><a class="toc-backref" href="#id11">Technical concepts</a><a class="headerlink" href="#technical-concepts" title="Permalink to this headline">¶</a></h2>
+<p>There are several technical concepts relevant to NoSQL databases.</p>
+<div class="section" id="map-reduce-pattern">
+<h3><a class="toc-backref" href="#id12">Map-reduce pattern</a><a class="headerlink" href="#map-reduce-pattern" title="Permalink to this headline">¶</a></h3>
+<p>Map is a function whose input is a&nbsp;single aggregate&nbsp;and whose output is a&nbsp;bunch of key-value pairs.</p>
+<p>Reduce takes&nbsp;multiple map outputs with the same key&nbsp;and combines their values.</p>
+<p>While the map function is limited to working only on data from a single aggregate, the reduce function can use all values emitted for a single key.</p>
+</div>
+<div class="section" id="eventual-consistency">
+<h3><a class="toc-backref" href="#id13">Eventual consistency</a><a class="headerlink" href="#eventual-consistency" title="Permalink to this headline">¶</a></h3>
+<p>Many NoSQL stores compromise consistency in favor of availability, partition tolerance, and speed.</p>
+<p>Instead, most NoSQL databases offer a concept of &#8220;eventual consistency&#8221; in which database changes are propagated to all nodes &#8220;eventually&#8221; (typically within milliseconds) so queries for data might not return updated data immediately or might result in reading data that is not accurate, a problem known as stale reads.</p>
+<p>Additionally, some NoSQL systems may exhibit lost writes and other forms of data loss.</p>
+<p>Fortunately, some NoSQL systems provide concepts such as write-ahead logging to avoid data loss.</p>
+<p>For distributed transaction processing across multiple databases, data consistency is an even bigger challenge that is difficult for both NoSQL and relational databases.</p>
+</div>
+</div>
+<div class="section" id="references">
+<h2><a class="toc-backref" href="#id14">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>NoSQL Distilled, book by Pramod J. Sadalage and Martin Fowler</p>
+<p><a class="reference external" href="https://www.thoughtworks.com/insights/blog/nosql-databases-overview/">Thoughtworks NoSQL databases overview</a>.</p>
+<p><em>Written by Binwei&#64;Oslo</em></p>
+</div>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../job_security/">
+    <i class="fa fa-arrow-circle-left"></i>
+    Job Security
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../book-bian_zhi_lin_shi_xuan/">
+    Book notes: Bian Zhi Lin Anthology
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'wubw-github-io';
+        var disqus_identifier = '/2017/nosql_introduction/';
+        var disqus_title = 'NoSQL: Introduction';
+        var disqus_url = 'https://wubw.github.io/2017/nosql_introduction';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../">
+    <img class="logo" src="../../_static/logo.jpg" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=wubw&repo=BinweiBlog&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+  
+  
+  <h2>
+  
+  <i class="fa fa-calendar"></i>
+    May 01, 2017
+  
+  </h2>
+
+  <ul>
+    
+
+  
+
+  
+
+  
+
+  
+  <li><i class="fa-fw fa fa-folder-open"></i>
+    
+      
+      <a href="../../blog/category/computerscience/">ComputerScience</a>
+      
+    </li>
+  
+
+  
+  <li><i class="fa-fw fa fa-tags"></i>
+      
+    
+      
+      <a href="../../blog/tag/database/">database</a>,
+      
+    
+      
+      <a href="../../blog/tag/nosql/">nosql</a>
+      
+    </li>
+  
+  
+  <li>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'wubw-github-io'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    <i class="fa-fw fa fa-comments"></i>
+    <a href="#disqus_thread" data-disqus-identifier="/2017/nosql_introduction/"> </a>
+  </li>
+  
+  </ul>
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About binwei</a></li>
+</ul>
+
+
+  <h3><a href="../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../the_effective_executive/">Dec 29 - The Effective Executive</a></li>
+    
+      <li><a href="../introduction_to_javascript/">Sep 09 - Introduction to Javascript</a></li>
+    
+      <li><a href="../blockchain_introduction/">Sep 06 - Blockchain Introduction</a></li>
+    
+      <li><a href="../cloud_for_dummy/">Sep 04 - Cloud for Dummy</a></li>
+    
+      <li><a href="../the_mckinsey_engagement/">Sep 03 - The Mckinsey Engagement</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag/">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/architecture/">architecture</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/blockchain/">blockchain</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/blog/">blog</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/booknote/">booknote</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-5">
+        <a href="../../blog/tag/booknotes/">booknotes</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/career/">career</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/chinese/">chinese</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/cloud/">cloud</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/continuousdelivery/">continuousdelivery</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/database/">database</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/devops/">devops</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/frontend/">frontend</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/git/">git</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/lean/">lean</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/nosql/">nosql</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/opensource/">opensource</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/process/">process</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/reading/">reading</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/security/">security</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/shell/">shell</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/telemetry/">telemetry</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/vi/">vi</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/web/">web</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/category/computerscience/">ComputerScience (20)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/life/">Life (1)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/literature/">Literature (3)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/management/">Management (10)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2017/">2017 (34)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, binwei.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/2017/nosql_introduction.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-97414429-1']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>
