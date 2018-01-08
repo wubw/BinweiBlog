@@ -3,8 +3,8 @@ Docker Introduction
 ========================
 
 .. post:: Jan 4, 2018
-   :tags:
-   :category:
+   :tags: docker
+   :category: ComputerScience
 
 Docker is the world's leading software containerization platform. 
 Docker/container technology becomes more and more popular these days. 
