@@ -133,3 +133,280 @@ Hashed Message Authentication Codes
 Store password: store plain text and encrypted password is not good idea
 Store hash since it cannot be reversed
 
+.. image:: images/hack_password.jpg
+
+Rainbow table contains pre-computed hash to speed up the attack
+Add salt will make brute force and rainbow table attack ineffective
+
+.. code:: 
+
+    public class Hash
+    {
+        public static byte[] GenerateSalt()
+        {
+            const int saltLength = 32;
+            using (var randomNumberGenerator = new RNGCryptoServiceProvider())
+            {
+                var randomNumber = new byte[saltLength];
+                randomNumberGenerator.GetBytes(randomNumber);
+                return randomNumber;
+            }
+        }
+
+        private static byte[] Combine(byte[] first, byte[] second)
+        {
+            var ret = new byte[first.Length + second.Length];
+            Buffer.BlockCopy(first, 0, ret, 0, first.Length);
+            Buffer.BlockCopy(second, 0, ret, first.Length, second.Length);
+
+            return ret;
+        }
+
+        public static byte[] HashPasswordWithSalt(byte[] toBeHashed, byte[] salt)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                return sha256.ComputeHash(Combine(toBeHashed, salt));
+            }
+        }
+    }
+
+The salt does not have to be secret, which can be stored in the database
+If the computational power become bigger, it still has risk just by adding salt
+
+Password Based Key Derivation Functions 
+
+* Password Based Key Derivation Function (PBKDF2) 
+* RSA Public Key Cryptographic Standards (PKCS #5 Version 2.0) 
+* Internet Engineering Task Force RFC 2898 Specification 
+
+.. image:: images/pbkdf.jpg
+
+Number Iteration: numbers of hashing function, which can scale with increasing computational power
+
+* Good default is 50,000 iterations 
+* Balance number of iterations with acceptable performance 
+* Ideally double number of iterations every 2 years 
+
+.. code:: 
+
+    public class Pbkdf2
+    {
+        public static byte[] GenerateSalt()
+        {
+            using (var randomNumberGenerator = new RNGCryptoServiceProvider())
+            {
+                var randomNumber = new byte[32];
+                randomNumberGenerator.GetBytes(randomNumber);
+                return randomNumber;
+            }
+        }
+
+        public static byte[] HashPassword(byte[] toBeHashed, byte[] salt, int numberOfRounds)
+        {
+            using (var rfc2898 = new Rfc2898DeriveBytes(toBeHashed, salt, numberOfRounds))
+            {
+                return rfc2898.GetBytes(32);
+            }
+        }
+    }
+
+
+Advantages of symmetric encryption:
+
+* Extremely secure
+* Relatively fast
+
+Disadvantage:
+
+* Key sharing
+* More damage if compromised
+
+A new variant designed called Triple DES
+A simple way to increase key size without redesigning a new cipher
+Many former DES users now use Triple DES
+Triple DES involved applying DES three times with 2 or 3 different keys
+Triple DES was regarded as adequately secure, although it is quite slow
+
+.. image:: images/triple_des.jpg
+
+How does DES and Triple DES work?
+
+* DES is a block cipher that transforms plaintext into ciphertext
+* DES uses a block size of 64 bits
+* Uses a 64 bits key only 56 bits are used by the algorithm
+* Supports different modes of operation
+
+.. image:: images/des.jpg
+
+* DESK uses a key schedule for encryption
+* The key schedule generates sub keys for each of the 16 rounds
+* 56 bit key is split in half
+* For each round sub keys are bit rotated left
+* Decryption key schecule is similar but in reverse order
+
+The history of AES
+
+* Unlike DES, AES does not use a Feistel network
+* Uses 128 bit block size and 128, 192 or 256 bit keys
+* Based on a design known as a substitution - permutation network
+
+S-Box performs substitution
+P-Box performs bit shuffling to transpose bits across S-Box inputs
+
+How Secure is AES against brute force attack?
+
++-----------------------+-----------------------------------+
+| Key Size              | Possible Combinations             |
++-----------------------+-----------------------------------+
+| 1 bit                 | 2                                 |
++-----------------------+-----------------------------------+
+| 2 bit                 | 4                                 |
++-----------------------+-----------------------------------+
+| 4 bit                 | 16                                |
++-----------------------+-----------------------------------+
+| 8 bit                 | 256                               |
++-----------------------+-----------------------------------+
+| 16 bit                | 65536                             |
++-----------------------+-----------------------------------+
+| 32 bit                | 4.2 x 10 \ :sup:`9`\              |
++-----------------------+-----------------------------------+
+| 56 bit (DES)          | 7.2 x 10 \ :sup:`16`\             |
++-----------------------+-----------------------------------+
+| 64 bit                | 1.8 x 10 \ :sup:`19`\             |
++-----------------------+-----------------------------------+
+| 128 bit (AES)         | 3.4 x 10 \ :sup:`38`\             |
++-----------------------+-----------------------------------+
+| 192 bit (AES)         | 6.2 x 10 \ :sup:`57`\             |
++-----------------------+-----------------------------------+
+| 256 bit (AES)         | 1.1 x 10 \ :sup:`77`\             |
++-----------------------+-----------------------------------+
+
+.NET Framework Libraries
+For SymmetricAlgorithm: DESCryptoServiceProvider, TripleDESCryptoServiceProvider, AESCryptoServiceProvider
+
+Asymmetric Encryption 
+RSA has 3 key sizes:
+
+* 1024 bit key
+* 2048 bit key
+* 4096 bit key
+
+* Public and private keys are based on prime numbers 
+* Factoring a number back into constituent prime numbers is hard 
+
+RSA encryption and decryption is a mathematical operation
+Based on modular math
+
+.. code:: 
+
+        private RSAParameters _publicKey;
+
+        private RSAParameters _privateKey;
+
+        public void AssignNewKey()
+        {
+            using (var rsa = new RSACryptoServiceProvider(2048))
+            {
+                rsa.PersistKeyInCsp = false;
+                this._publicKey = rsa.ExportParameters(false);
+                this._privateKey = rsa.ExportParameters(true);
+            }
+        }
+
+It is not recommended to store private key on your file system, try to use key container
+
+.. code:: 
+
+        public void AssignNewKeyWithContainer()
+        {
+            const int ProviderRsaFull = 1;
+            CspParameters cspParameters = new CspParameters(ProviderRsaFull)
+                                              {
+                                                  KeyContainerName = "MyContainerName",
+                                                  Flags = CspProviderFlags
+                                                      .UseMachineKeyStore,
+                                                  ProviderName =
+                                                      "Microsoft Strong Cryptographic Provider"
+                                              };
+
+            var rsa = new RSACryptoServiceProvider(cspParameters) { PersistKeyInCsp = true };
+        }
+
+        public void DeleteKeyInCsp()
+        {
+            var cspParams = new CspParameters { KeyContainerName = "MyContainerName" };
+            var rsa = new RSACryptoServiceProvider(cspParams) { PersistKeyInCsp = false };
+            rsa.Clear();
+        }
+
+How to encrypt and decrypt data
+
+.. code:: 
+
+        public byte[] EncryptData(byte[] dataToEncrypt)
+        {
+            byte[] cipherbytes;
+            using (var rsa = new RSACryptoServiceProvider(2048))
+            {
+                rsa.ImportParameters(this._publicKey);
+                cipherbytes = rsa.Encrypt(dataToEncrypt, false);
+            }
+
+            return cipherbytes;
+        }
+
+        public byte[] DecryptData(byte[] dataToEncrypt)
+        {
+            byte[] plain;
+            using (var rsa = new RSACryptoServiceProvider(2048))
+            {
+                rsa.PersistKeyInCsp = false;
+                rsa.ImportParameters(this._privateKey);
+                plain = rsa.Decrypt(dataToEncrypt, true);
+            }
+
+            return plain;
+        }
+
+        public byte[] DecryptDataWithCsp(byte[] dataToDecrypt)
+        {
+            byte[] plain;
+            var cspParams = new CspParameters { KeyContainerName = "MyContainerName" };
+            using (var rsa = new RSACryptoServiceProvider(2048, cspParams))
+            {
+                plain = rsa.Decrypt(dataToDecrypt, false);
+            }
+
+            return plain;
+        }
+
+Digital Signatures 
+
+* Claiming authenticity of a message 
+* Digital signatures give both authentication and non-repudiation 
+* Based on asymmetric cryptography 
+* Digital signatures consist of 
+	1. Public and private key generation 
+	2. Signing algorithm using the private key 
+* Verification algorithm using the public key 
+ 
+Difference between normal asymmetric encryption and digital sign:
+
+* normal asymmetric encryption: sender use public key to encrypt data, and receiver uses private key to decrypt data
+* digital sign: sender use private key to generate digital sign, and receiver uses public key to verify the digital sign
+
++-----------------------+--------------------------+--------------------------+
+|                       | Public Key               | Private Key              |
++-----------------------+--------------------------+--------------------------+
+| Encryption (RSA)      | Encrypt                  | Decrypt                  |
++-----------------------+--------------------------+--------------------------+
+| Digital Signatures    | Verify Signature         | Sign Message             |
++-----------------------+--------------------------+--------------------------+
+
+Digital Signature use 3 main classes
+
+* RSACryptoServiceProvider
+* RSAPKCS1SignatureFormatter
+* RSAPKCS1SignatureDeformatter
+
