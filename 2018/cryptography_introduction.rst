@@ -410,3 +410,148 @@ Digital Signature use 3 main classes
 * RSAPKCS1SignatureFormatter
 * RSAPKCS1SignatureDeformatter
 
+CLR uses a stream oriented design for cryptography
+Core of the design is CryptoStream
+
+.. code:: 
+
+        public byte[] Encrypt(byte[] dataToEncrypt, byte[] key, byte[] iv)
+        {
+            using (var des = new DESCryptoServiceProvider())
+            {
+                des.Mode = CipherMode.CBC;
+                des.Padding = PaddingMode.PKCS7;
+                des.Key = key;
+                des.IV = iv;
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    var cryptoStream = new CryptoStream(memoryStream, des.CreateEncryptor(), 
+                        CryptoStreamMode.Write);
+                    cryptoStream.Write(dataToEncrypt, 0, dataToEncrypt.Length);
+                    cryptoStream.FlushFinalBlock();
+                    return memoryStream.ToArray();
+                }
+            }
+        }
+
+        public byte[] Decrypt(byte[] dataToDecrypt, byte[] key, byte[] iv)
+        {
+            using (var des = new DESCryptoServiceProvider())
+            {
+                des.Mode = CipherMode.CBC;
+                des.Padding = PaddingMode.PKCS7;
+                des.Key = key;
+                des.IV = iv;
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    var cryptoStream = new CryptoStream(memoryStream, des.CreateDecryptor(),
+                        CryptoStreamMode.Write);
+                    cryptoStream.Write(dataToDecrypt, 0, dataToDecrypt.Length);
+                    cryptoStream.FlushFinalBlock();
+                    return memoryStream.ToArray();
+                }
+            }
+        }
+
+.. code:: 
+
+        public byte[] SignData(byte[] hashOfDataToSign)
+        {
+            using (var rsa = new RSACryptoServiceProvider(2048))
+            {
+                rsa.PersistKeyInCsp = false;
+                rsa.ImportParameters(this._privateKey);
+
+                var rsaFormatter = new RSAPKCS1SignatureFormatter(rsa);
+                rsaFormatter.SetHashAlgorithm("SHA256");
+
+                return rsaFormatter.CreateSignature(hashOfDataToSign);
+            }
+        }
+
+        public bool VerifySignature(byte[] hashOfDataToSign, byte[] signature)
+        {
+            using (var rsa = new RSACryptoServiceProvider(2048))
+            {
+                rsa.ImportParameters(this._publicKey);
+
+                var rsaDeformatter = new RSAPKCS1SignatureDeformatter(rsa);
+                rsaDeformatter.SetHashAlgorithm("SHA256");
+
+                return rsaDeformatter.VerifySignature(hashOfDataToSign, signature);
+            }
+        }
+
+Using SecureString for sensitive data
+
+* System.String is not a secure solution
+* System.String has the following problems:
+
+Several copies in memory
+Not encrypted
+Not mutable, old copied in memory
+No effective way to clear out memory
+
+SecureString stored in encrypted memory
+SecureString implements IDisposable
+Create SecureString with a pointer to a char array
+
+.. code:: 
+
+        public static string CovertToUnsecureString(SecureString securePassword)
+        {
+            var unmanagedString = IntPtr.Zero;
+            try
+            {
+                unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(securePassword);
+                return Marshal.PtrToStringUni(unmanagedString);
+            }
+            finally
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
+            }
+        }
+
+        private static SecureString ToSecureString(char[] str)
+        {
+            var secureString = new SecureString();
+            Array.ForEach(str, secureString.AppendChar);
+            return secureString;
+        }
+
+        private static char[] CharacterData(SecureString secureString)
+        {
+            char[] bytes;
+            var ptr = IntPtr.Zero;
+
+            try
+            {
+                ptr = Marshal.SecureStringToBSTR(secureString);
+                bytes = new char[secureString.Length];
+                Marshal.Copy(ptr, bytes, 0, secureString.Length);
+            }
+            finally
+            {
+                if (ptr != IntPtr.Zero)
+                {
+                    Marshal.ZeroFreeBSTR(ptr);
+                }
+            }
+            return bytes;
+        }
+
+Security Requirements
+
+* Confidentiality
+* Integrity
+* Non-Repudiation
+* Authentication
+
+Recommended reading
+
+* Cryptography in .NET Succinctly by Stephen Haunts
+* The Code Book by Simon Singh
+* The Code Breakers by David Kahn
+* Everyday Cryptography by Keith Martin
