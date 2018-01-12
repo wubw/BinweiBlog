@@ -1,17 +1,26 @@
 
-Cryptography Introduction
-==============================
+Cryptography Introduction (with .NET code example)
+====================================================
 
 .. post:: Jan 07, 2018
    :tags: security
    :category: ComputerScience
 
-System.Random and Its Problems 
+Cryptography is the core part of security, this blog introduces the basic concepts in cryptography and uses .NET as code example.
+
+.. contents::
+
+Randomness
+============
+
+System.Random and its problems 
 
 * System.Random is a pseudo random number generator 
 * A seed value is passed into the constructor 
 * The seed value should be different each time 
 * System.Random is deterministic and predictable 
+
+Solution is to use RNGCryptoServiceProvider instead.
 
 .. code:: 
 
@@ -25,6 +34,9 @@ System.Random and Its Problems
           return randomNumber;
         }
 
+Hashing
+===========
+
 What Is Hashing? 
 
 * It is easy to compute the hash value for any given message 
@@ -32,15 +44,14 @@ What Is Hashing?
 * It is infeasible to modify a message without changing the hash 
 * It is infeasible to find two different messages with the same hash 
 
-HashAlgorithm
+Hash algorithm
 
 * MD5
 * SHA-1
 * SHA-256
 * SHA-512
 
-Hashing: One Way operation
-Encryption: two way operation
+Hashing is one way operation, while encryption is two way operation.
 
 MD5
 
@@ -94,6 +105,8 @@ SHA3: not supported in .net so far (2015)
     }
 
 Hash algorithm with key
+-----------------------------
+
 Hashed Message Authentication Codes
 
 .. code:: 
@@ -104,38 +117,41 @@ Hashed Message Authentication Codes
 
         public static byte[] GenerateRandomKey()
         {
-        using (var randomNumberGenerator = new RNGCryptoServiceProvider())
-        {
-            var randomNumber = new byte[KeySize];
-            randomNumberGenerator.GetBytes((randomNumber));
+            using (var randomNumberGenerator = new RNGCryptoServiceProvider())
+            {
+                var randomNumber = new byte[KeySize];
+                randomNumberGenerator.GetBytes((randomNumber));
 
-            return randomNumber;
-        }
+                return randomNumber;
+            }
         }
 
         public static byte[] ComputeHmacsha256(byte[] toBeHashed, byte[] key)
         {
-        using (var hmac = new HMACSHA256(key))
-        {
-            return hmac.ComputeHash(toBeHashed);
-        }
+            using (var hmac = new HMACSHA256(key))
+            {
+                return hmac.ComputeHash(toBeHashed);
+            }
         }
 
         public static byte[] ComputeHmacsha1(byte[] toBeHashed, byte[] key)
         {
-        using (var hmac = new HMACSHA1(key))
-        {
-            return hmac.ComputeHash(toBeHashed);
-        }
+            using (var hmac = new HMACSHA1(key))
+            {
+                return hmac.ComputeHash(toBeHashed);
+            }
         }
     }
 
-Store password: store plain text and encrypted password is not good idea
+Store Password
+----------------
+
+Store password: store plain text and encrypted password is not good idea. 
 Store hash since it cannot be reversed
 
 .. image:: images/hack_password.jpg
 
-Rainbow table contains pre-computed hash to speed up the attack
+Rainbow table contains pre-computed hash to speed up the attack. 
 Add salt will make brute force and rainbow table attack ineffective
 
 .. code:: 
@@ -171,8 +187,11 @@ Add salt will make brute force and rainbow table attack ineffective
         }
     }
 
-The salt does not have to be secret, which can be stored in the database
-If the computational power become bigger, it still has risk just by adding salt
+PBKDF
+---------
+
+The salt does not have to be secret, which can be stored in the database. 
+If the computational power become bigger, it still has risk just by adding salt. 
 
 Password Based Key Derivation Functions 
 
@@ -211,6 +230,8 @@ Number Iteration: numbers of hashing function, which can scale with increasing c
         }
     }
 
+Symmetric Algorithm
+========================
 
 Advantages of symmetric encryption:
 
@@ -222,11 +243,11 @@ Disadvantage:
 * Key sharing
 * More damage if compromised
 
-A new variant designed called Triple DES
-A simple way to increase key size without redesigning a new cipher
-Many former DES users now use Triple DES
-Triple DES involved applying DES three times with 2 or 3 different keys
-Triple DES was regarded as adequately secure, although it is quite slow
+A new variant designed called Triple DES. 
+A simple way to increase key size without redesigning a new cipher. 
+Many former DES users now use Triple DES. 
+Triple DES involved applying DES three times with 2 or 3 different keys. 
+Triple DES was regarded as adequately secure, although it is quite slow.
 
 .. image:: images/triple_des.jpg
 
@@ -239,7 +260,7 @@ How does DES and Triple DES work?
 
 .. image:: images/des.jpg
 
-* DESK uses a key schedule for encryption
+* DES uses a key schedule for encryption
 * The key schedule generates sub keys for each of the 16 rounds
 * 56 bit key is split in half
 * For each round sub keys are bit rotated left
@@ -286,6 +307,8 @@ How Secure is AES against brute force attack?
 For SymmetricAlgorithm: DESCryptoServiceProvider, TripleDESCryptoServiceProvider, AESCryptoServiceProvider
 
 Asymmetric Encryption 
+========================
+
 RSA has 3 key sizes:
 
 * 1024 bit key
@@ -382,13 +405,12 @@ How to encrypt and decrypt data
         }
 
 Digital Signatures 
+=====================
 
 * Claiming authenticity of a message 
 * Digital signatures give both authentication and non-repudiation 
 * Based on asymmetric cryptography 
-* Digital signatures consist of 
-	1. Public and private key generation 
-	2. Signing algorithm using the private key 
+* Digital signatures consist of: 1. Public and private key generation; 2. Signing algorithm using the private key 
 * Verification algorithm using the public key 
  
 Difference between normal asymmetric encryption and digital sign:
@@ -410,7 +432,7 @@ Digital Signature use 3 main classes
 * RSAPKCS1SignatureFormatter
 * RSAPKCS1SignatureDeformatter
 
-CLR uses a stream oriented design for cryptography
+CLR uses a stream oriented design for cryptography. 
 Core of the design is CryptoStream
 
 .. code:: 
@@ -484,19 +506,21 @@ Core of the design is CryptoStream
             }
         }
 
+Secure String
+================
+
+System.String is not a secure solution, which has the following problems:
+
+* Several copies in memory
+* Not encrypted
+* Not mutable, old copied in memory
+* No effective way to clear out memory
+
 Using SecureString for sensitive data
 
-* System.String is not a secure solution
-* System.String has the following problems:
-
-Several copies in memory
-Not encrypted
-Not mutable, old copied in memory
-No effective way to clear out memory
-
-SecureString stored in encrypted memory
-SecureString implements IDisposable
-Create SecureString with a pointer to a char array
+* SecureString stored in encrypted memory
+* SecureString implements IDisposable
+* Create SecureString with a pointer to a char array
 
 .. code:: 
 
@@ -542,14 +566,8 @@ Create SecureString with a pointer to a char array
             return bytes;
         }
 
-Security Requirements
-
-* Confidentiality
-* Integrity
-* Non-Repudiation
-* Authentication
-
 Recommended reading
+=======================
 
 * Cryptography in .NET Succinctly by Stephen Haunts
 * The Code Book by Simon Singh
