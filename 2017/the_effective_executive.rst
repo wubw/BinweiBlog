@@ -3,7 +3,7 @@ The Effective Executive
 ============================
 
 .. post:: Dec 29, 2017
-   :tags: booknote
+   :tags: booknotes
    :category: Management
 
 This is the notes from book <The Effective Executive> by Peter Drucker.
