@@ -147,12 +147,12 @@ Store Password
 ----------------
 
 Store password: store plain text and encrypted password is not good idea. 
-Store hash since it cannot be reversed
+Store hash since it cannot be reversed.
 
 .. image:: images/hack_password.jpg
 
 Rainbow table contains pre-computed hash to speed up the attack. 
-Add salt will make brute force and rainbow table attack ineffective
+Add salt will make brute force and rainbow table attack ineffective.
 
 .. code:: 
 
@@ -243,13 +243,57 @@ Disadvantage:
 * Key sharing
 * More damage if compromised
 
-A new variant designed called Triple DES. 
-A simple way to increase key size without redesigning a new cipher. 
+A new variant designed called Triple DES, which is a simple way to increase key size without redesigning a new cipher. 
 Many former DES users now use Triple DES. 
 Triple DES involved applying DES three times with 2 or 3 different keys. 
 Triple DES was regarded as adequately secure, although it is quite slow.
 
 .. image:: images/triple_des.jpg
+
+CLR uses a stream oriented design for cryptography. 
+Core of the design is CryptoStream.
+
+.. code:: 
+
+        public byte[] Encrypt(byte[] dataToEncrypt, byte[] key, byte[] iv)
+        {
+            using (var des = new DESCryptoServiceProvider())
+            {
+                des.Mode = CipherMode.CBC;
+                des.Padding = PaddingMode.PKCS7;
+                des.Key = key;
+                des.IV = iv;
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    var cryptoStream = new CryptoStream(memoryStream, des.CreateEncryptor(), 
+                        CryptoStreamMode.Write);
+                    cryptoStream.Write(dataToEncrypt, 0, dataToEncrypt.Length);
+                    cryptoStream.FlushFinalBlock();
+                    return memoryStream.ToArray();
+                }
+            }
+        }
+
+        public byte[] Decrypt(byte[] dataToDecrypt, byte[] key, byte[] iv)
+        {
+            using (var des = new DESCryptoServiceProvider())
+            {
+                des.Mode = CipherMode.CBC;
+                des.Padding = PaddingMode.PKCS7;
+                des.Key = key;
+                des.IV = iv;
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    var cryptoStream = new CryptoStream(memoryStream, des.CreateDecryptor(),
+                        CryptoStreamMode.Write);
+                    cryptoStream.Write(dataToDecrypt, 0, dataToDecrypt.Length);
+                    cryptoStream.FlushFinalBlock();
+                    return memoryStream.ToArray();
+                }
+            }
+        }
 
 How does DES and Triple DES work?
 
@@ -260,20 +304,11 @@ How does DES and Triple DES work?
 
 .. image:: images/des.jpg
 
-* DES uses a key schedule for encryption
-* The key schedule generates sub keys for each of the 16 rounds
-* 56 bit key is split in half
-* For each round sub keys are bit rotated left
-* Decryption key schecule is similar but in reverse order
-
 The history of AES
 
 * Unlike DES, AES does not use a Feistel network
 * Uses 128 bit block size and 128, 192 or 256 bit keys
 * Based on a design known as a substitution - permutation network
-
-S-Box performs substitution
-P-Box performs bit shuffling to transpose bits across S-Box inputs
 
 How Secure is AES against brute force attack?
 
@@ -303,8 +338,11 @@ How Secure is AES against brute force attack?
 | 256 bit (AES)         | 1.1 x 10 \ :sup:`77`\             |
 +-----------------------+-----------------------------------+
 
-.NET Framework Libraries
-For SymmetricAlgorithm: DESCryptoServiceProvider, TripleDESCryptoServiceProvider, AESCryptoServiceProvider
+.NET Framework libraries for symmetric algorithm: 
+
+* DESCryptoServiceProvider
+* TripleDESCryptoServiceProvider
+* AESCryptoServiceProvider
 
 Asymmetric Encryption 
 ========================
@@ -315,11 +353,12 @@ RSA has 3 key sizes:
 * 2048 bit key
 * 4096 bit key
 
-* Public and private keys are based on prime numbers 
-* Factoring a number back into constituent prime numbers is hard 
+Some facts about asymmetric encryption algorithm:
 
-RSA encryption and decryption is a mathematical operation
-Based on modular math
+* Public and private keys are based on prime numbers 
+* Factoring a number back into constituent prime numbers is hard
+
+RSA encryption and decryption is a mathematical operation based on modular math
 
 .. code:: 
 
@@ -426,56 +465,11 @@ Difference between normal asymmetric encryption and digital sign:
 | Digital Signatures    | Verify Signature         | Sign Message             |
 +-----------------------+--------------------------+--------------------------+
 
-Digital Signature use 3 main classes
+Digital Signature in .NET use 3 main classes
 
 * RSACryptoServiceProvider
 * RSAPKCS1SignatureFormatter
 * RSAPKCS1SignatureDeformatter
-
-CLR uses a stream oriented design for cryptography. 
-Core of the design is CryptoStream
-
-.. code:: 
-
-        public byte[] Encrypt(byte[] dataToEncrypt, byte[] key, byte[] iv)
-        {
-            using (var des = new DESCryptoServiceProvider())
-            {
-                des.Mode = CipherMode.CBC;
-                des.Padding = PaddingMode.PKCS7;
-                des.Key = key;
-                des.IV = iv;
-
-                using (var memoryStream = new MemoryStream())
-                {
-                    var cryptoStream = new CryptoStream(memoryStream, des.CreateEncryptor(), 
-                        CryptoStreamMode.Write);
-                    cryptoStream.Write(dataToEncrypt, 0, dataToEncrypt.Length);
-                    cryptoStream.FlushFinalBlock();
-                    return memoryStream.ToArray();
-                }
-            }
-        }
-
-        public byte[] Decrypt(byte[] dataToDecrypt, byte[] key, byte[] iv)
-        {
-            using (var des = new DESCryptoServiceProvider())
-            {
-                des.Mode = CipherMode.CBC;
-                des.Padding = PaddingMode.PKCS7;
-                des.Key = key;
-                des.IV = iv;
-
-                using (var memoryStream = new MemoryStream())
-                {
-                    var cryptoStream = new CryptoStream(memoryStream, des.CreateDecryptor(),
-                        CryptoStreamMode.Write);
-                    cryptoStream.Write(dataToDecrypt, 0, dataToDecrypt.Length);
-                    cryptoStream.FlushFinalBlock();
-                    return memoryStream.ToArray();
-                }
-            }
-        }
 
 .. code:: 
 
@@ -505,6 +499,25 @@ Core of the design is CryptoStream
                 return rsaDeformatter.VerifySignature(hashOfDataToSign, signature);
             }
         }
+
+Comparision between hashing, MAC and digital sign
+---------------------------------------------------
+
+* Integrity: Can the recipient be confident that the message has not been accidentally modified?
+* Authentication: Can the recipient be confident that the message originates from the sender?
+* Non-repudiation: If the recipient passes the message and the proof to a third party, can the third party be confident that the message originated from the sender?
+
++-------------------------+------+-----------+--------------+
+| Cryptographic primitive | Hash |    MAC    | Digital      |
+| Security Goal           |      |           | signature    |
++-------------------------+------+-----------+--------------+
+| * Integrity             | * Yes| * Yes     | * Yes        |
+| * Authentication        | * No | * Yes     | * Yes        |
+| * Non-repudiation       | * No | * No      | * Yes        |
++-------------------------+------+-----------+--------------+
+| Kind of keys            | none | symmetric | asymmetric   |
+|                         |      |    keys   |    keys      |
++-------------------------+------+-----------+--------------+
 
 Secure String
 ================
@@ -566,10 +579,4 @@ Using SecureString for sensitive data
             return bytes;
         }
 
-Recommended reading
-=======================
-
-* Cryptography in .NET Succinctly by Stephen Haunts
-* The Code Book by Simon Singh
-* The Code Breakers by David Kahn
-* Everyday Cryptography by Keith Martin
+*Written by Binwei@Oslo*
