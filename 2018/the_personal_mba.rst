@@ -1,27 +1,27 @@
 
-2018/The_Personal_Mba
+The Personal MBA
 =====================
 
 .. post:: Jan 13, 2018
    :tags: booknotes
    :category: Management
 
+.. contents::
+
+This blog contains the booknotes of the book "The Personal MBA".
+
+How to Learn
+===========================
+
 One of the beautiful things about learning any subject is the fact that you don't need to know everything.
 You only need to understand a few critically important concepts that provide most of the value.
 
-When you first start to study a field, it seems like you have to memorize a zillion things. 
-You don't. 
-What you need is to identify the core principles - generally three to twelve of them - that govern the field. 
-The million things you thought you had to memorize are simply various combinations of the core principles.
+* When you first start to study a field, it seems like you have to memorize a zillion things. You don't. 
+* What you need is to identify the core principles - generally three to twelve of them - that govern the field. 
+* The million things you thought you had to memorize are simply various combinations of the core principles.
 
-The limits of my language are the limits of my world
- - Ludwig Wittgenstein
-
-Business school don't create successful people. 
-They simply accept them, then take credit for their success.
-
-Process improvements are easy to skip if you want the business's short-term profit number to look good, 
-even though they're essential to long term viability.
+Business Processes
+======================
 
 Roughly defined, a business is a repeatable process that:
 
@@ -31,106 +31,118 @@ Roughly defined, a business is a repeatable process that:
 * In a way that satisfies the customer's needs and expectations
 * So that the business brings in enough profit to make it worthwhile for the owners to continue operation
 
-At the core, every business is fundamentally a collection of five interdependent processes:
++----------------+---------------------------------------+--------------------------------------------+
+| Processes      | Definition                            | KPI                                        |
++----------------+---------------------------------------+--------------------------------------------+
+| Value creation | Discovering what people need or want, | How quickly is the system creating value?  |
+|                | then creating it                      | What is the current level of inflows?      |
++----------------+---------------------------------------+--------------------------------------------+
+| Marketing      | Attracting attention and building     | How many people are paying attention to    |
+|                | demand for what you've created        | your offer? How many prospects are giving  |
+|                |                                       | you permission to provide more information?|
++----------------+---------------------------------------+--------------------------------------------+
+| Sales          | Tuning prospective customers into     | How many prospects are becoming paying     |
+|                | paying customers                      | customers? What is the average customer's  |
+|                |                                       | lifetime value?                            |
++----------------+---------------------------------------+--------------------------------------------+
+| Value delivery | Giving your customers what you've     | How quickly can you serve each customer?   |
+|                | promised and ensuring that they're    | What is your current returns or complaints |
+|                | satisfied                             | rate?                                      |
++----------------+---------------------------------------+--------------------------------------------+
+| Finance        | Bringing in enough money to keep going| What is your profit margin?                |
+|                | and make your effort worthwhile       | How much purchasing power do you have      |
+|                |                                       | financially sufficient?                    |
++----------------+---------------------------------------+--------------------------------------------+
 
-* Value creation. Discovering what people need or want, then creating it
-* Marketing. Attracting attention and building demand for what you've created
-* Sales. Tuning prospective customers into paying customers.
-* Value delivery. Giving your customers what you've promised and ensuring that they're satisfied
-* Finance. Bringing in enough money to keep going and make your effort worthwhile
+Process improvements are easy to skip if you want the business's short-term profit number to look good, even though they're essential to long term viability.
 
-Human being have 5 drives that have a profound influence on our decisions and actions:
+Value creation
+---------------
 
-* The drive to acquire.
-* The drive to bond
-* The drive to learn
-* The drive to defend
-* The drive to feel
+Assuming the promised benefits of the offering are appealing, 
+there are nine common Economic Values that people typically consider when evaluating a potential purchase.
 
-Then ways to the evaluate a market provide a back-of-the-napkin method you can to identify the attractiveness of any potential market.
++-----------------+----------------------------------------------------------+
+| Efficacy        | How well does it work?                                   |
++-----------------+----------------------------------------------------------+
+| Speed           | How quickly does it work?                                |
++-----------------+----------------------------------------------------------+
+| Reliability     | Can I depend on it to do what I want?                    |
++-----------------+----------------------------------------------------------+
+| Ease of use     | How much effort does it require?                         |
++-----------------+----------------------------------------------------------+
+| Flexibility     | How many things does it do?                              |
++-----------------+----------------------------------------------------------+
+| Status          | How does this affect the way others perceive me?         |
++-----------------+----------------------------------------------------------+
+| Aesthetic Appeal| How attractive or otherwise aesthetically pleasing is it?|
++-----------------+----------------------------------------------------------+ 
+| Emotion         | How does it make me feel?                                |
++-----------------+----------------------------------------------------------+ 
+| Cost            | How much do I have to give up to get this?               |
++-----------------+----------------------------------------------------------+ 
 
-* Urgency
-* Market size
-* Pricing potential
-* Cost of customer acquisition (how easy is it to acquire a new customer)
-* Cost of value delivery
-* Uniqueness of offer
-* Speed to market
-* Up-front investment
-* Upsell potential
-* Evergreen potential
+Marketing
+-----------------
 
-Economic value usually takes on one of twelve standard forms:
+Ten ways to the evaluate a market and to identify the attractiveness of any potential market 
+(back-of-napkin method)
 
-* Product
-* Service
-* Shared resource
-* Subscription
-* Resale
-* Lease
-* Agency
-* Audience aggregation
-* Loan
-* Option
-* Insurance
-* Capital
++-----------------------------+----------------------------------------------------------+
+| Urgency                     | How badly do people want or need this right now?         |
++-----------------------------+----------------------------------------------------------+
+| Market size                 | How many people are actively purchasing things like this?|
++-----------------------------+----------------------------------------------------------+
+| Pricing potential           | What is the highest average price a purchaser would be   |
+|                             | willing to spend for a solution?                         |
++-----------------------------+----------------------------------------------------------+
+| Cost of customer acquisition| How easy is it to acquire a new customer? On average,    |
+| (how easy is it to acquire  | how much will it cost to generate a sale, both in money  |
+| a new customer)             | and effort?                                              |
++-----------------------------+----------------------------------------------------------+
+| Cost of value delivery      | How much would it cost to create and deliver the value   |
+|                             | offered, both in money and effort?                       |
++-----------------------------+----------------------------------------------------------+
+| Uniqueness of offer         | How unique is your offer versus competing offerings in   |
+|                             | the market, and how easy is it for potential competitors |
+|                             | to copy you?                                             |
++-----------------------------+----------------------------------------------------------+
+| Speed to market             | How quickly can you create something to sell?            |
++-----------------------------+----------------------------------------------------------+
+| Up-front investment         | How much will you have to invest before you’re ready     |
+|                             | to sell?                                                 |
++-----------------------------+----------------------------------------------------------+
+| Upsell potential            | Are there related secondary offers that you could also   |
+|                             | present to purchasing customers?                         |
++-----------------------------+----------------------------------------------------------+
+| Evergreen potential         | Once the initial offer has been created, how much        |
+|                             | additional work will you have to put into it in order to |
+|                             | continue selling?                                        |
++-----------------------------+----------------------------------------------------------+
 
-Iteration has six major steps, WIGWAM
 
-* Watch: what's happening? what's working and what's not?
-* Ideate: What could you improve? What are your options?
-* Guess: Based on what you've learned so far, which of your ideas do you think will make the biggest impact?
-* Which: Decide which change to make.
-* Act: Actually make the change
-* Measure: What happened? Was the change positive or negative? Should you keep the change, or go back to how things were before this iteration?
 
-Feedback:
-
-* Get feedback from real potential customers instead of friends and family
-* Ask open-ended questions
-* Steady yourself, and keep calm
-* Take what you hear with a grain of salt
-* Give potential customers the opportunity to preorder
-
-Assuming the promised benefits of the offering are appealing, there are nine common Economic Values that people typically consider when evaluating a potential purchase.
-
-* Efficacy: how well does it work?
-* Speed: How quickly does it work?
-* Reliability: Can I depend on it to do what I want?
-* Ease of use: How much effort does it require?
-* Flexibility: How many things does it do?
-* Status: How does this affect the way others perceive me?
-* Aesthetic Appeal: How attractive or otherwise aesthetically pleasing is it?
-* Emotion: How does it make me feel?
-* Cost: How much do I have to give up to get this?
-
-Relative Importance Testing
-
-Critically Important Assumptions (CIAs)
-Shadow testing is the process of selling an offering before it actually exists. 
-As long as you're completely up front with your potential customers that the offering is still in development, 
-shadow testing is very useful strategy you can use to actually test your CIAs with real customers quickly and inexpensively.
 
 The cardinal marketing sin is being boring.
+
 Marketing is the art and science of finding 'prospects' - people who are actively interested in what you have to offer. 
 The best business in the world find ways to attract attention of qualified prospects quickly and inexpensively. 
-The more prospects you engice, the better off your business will be.
-Rule #1 of marketing is that your potential customer's available attention is limited.
-Receptivity is a measure of how open a person is to your message
-Advertising is the tax you pay for being unremarkable
-Being remarkable is the best way to attract attention
 
-The product that will not sell without advertising will not sell profitably with advertising
+Rule #1 of marketing is that your potential customer's available attention is limited:
+
+* Receptivity is a measure of how open a person is to your message
+* Advertising is the tax you pay for being unremarkable
+* Being remarkable is the best way to attract attention
+
+The product that will not sell without advertising will not sell profitably with advertising.
 The essence of effective marketing is discovering what people already want, then presenting your offer in a way that intersects with that preexisting desire. 
 The best marketing is similar to Education-Based Selling. 
 It shows the prospect how the offer will help them achieve what they desire. 
 Your job as a marketer isn't to convince people to want what you're offering; it's to help your prospects convince themselves that what you're offering will help them get what they really want.
-When your work speaks for itself, don't interrupt
+When your work speaks for itself, don't interrupt.
 
-The most effective way to get people to want something is to encourage them to Visualize what their life would be like once they've accepted your offer. (Mental Simulation)
-
-Everything we hear is an opinion, not a fact. Everything we see is a perspective, not the truth.
-  - Marcus Aurelius
+Relative Importance Testing: 
+a method that helps you determine what people actually want by asking them questions designed to simulate real life tradeoffs.
 
 Framing is the act of emphasizing the details that are critically important while de-emphasizing things that aren't, by either minimizing certain facts or leaving them out entirely.
 Asking for permission to follow up after providing free value is more effective than interruption.
@@ -142,15 +154,19 @@ Controversy means publicly taking a position that not everyone will agree with, 
 Used constructively, Controversy can be an effective way to attract Attention. 
 people start talking, engaging and paying Attention to your position, which is a very good thing.
 
-People don't like to be sold, but they love to buy.
-The sales process begins with a prospect and ends with a paying customer
-Without a certain amount of Trust between parties, a Transaction will not take place
+Sales
+--------
 
-A compromise is the art of dividing a cake in such a way that everyone believes he has the biggest piece
-     - Ludwig Erhard
-Common Ground is a state of overlapping interests between two or more parties. 
-Negotiation is the process of exploring different options to find Common Ground. 
-The more potential paths you explorer, the greater the chance you'll be able to find one in which your interests overlap.
+Critically Important Assumptions (CIAs)
+Shadow testing is the process of selling an offering before it actually exists. 
+As long as you're completely up front with your potential customers that the offering is still in development, 
+shadow testing is very useful strategy you can use to actually test your CIAs with real customers quickly and inexpensively.
+
+The most effective way to get people to want something is to encourage them to Visualize what their life would be like once they've accepted your offer. (Mental Simulation)
+
+People don't like to be sold, but they love to buy.
+The sales process begins with a prospect and ends with a paying customer.
+Without a certain amount of Trust between parties, a Transaction will not take place.
 
 Pricing Uncertainty Principle: all prices are arbitrary and malleable. 
 The pricing uncertainty principle has an important corollary: you must be able to support your asking price before a customer will actually accept it.
@@ -188,7 +204,8 @@ Be forewarned, however, that effective education requires your offer to be super
 Your Next Best Alternative is what you'll do in the event you can't find common ground with the party you're negotiating with.
 
 The first phase of every negotiation is the setup: setting the stage for a satisfying outcome to the negotiation.
-A buffer is a third party empowered to negotiate on your behalf. To avoid permanently harming your relationship with the other party.
+A buffer is a third party empowered to negotiate on your behalf. 
+To avoid permanently harming your relationship with the other party.
 
 Barriers to Purchase:
 
@@ -202,6 +219,9 @@ When it comes to closing sales, you are that risk.
 Risk reversal is a strategy that transfer some (or all) of the risk of a Transaction from the buyer to the seller
 
 Reactivation is the process of convincing past customers to buy from you again
+
+Value delivery
+------------------
 
 A Value Stream is the set of all steps and all processes from the start of your Value Creation process all the way through the delivery of the end result to your customer.
 In general, try to make your Value Stream as small and efficient as possible. 
@@ -219,6 +239,9 @@ Throughput is a measure of the effectiveness of your Value Stream
 
 Multiplication is duplication for an entire process or system
 Products are typically easiest to duplicate, while shared resources are easiest to multiply
+
+Finance
+------------
 
 Finance is the art and science of watching the money flowing into and out of a business, then deciding how to allocate it and determine whether or not what you're doing is producing the results you want.
 Profit margin is the difference between how much revenue you capture and how much you spend to capture it, expressed in percentage term.
@@ -241,7 +264,7 @@ Compounding is the Accumulation of gains over time.
 Whenever you're able to reinvest gains, your investment will build upon itself exponentially - a positive feedback loop.
 Leverage is a form of financial amplification
 
-Funding ca help you do things that would otherwise be impossible with your current budget.
+Funding can help you do things that would otherwise be impossible with your current budget.
 
 Hierarchy of funding:
 
@@ -255,6 +278,7 @@ Hierarchy of funding:
 * Angel capital
 * Venture capital: takes over where angles leave off.
 * Public stock offering: involves selling partial ownership of the company to investors on the open market. 
+
 This is typically done via investment banks. 
 An initial public offering (IPO) is simply the first public stock offering a company offers on the open market. 
 Any investor who purchases shares is legally a partial owner of the company, which includes the right to participate in management decision via electing the board of directors. 
@@ -264,6 +288,51 @@ Investors increases communication overhead, which can adversely affect your abil
 Funding can be useful, but be wary of giving up control over your business's operations - don't do it lightly or blindly
 
 Bootstrapping is the art of building and operating a business without funding.
+
+Manage Risks
+----------------
+
+There are known knowns. 
+These are things we know that we know. 
+There are known unknowns. 
+That is to say, there are things that we know we don't know. 
+But there are also unknown unknowns. 
+These are things we don't know we don't know.
+Donald Rumsfeld
+
+Risks are known unknowns. Uncertainties are unknown unknown.
+
+Many people make a business of selling certainty, which doesn't exist. Prediction, forecasting , and other forms of business soothsaying are popular because they provide the illusion that the future is knowable and controllable.
+
+Counterparty risk is the possibility that other people won't deliver what they have promised. 
+Counterparty Risk is amplified by the planning fallacy
+
+Measurement is the process of collecting data as the system is operating. 
+By collecting information related to the core functions of the system, it's much easier to understand exactly how well the system itself is performing.
+
+What get measured gets managed
+- Peter Drucker
+
+Without data, you are blind. If you want to improve anything, you must measure it first.
+Here's the primary problem with Measurement: you can measure a million different things. 
+Measure too much, and you'll inevitably suffer from the Cognitive Scope Limitation, drowning in a sea of meaningless data.
+
+Garbage in, garbage out is a straightforward principle: put useless input into a system, and you'll get useless output.
+Analytical Honesty means measuring and analyzing the data you have dispassionately.
+Having an experienced but dispassionate third party audit your measurement and analysis practices is a neat workaround
+
+If you don't believe in sampling theory, next time you go to the doctor and he wants to take a little blood, tell him to take it all
+
+A Mean (or average) is calculated by adding the quantities of all data points, then dividing by the total number of data points available. (Easy to be affected by the outliers)
+A Median is calculated by sorting the values in order of high to low, then finding the quantity of data point in the middle of the range
+A Mode is the value that occurs most frequently in a set of data.
+A Midrange is the value halfway between the highest and lowest data points in a set values. To calculate the Midrange, add the highest and lowest values, then divide by two.
+
+Correlation is not Causation. 
+Even if you notice that one measurement is highly associated with another, that does not prove that one thing caused the other norms are measures that use historical data as a tool to provide Context for current measurement.
+
+Body and Mind
+==========================
 
 Eat high-quality food. 
 Garbage in, garbage out: pay attention to what you put into your body. 
@@ -311,6 +380,13 @@ As scary as it sounds , it's probably because they simply haven't thought too mu
 Because the brain is a Pattern Matching machine, it's constantly trying to figure out what's associated with what. As a result, your mind effortlessly forms Associations - even between things that aren't logically connected.
 Absence Blindness also makes it uncomfortable for people to 'do nothing' when something bad happens, even if doing nothing is the best course of action. 
 Often, the best course of action is to choose not to act, but that's often difficult for humans to accept emotionally.
+
+A compromise is the art of dividing a cake in such a way that everyone believes he has the biggest piece
+     - Ludwig Erhard
+
+Common Ground is a state of overlapping interests between two or more parties. 
+Negotiation is the process of exploring different options to find Common Ground. 
+The more potential paths you explorer, the greater the chance you'll be able to find one in which your interests overlap.
 
 Experiences makes it easier to avoid Absence Blindness. 
 Experience is valuable primarily because the expert has a larger mental database of related Patterns, and thus a higher chance of noticing an absence. 
@@ -373,7 +449,8 @@ Understanding your Locus of Control is being able to separate what you can contr
 Trying to control things that aren't actually under your control is a recipe for eternal frustration.
 Focus most of your energy on things that you can influence, and et everything else go.
 
-Personal R&D budget - 5%?
+Relationship
+=================
 
 All human relationships are based on Power - the ability to influence the actions of other people. 
 We don't have direct access to the inner processes that make people do the things they do. 
@@ -427,59 +504,20 @@ Let others know you expect great work from them, and they'll do their best to li
 
 The Attribution Error means that when others screw up, we blame their character; when we screw up, we attribute the situation to circumstances.
 
-There are known knowns. 
-These are things we know that we know. 
-There are known unknowns. 
-That is to say, there are things that we know we don't know. 
-But there are also unknown unknowns. 
-These are things we don't know we don't know.
- - Donald Rumsfeld
-
-Risks are known unknowns. Uncertainties are unknown unknown.
-
-Many people make a business of selling certainty, which doesn't exist. Prediction, forecasting , and other forms of business soothsaying are popular because they provide the illusion that the future is knowable and controllable.
-
-Counterparty risk is the possibility that other people won't deliver what they have promised. 
-Counterparty Risk is amplified by the planning fallacy
-
-Measurement is the process of collecting data as the system is operating. 
-By collecting information related to the core functions of the system, it's much easier to understand exactly how well the system itself is performing.
-
-What get measured gets managed
-- Peter Drucker
-
-Without data, you are blind. If you want to improve anything, you must measure it first.
-Here's the primary problem with Measurement: you can measure a million different things. 
-Measure too much, and you'll inevitably suffer from the Cognitive Scope Limitation, drowning in a sea of meaningless data.
-
-Typically, business-related KPIs are directly related to either the Five Parts of Every Business or throughput.
-
-* Value Creation: how quickly is the system creating value? what is the current level of inflows?
-* Marketing: how many people are paying attention to your offer? how many prospects are giving you permission to provide more information?
-* Sales: How many prospects are becoming paying customers? What is the average customer's lifetime value?
-* Value delivery: How quickly can you serve each customer? What is your current returns or complaints rate?
-* Finance: What is your profit margin? How much purchasing power do you have? Are you financially sufficient?
-
-Garbage in, garbage out is a straightforward principle: put useless input into a system, and you'll get useless output.
-Analytical Honesty means measuring and analyzing the data you have dispassionately.
-Having an experienced but dispassionate third party audit your measurement and analysis practices is a neat workaround
-
-If you don't believe in sampling theory, next time you go to the doctor and he wants to take a little blood, tell him to take it all
-
-A Mean (or average) is calculated by adding the quantities of all data points, then dividing by the total number of data points available. (Easy to be affected by the outliers)
-A Median is calculated by sorting the values in order of high to low, then finding the quantity of data point in the middle of the range
-A Mode is the value that occurs most frequently in a set of data.
-A Midrange is the value halfway between the highest and lowest data points in a set values. To calculate the Midrange, add the highest and lowest values, then divide by two.
-
-Correlation is not Causation. 
-Even if you notice that one measurement is highly associated with another, that does not prove that one thing caused the other norms are measures that use historical data as a tool to provide Context for current measurement.
+Others
+=========
 
 A proxy measures one quantity by measuring something else.
 Segmentation is a technique that involves splitting a data set into well-defined subgroups to add additional Context
 
 Cessation is the choice to intentionally stop doing something that's counterproductive.
 
-Resilience is never 'optimal' if you evaluate a System solely on Throughput. Flexibility always comes at a price. A turtle's shell is heavy - it could certainly move faster without it. Giving it up, however, would leave the turtle vulnerable in the moments when moving a little faster just isn't fast enough. In an effort to chase a few more short-term dollars, many business trade Resilience for short-term results - and pay a hefty price.
+Resilience is never 'optimal' if you evaluate a System solely on Throughput. 
+Flexibility always comes at a price. 
+A turtle's shell is heavy - it could certainly move faster without it. 
+Giving it up, however, would leave the turtle vulnerable in the moments when moving a little faster just isn't fast enough. 
+In an effort to chase a few more short-term dollars, many business trade Resilience for short-term results - and pay a hefty price.
+
 Here's what makes a business resilient:
 
 * Low (preferably zero) outstanding debt
@@ -496,4 +534,29 @@ Trying to base your actions on predictions of interest rates, oil prices, or sto
 Business is never easy - it's an art as much as a science.
 Constant experimentation is the only way you can identify what will actually produce the result you desire
 
+The limits of my language are the limits of my world
+ - Ludwig Wittgenstein
 
+Business school don't create successful people. 
+They simply accept them, then take credit for their success.
+
+Iteration has six major steps, WIGWAM
+
+* Watch: what's happening? what's working and what's not?
+* Ideate: What could you improve? What are your options?
+* Guess: Based on what you've learned so far, which of your ideas do you think will make the biggest impact?
+* Which: Decide which change to make.
+* Act: Actually make the change
+* Measure: What happened? Was the change positive or negative? Should you keep the change, or go back to how things were before this iteration?
+
+Feedback:
+
+* Get feedback from real potential customers instead of friends and family
+* Ask open-ended questions
+* Steady yourself, and keep calm
+* Take what you hear with a grain of salt
+* Give potential customers the opportunity to preorder
+
+Everything we hear is an opinion, not a fact. 
+Everything we see is a perspective, not the truth.
+Marcus Aurelius
