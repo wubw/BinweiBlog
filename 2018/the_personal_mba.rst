@@ -120,13 +120,7 @@ Ten ways to the evaluate a market and to identify the attractiveness of any pote
 |                             | continue selling?                                        |
 +-----------------------------+----------------------------------------------------------+
 
-
-
-
-The cardinal marketing sin is being boring.
-
 Marketing is the art and science of finding 'prospects' - people who are actively interested in what you have to offer. 
-The best business in the world find ways to attract attention of qualified prospects quickly and inexpensively. 
 
 Rule #1 of marketing is that your potential customer's available attention is limited:
 
@@ -134,59 +128,54 @@ Rule #1 of marketing is that your potential customer's available attention is li
 * Advertising is the tax you pay for being unremarkable
 * Being remarkable is the best way to attract attention
 
-The product that will not sell without advertising will not sell profitably with advertising.
 The essence of effective marketing is discovering what people already want, then presenting your offer in a way that intersects with that preexisting desire. 
-The best marketing is similar to Education-Based Selling. 
-It shows the prospect how the offer will help them achieve what they desire. 
-Your job as a marketer isn't to convince people to want what you're offering; it's to help your prospects convince themselves that what you're offering will help them get what they really want.
-When your work speaks for itself, don't interrupt.
 
-Relative Importance Testing: 
-a method that helps you determine what people actually want by asking them questions designed to simulate real life tradeoffs.
+The best marketing is similar to Education-Based Selling:
 
-Framing is the act of emphasizing the details that are critically important while de-emphasizing things that aren't, by either minimizing certain facts or leaving them out entirely.
-Asking for permission to follow up after providing free value is more effective than interruption.
+* It shows the prospect how the offer will help them achieve what they desire. 
+* Your job as a marketer isn't to convince people to want what you're offering; it's to help your prospects convince themselves that what you're offering will help them get what they really want.
+* When your work speaks for itself, don't interrupt.
 
-A hook is a single phrase or sentence that describes an offer's primary benefit.
-Ensure that every message you create has a clear Call-To-Action, and you'll dramatically increase the effectiveness of your marketing activities.
+There are several tools for marketing:
 
-Controversy means publicly taking a position that not everyone will agree with, approve of, or support. 
-Used constructively, Controversy can be an effective way to attract Attention. 
-people start talking, engaging and paying Attention to your position, which is a very good thing.
+* Relative Importance Testing: A method that helps you determine what people actually want by asking them questions designed to simulate real life tradeoffs.
+* Framing: is the act of emphasizing the details that are critically important while de-emphasizing things that aren't, by either minimizing certain facts or leaving them out entirely.
+* Hook: is a single phrase or sentence that describes an offer's primary benefit.
+* Messages with clear call-to-action: Ensure that every message you create has a clear Call-To-Action, and you'll dramatically increase the effectiveness of your marketing activities.
+* Controversy: means publicly taking a position that not everyone will agree with, approve of, or support. Used constructively, Controversy can be an effective way to attract Attention. People start talking, engaging and paying Attention to your position, which is a very good thing.
 
 Sales
 --------
 
-Critically Important Assumptions (CIAs)
-Shadow testing is the process of selling an offering before it actually exists. 
-As long as you're completely up front with your potential customers that the offering is still in development, 
-shadow testing is very useful strategy you can use to actually test your CIAs with real customers quickly and inexpensively.
-
-The most effective way to get people to want something is to encourage them to Visualize what their life would be like once they've accepted your offer. (Mental Simulation)
-
-People don't like to be sold, but they love to buy.
 The sales process begins with a prospect and ends with a paying customer.
+
+There are several tools for sales:
+
+* Critical Assumptions: Are facts or characteristics that must be true in the real world for your offering to be successful.
+* Shadow Testing: is the process of selling an offering before it actually exists. Shadow testing is very useful strategy you can use to actually test your critical assumptions with real customers quickly and inexpensively.
+* Mental Simulation: The most effective way to get people to want something is to encourage them to Visualize what their life would be like once they've accepted your offer. 
+* Sale vs Buy: People don't like to be sold, but they love to buy.
+* Value-based selling: is not about talking - it's about listening. In reality, the best sales people are the ones who can listen intently for the things the customer really wants.
+* SPIN selling: understanding the situation; defining the problem; clarifying the short-term and long-term implications of that problem; quantifying the need-payoff, or the financial and emotional benefits the customer would experience after the resolution of their problem
+* Education-based selling is the process of making your prospects better, more informed customers. By investing energy in making your prospects smarter, you simultaneously build trust in your expertise and make them better customers. Be forewarned, however, that effective education requires your offer to be superior in some way to your competitors
+* Risk reversal: When it comes to closing sales, you are that risk. Risk reversal is a strategy that transfer some (or all) of the risk of a Transaction from the buyer to the seller
+
+Reactivation is the process of convincing past customers to buy from you again
+
+**Important sales principles:**
+
 Without a certain amount of Trust between parties, a Transaction will not take place.
 
-Pricing Uncertainty Principle: all prices are arbitrary and malleable. 
+Pricing Uncertainty Principle: 
+all prices are arbitrary and malleable. 
 The pricing uncertainty principle has an important corollary: you must be able to support your asking price before a customer will actually accept it.
 
 4 ways to support a prices on something of value:
 
-* replacement cost: How much would it cost to replace? What would it cost to create or construct a house just like this one?
-* market comparison: How much are other things like this selling for
-* discounted cash flow/net present value: How much is it worth if it can bring in money over time? How much would this house bring in each month if you rented it for a period of time, and how much is that series of cash flows worth as a lump sum today?
-* value comparison: Who is this particularly valuable to? What features of this house would make it valuable to certain type of people?
-
-Value-based selling is not about talking - it's about listening. 
-In reality, the best sales people are the ones who can listen intently for the things the customer really wants.
-
-SPIN selling
-
-* understanding the situation
-* defining the problem
-* clarifying the short-term and long-term implications of that problem
-* quantifying the need-payoff, or the financial and emotional benefits the customer would experience after the resolution of their problem
+* replacement cost: How much would it cost to replace? 
+* market comparison: How much are other things like this selling for?
+* discounted cash flow/net present value: How much is it worth if it can bring in money over time? 
+* value comparison: Who is this particularly valuable to? 
 
 In stead of barging in with a premature, boilerplate hard sell, successful salespeople focus on asking detailed questions to get to the root of what the prospect really wants.
 
@@ -195,19 +184,7 @@ By encouraging your prospects to tell you more about what they need, you reap tw
 * you increase the prospect's confidence in your understanding of the situation, increasing their confidence in your ability to deliver a solution
 * you'll discover information that will help you emphasize just how valuable your offer is, which helps you in Framing the price of your offer versus the value it will provide
 
-Understanding the value you can provide your customers is the golden path to a profitable sale.
-
-Education-based selling is the process of making your prospects better, more informed customers.
-By investing energy in making your prospects smarter, you simultaneously build trust in your expertise and make them better customers. 
-Be forewarned, however, that effective education requires your offer to be superior in some way to your competitors
-
-Your Next Best Alternative is what you'll do in the event you can't find common ground with the party you're negotiating with.
-
-The first phase of every negotiation is the setup: setting the stage for a satisfying outcome to the negotiation.
-A buffer is a third party empowered to negotiate on your behalf. 
-To avoid permanently harming your relationship with the other party.
-
-Barriers to Purchase:
+There several barriers to purchase:
 
 * It costs too much => Framing, Value based selling
 * It won't work => Social Proof, Referrals
@@ -215,10 +192,13 @@ Barriers to Purchase:
 * I can wait => Education-based selling
 * It's too difficult
 
-When it comes to closing sales, you are that risk.
-Risk reversal is a strategy that transfer some (or all) of the risk of a Transaction from the buyer to the seller
+Your Next Best Alternative is what you'll do in the event you can't find common ground with the party you're negotiating with.
 
-Reactivation is the process of convincing past customers to buy from you again
+* The first phase of every negotiation is the setup: setting the stage for a satisfying outcome to the negotiation.
+* A buffer is a third party empowered to negotiate on your behalf, to avoid permanently harming your relationship with the other party.
+
+
+
 
 Value delivery
 ------------------
