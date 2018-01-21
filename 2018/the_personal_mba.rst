@@ -197,152 +197,95 @@ Your Next Best Alternative is what you'll do in the event you can't find common 
 * The first phase of every negotiation is the setup: setting the stage for a satisfying outcome to the negotiation.
 * A buffer is a third party empowered to negotiate on your behalf, to avoid permanently harming your relationship with the other party.
 
-
-
-
 Value delivery
 ------------------
 
 A Value Stream is the set of all steps and all processes from the start of your Value Creation process all the way through the delivery of the end result to your customer.
 In general, try to make your Value Stream as small and efficient as possible. 
-The shorter and more streamlined your Value Stream, the easier it is to manage and the more effectively you'll be able to deliver value.
 
-A Distribution channel describes how your form of value is actually delivered to the end user
+Measurement:
 
-* direct-to-user
-* intermediary -> reseller
-
-Expectation effect: Quality = performance - expectations
-
-Throughput is the rate at which a system achieves its desired goal. 
-Throughput is a measure of the effectiveness of your Value Stream
-
-Multiplication is duplication for an entire process or system
-Products are typically easiest to duplicate, while shared resources are easiest to multiply
+* Expectation effect: Quality = performance - expectations
+* Throughput: is the rate at which a system achieves its desired goal, which is a measure of the effectiveness of your Value Stream
+* Multiplication: is duplication for an entire process or system. Products are typically easiest to duplicate, while shared resources are easiest to multiply
 
 Finance
 ------------
 
 Finance is the art and science of watching the money flowing into and out of a business, then deciding how to allocate it and determine whether or not what you're doing is producing the results you want.
-Profit margin is the difference between how much revenue you capture and how much you spend to capture it, expressed in percentage term.
 
-Value capture is the process of retaining some percentage of the value provided in every transaction
-Pricing power is your ability to raise the prices you're charging over time. 
-The less value you're capturing, the greater your pricing power.
-Price elasticity, Social signal
+Terminology:
 
-Lifetime Value is the total value of a customer's business over the lifetime of their relationship with your company.
-One of the reasons Subscriptions are so profitable is that they naturally maximize lifetime value
-
-Allowable Acquisition Cost (AAC) is the marketing component of Lifetime Value. 
-The higher the average customer's Lifetime Value, the more you can spend to attract a new customer, making it possible to spread the word about your offer in new ways.
-Subscription: the first sale is sometimes called a 'loss leader' - an enticing offer intended to establish a relationship with a new customer. 
-Many subscription business use loss leaders to build their subscriber base.
-
-Amortization is the process of spreading the cost of a resource investment over the estimated useful life of that investment.
-Compounding is the Accumulation of gains over time. 
-Whenever you're able to reinvest gains, your investment will build upon itself exponentially - a positive feedback loop.
-Leverage is a form of financial amplification
-
-Funding can help you do things that would otherwise be impossible with your current budget.
-
-Hierarchy of funding:
-
-* Personal cash
-* Personal credit
-* Personal loans
-* Unsecured loans: does not need collateral
-* Secured loans: need collateral
-* Bonds: are debt sold to individual lenders. Instead of asking a bank for a loan directly, the business asks individuals or other companies to loan them money directly.
-* Receivables financing: special type of secured lending unique to business. Receivable financing can make millions of dollars in credit available, but at a cost: the collateral for the loan is control over the business's receivables.
-* Angel capital
-* Venture capital: takes over where angles leave off.
-* Public stock offering: involves selling partial ownership of the company to investors on the open market. 
-
-This is typically done via investment banks. 
-An initial public offering (IPO) is simply the first public stock offering a company offers on the open market. 
-Any investor who purchases shares is legally a partial owner of the company, which includes the right to participate in management decision via electing the board of directors. 
-Whoever owns the most shares in the company controls it, so 'going public' creates the risk of a hostile takeover.
+* Profit margin: is the difference between how much revenue you capture and how much you spend to capture it, expressed in percentage term.
+* Value capture: is the process of retaining some percentage of the value provided in every transaction
+* Pricing power: is your ability to raise the prices you're charging over time. The less value you're capturing, the greater your pricing power.
+* Lifetime Value: is the total value of a customer's business over the lifetime of their relationship with your company. One of the reasons Subscriptions are so profitable is that they naturally maximize lifetime value
+* Allowable Acquisition Cost (AAC): is the marketing component of Lifetime Value. The higher the average customer's Lifetime Value, the more you can spend to attract a new customer, making it possible to spread the word about your offer in new ways. Subscription: the first sale is sometimes called a 'loss leader' - an enticing offer intended to establish a relationship with a new customer. Many subscription business use loss leaders to build their subscriber base.
+* Amortization: is the process of spreading the cost of a resource investment over the estimated useful life of that investment.
+* Funding: can help you do things that would otherwise be impossible with your current budget.
+* Initial public offering (IPO): is simply the first public stock offering a company offers on the open market. Any investor who purchases shares is legally a partial owner of the company, which includes the right to participate in management decision via electing the board of directors. Whoever owns the most shares in the company controls it, so 'going public' creates the risk of a hostile takeover.
+* Bootstrapping: is the art of building and operating a business without funding.
 
 Investors increases communication overhead, which can adversely affect your ability to get things done quickly.
 Funding can be useful, but be wary of giving up control over your business's operations - don't do it lightly or blindly
 
-Bootstrapping is the art of building and operating a business without funding.
-
 Manage Risks
 ----------------
 
-There are known knowns. 
-These are things we know that we know. 
-There are known unknowns. 
-That is to say, there are things that we know we don't know. 
-But there are also unknown unknowns. 
-These are things we don't know we don't know.
-Donald Rumsfeld
-
-Risks are known unknowns. Uncertainties are unknown unknown.
-
-Many people make a business of selling certainty, which doesn't exist. Prediction, forecasting , and other forms of business soothsaying are popular because they provide the illusion that the future is knowable and controllable.
-
-Counterparty risk is the possibility that other people won't deliver what they have promised. 
-Counterparty Risk is amplified by the planning fallacy
-
-Measurement is the process of collecting data as the system is operating. 
-By collecting information related to the core functions of the system, it's much easier to understand exactly how well the system itself is performing.
-
 What get measured gets managed
 - Peter Drucker
+
+Risks are known unknowns. Uncertainties are unknown unknown.
 
 Without data, you are blind. If you want to improve anything, you must measure it first.
 Here's the primary problem with Measurement: you can measure a million different things. 
 Measure too much, and you'll inevitably suffer from the Cognitive Scope Limitation, drowning in a sea of meaningless data.
 
 Garbage in, garbage out is a straightforward principle: put useless input into a system, and you'll get useless output.
-Analytical Honesty means measuring and analyzing the data you have dispassionately.
+
+Analytical Honesty: means measuring and analyzing the data you have dispassionately.
 Having an experienced but dispassionate third party audit your measurement and analysis practices is a neat workaround
+
+Counterparty risk: is the possibility that other people won't deliver what they have promised, which  is amplified by the planning fallacy
 
 If you don't believe in sampling theory, next time you go to the doctor and he wants to take a little blood, tell him to take it all
 
-A Mean (or average) is calculated by adding the quantities of all data points, then dividing by the total number of data points available. (Easy to be affected by the outliers)
-A Median is calculated by sorting the values in order of high to low, then finding the quantity of data point in the middle of the range
-A Mode is the value that occurs most frequently in a set of data.
-A Midrange is the value halfway between the highest and lowest data points in a set values. To calculate the Midrange, add the highest and lowest values, then divide by two.
+* A Mean (or average) is calculated by adding the quantities of all data points, then dividing by the total number of data points available. (Easy to be affected by the outliers)
+* A Median is calculated by sorting the values in order of high to low, then finding the quantity of data point in the middle of the range
+* A Mode is the value that occurs most frequently in a set of data.
+* A Midrange is the value halfway between the highest and lowest data points in a set values. To calculate the Midrange, add the highest and lowest values, then divide by two.
 
 Correlation is not Causation. 
-Even if you notice that one measurement is highly associated with another, that does not prove that one thing caused the other norms are measures that use historical data as a tool to provide Context for current measurement.
 
 Body and Mind
 ==========================
 
+Body
+--------
+
 Eat high-quality food. 
 Garbage in, garbage out: pay attention to what you put into your body. 
-If you eat meat, eggs, or dairy, avoid sources that contain antibiotics or hormones. 
-Also avoid refined sugar and processed foods as much as possible.
+If you eat meat, eggs, or dairy, avoid sources that contain antibiotics or hormones. Also avoid refined sugar and processed foods as much as possible.
+
 Even low-intensity physical activity increases energy, improves mental performance and enhances your ability to focus.
+
 Get at least seven to eight hours of sleep each night. 
 Going to bed early helps you get up early, which is very useful if you do creative work - I find it's best to write or do other creative tasks before the day begins, so you don't get distracted and run out of time.
+
 Get enough sun, but not too much -> Vitamin D
-Just make sure whatever you buy is highly bioavailable - supplements won't help you if they pass through your body undigested
 
-Brain as an onion:
-
-* hindbrain (lizard brain): responsible for all of the physiological functions necessary for survival: heart rate, sleeping, waking, reflexes, muscle movements, and biological urges
-* midbrain: responsible for processing sensory data, emotion, memory and pattern matching. The midbrain is the radio announcer, and the hindbrain is the radio.
-* forebrain: responsible for the cognitive capabilities that makes us distinctly human: self-awareness, logic, deliberation, inhibition and decision.
-* Mediation -> books Mindfulness in Plain English; Wherever you go, there you are
+Mind
+-------
 
 We've evolved to avoiding expending energy unless absolutely necessary, which I call Conservation of Energy
 Marathon: When you're so tired that it feels like you're about to kick the bucket any second, physiologically, you're not even remotely close to actually dying. 
 The signals your brain is sending to your body are a ruse that serves as a warning, prompting you to keep some energy in reserve, just in case energy is needed later.
-Conservation of Energy explains why some people stay in dead-end jobs for decades, even though they know the position isn't great. Reference Level.
+Conservation of Energy explains why some people stay in dead-end jobs for decades, even though they know the position isn't great. 
 
-Instead of relying on willpower to keep doing something, change the structure of Environment to support your choices
+Instead of relying on willpower to keep doing something, change the structure of Environment to support your choices.
 Guiding Structure means the structure of your environment is the largest determinant of your behavior. 
 If you want to successfully change a behavior, don't try to change the behavior directly. 
-Change the structure that influences or supports the behavior, and the behavior will change automatically
-
-Reorganization is random action that occurs when a Reference Level is violated but you don't know what to do to bring the perception back under control.
-That's what reorganization is for - it's the impulse to consider or try new things to see what works.
+Change the structure that influences or supports the behavior, and the behavior will change automatically.
 
 Inhibition is the ability to temporarily override our nature inclinations.
 Willpower is the fuel of inhibition.
@@ -354,21 +297,9 @@ Instead of having players gamble with currency, which is perceived as valuable, 
 As the player loses this 'fake' money over time, the casino will provide 'rewards' like free drinks, T-shirts, room upgrades, or other benefits to alleviate any remaining sense of loss. 
 As a result, losing becomes 'no big deal', so players continue to play - and continue to lose money night after night.
 
-Whenever you see an executive making a boneheaded decision like dumping toxic waste into a river millions of people drink from, or downsizing thousands of jobs while handing out millions of dollars in bonuses, it's probably not because they're rotten to the core. 
-As scary as it sounds , it's probably because they simply haven't thought too much about it - the scope and scale of what they're managing is too complex to handle, so their mind processes the decision abstractly instead of viscerally.
-
-Because the brain is a Pattern Matching machine, it's constantly trying to figure out what's associated with what. As a result, your mind effortlessly forms Associations - even between things that aren't logically connected.
 Absence Blindness also makes it uncomfortable for people to 'do nothing' when something bad happens, even if doing nothing is the best course of action. 
 Often, the best course of action is to choose not to act, but that's often difficult for humans to accept emotionally.
-
-A compromise is the art of dividing a cake in such a way that everyone believes he has the biggest piece
-     - Ludwig Erhard
-
-Common Ground is a state of overlapping interests between two or more parties. 
-Negotiation is the process of exploring different options to find Common Ground. 
-The more potential paths you explorer, the greater the chance you'll be able to find one in which your interests overlap.
-
-Experiences makes it easier to avoid Absence Blindness. 
+Experience makes it easier to avoid Absence Blindness. 
 Experience is valuable primarily because the expert has a larger mental database of related Patterns, and thus a higher chance of noticing an absence. 
 By noticing violations of expected Patterns, experienced people are more likely to get an 'odd feeling' that things 'aren't quite right', which is often enough warning to find an issue before it becomes serious.
 
@@ -383,6 +314,10 @@ Scarcity is one of the things that naturally overcomes our tendency to conserve 
 * Limited quantities
 * Price increases
 * Deadlines
+
+
+
+
 
 Novelty - the presence of new sensory data - is critical if you want to attract and maintain attention over a long period of time. One of the reasons people can focus on playing games or surfing the Internet for hours at a time is novelty - every new viral video, blog post, Facebook update, Twitter post and news report reengages our ability to pay attention.
 Even the most remarkable object of attention gets boring over time. 
@@ -428,6 +363,13 @@ It's important to realize that these feelings are irrational - your decisions we
 Understanding your Locus of Control is being able to separate what you can control (or strongly influence) from what you can't. 
 Trying to control things that aren't actually under your control is a recipe for eternal frustration.
 Focus most of your energy on things that you can influence, and et everything else go.
+
+A compromise is the art of dividing a cake in such a way that everyone believes he has the biggest piece
+     - Ludwig Erhard
+
+Common Ground is a state of overlapping interests between two or more parties. 
+Negotiation is the process of exploring different options to find Common Ground. 
+The more potential paths you explorer, the greater the chance you'll be able to find one in which your interests overlap.
 
 Relationship
 =================
