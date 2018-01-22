@@ -6,9 +6,9 @@ The Personal MBA
    :tags: booknotes
    :category: Management
 
-.. contents::
-
 This blog contains the booknotes of the book "The Personal MBA".
+
+.. contents::
 
 How to Learn
 ===========================
@@ -257,6 +257,40 @@ If you don't believe in sampling theory, next time you go to the doctor and he w
 
 Correlation is not Causation. 
 
+Other facts of business
+--------------------------
+
+Resilience is never 'optimal' if you evaluate a System solely on Throughput. 
+Flexibility always comes at a price. 
+A turtle's shell is heavy - it could certainly move faster without it. 
+Giving it up, however, would leave the turtle vulnerable in the moments when moving a little faster just isn't fast enough. 
+In an effort to chase a few more short-term dollars, many business trade Resilience for short-term results - and pay a hefty price.
+
+Scenario planning is the essence of effective strategy. 
+Trying to base your actions on predictions of interest rates, oil prices, or stock values is a fool's game. 
+Instead of trying to predict the future with 100 percent accuracy, Scenario Planning can help you prepare for many different possible futures.
+
+Business is never easy - it's an art as much as a science.
+Constant experimentation is the only way you can identify what will actually produce the result you desire.
+
+The limits of my language are the limits of my world
+- Ludwig Wittgenstein
+
+Business school don't create successful people. 
+They simply accept them, then take credit for their success.
+
+Feedback:
+
+* Get feedback from real potential customers instead of friends and family
+* Ask open-ended questions
+* Steady yourself, and keep calm
+* Take what you hear with a grain of salt
+* Give potential customers the opportunity to preorder
+
+Everything we hear is an opinion, not a fact. 
+Everything we see is a perspective, not the truth.
+- Marcus Aurelius
+
 Body and Mind
 ==========================
 
@@ -315,32 +349,23 @@ Scarcity is one of the things that naturally overcomes our tendency to conserve 
 * Price increases
 * Deadlines
 
-
-
-
-
-Novelty - the presence of new sensory data - is critical if you want to attract and maintain attention over a long period of time. One of the reasons people can focus on playing games or surfing the Internet for hours at a time is novelty - every new viral video, blog post, Facebook update, Twitter post and news report reengages our ability to pay attention.
+Novelty - the presence of new sensory data - is critical if you want to attract and maintain attention over a long period of time. 
+One of the reasons people can focus on playing games or surfing the Internet for hours at a time is novelty - every new viral video, blog post, Facebook update, Twitter post and news report reengages our ability to pay attention.
 Even the most remarkable object of attention gets boring over time. 
-Human attention requires novelty to sustain itself. 
 Continue to offer something new, and people will pay attention to what you have to offer.
 
 Monoidealism is the state of focusing your energy and attention on only one thing, without conflicts. 
 Monoidealism is often called a 'flow' state
 
-We are what we repeatedly do. Excellence, then, is not an act, but a habit.
-
-Priming is a method of consciously programming your brain to alert you when particular information is present in your Environment.
-10 Days to faster reading: purpose setting -> taking a few minutes before you start reading to figure out: 1. why you want to read this material and 2 what kind of information you're looking for.
-Pick up the book and flip through it quickly, paying particular attention to the table of contents, section headings, and index - condensed sources of information about what the book contains and how the material is structured
+We are what we repeatedly do. 
+Excellence, then, is not an act, but a habit.
 
 No decision, large or small, is ever made with complete information. 
 Since we can't predict the future, we often attribute the feeling of indecisiveness to a lack of information.
 
-Five-fold Why
-Five-fold How
-
 Externalization takes advantage of our perceptual abilities in a very intelligent way. 
 There are two primary ways to externalize your thoughts: writing and speaking.
+
 Counter-factual Simulation as applied imagination - you're consciously posing a 'what if' or 'what would happen if' question to your mind, then sitting back and letting your brain do what it does best.
 A doomsday Scenario is a counterfactual simulation where you assume everything that can go wrong does go wrong. 
 Caveman Syndrome makes our ancient brains over dramatic, so they assume every potential threat is a life-or-death situation.
@@ -355,21 +380,14 @@ Dunning-Kruger effect:
 * If they can be trained to substantially improve their own skill level, these individuals can recognize and acknowledge their own previous lack of skill
 
 Confirmation Bias is the general tendency for people to pay attention to information that supports their conclusions and ignore information that doesn't.
-Looking for dis confirming information is uncomfortable, but it's useful, whatever you ultimately decide.
+Looking for not confirming information is uncomfortable, but it's useful, whatever you ultimately decide.
 
 hindsight Bias is the natural tendency to kick yourself for things you 'should have known'. 
 It's important to realize that these feelings are irrational - your decisions were based on the best information you had at the time, and there's nothing you can do now to change them.
 
 Understanding your Locus of Control is being able to separate what you can control (or strongly influence) from what you can't. 
 Trying to control things that aren't actually under your control is a recipe for eternal frustration.
-Focus most of your energy on things that you can influence, and et everything else go.
-
-A compromise is the art of dividing a cake in such a way that everyone believes he has the biggest piece
-     - Ludwig Erhard
-
-Common Ground is a state of overlapping interests between two or more parties. 
-Negotiation is the process of exploring different options to find Common Ground. 
-The more potential paths you explorer, the greater the chance you'll be able to find one in which your interests overlap.
+Focus most of your energy on things that you can influence, and let everything else go.
 
 Relationship
 =================
@@ -378,19 +396,9 @@ All human relationships are based on Power - the ability to influence the action
 We don't have direct access to the inner processes that make people do the things they do. 
 All we can really do is act in ways that encourage people to do what we suggest.
 On the whole, influence is much more effective than compulsion.
-Comparative Advantage means it's better to capitalize on your strengths than to shore up your weaknesses
-Focus on what you can do well, and work with others to accomplish the rest
 
-8 Symptions of Bureaucratic Breakdown that appears in teams suffering from communication overhead:
-
-* The invisible Decision: No one knows how or where decisions are made, and there is no transparency in the decision-making process
-* Unfinished business: Too many tasks are started but very few are carried through to the end
-* Coordination Paralysis: Nothing can be done without checking with a host of interconnected units
-* Nothing New: There are no radical ideas, inventions, or lateral thinking - a general lack of initiative
-* Pseudo - problems: Minor issues become magnified out of all proportion
-* Embattled center: The center battles for consistency and control against local/regional units
-* Negative deadlines: The deadlines for work become more important than the quality of the work being done
-* Input domination: Individuals react to input - i.e. whatever gets put in their in-tray - as opposed to using their own initiative.
+Comparative Advantage means it's better to capitalize on your strengths than to shore up your weaknesses.
+Focus on what you can do well, and work with others to accomplish the rest.
 
 Golden Trifecta:
 
@@ -398,7 +406,7 @@ Golden Trifecta:
 * Courtesy
 * Respect
 
-Treating other people poorly sends a clear signal to everyone that you can't be trusted
+Treating other people poorly sends a clear signal to everyone that you can't be trusted.
 
 Humans are predisposed to look for behavioral causes. 
 People will be more receptive to any request if you give them a reason why. Any reason will do.
@@ -407,78 +415,18 @@ The more your agent understands the purpose behind your actions, the better they
 
 Accountability is about one person taking responsibility. 
 If two people are accountable for the same decision, no one is really accountable.
-
 Bystander Apathy is an inverse relationship between the number of people who could take action and the number of people who actually choose to act. 
 The more people available, the less responsibility each member of the crowd feels to do anything about the situation.
-
-The value of planning is in Mental Simulation: the thought process required to create the plan itself
-Human naturally tend to form distinct groups, a process called Clanning.
-Understand the group dynamic, or you're likely to be caught up in it.
-If your social circle isn't supporting your goals, change your social circle.
-
-Social Signals are tangible indicators of some intangible quality that increases a person's social status or group affiliation.
-
-In most situations, the actions of other individuals in our situation are a very strong indication that it's okay to behave in a certain way. 
-When a situation is ambiguous, we learn by watching the behavior of others. 
 
 Pygmalion Effect:
 Let others know you expect great work from them, and they'll do their best to live up to your expectation.
 
 The Attribution Error means that when others screw up, we blame their character; when we screw up, we attribute the situation to circumstances.
 
-Others
-=========
+A compromise is the art of dividing a cake in such a way that everyone believes he has the biggest piece
+- Ludwig Erhard
 
-A proxy measures one quantity by measuring something else.
-Segmentation is a technique that involves splitting a data set into well-defined subgroups to add additional Context
+Common Ground is a state of overlapping interests between two or more parties. 
+Negotiation is the process of exploring different options to find Common Ground. 
+The more potential paths you explorer, the greater the chance you'll be able to find one in which your interests overlap.
 
-Cessation is the choice to intentionally stop doing something that's counterproductive.
-
-Resilience is never 'optimal' if you evaluate a System solely on Throughput. 
-Flexibility always comes at a price. 
-A turtle's shell is heavy - it could certainly move faster without it. 
-Giving it up, however, would leave the turtle vulnerable in the moments when moving a little faster just isn't fast enough. 
-In an effort to chase a few more short-term dollars, many business trade Resilience for short-term results - and pay a hefty price.
-
-Here's what makes a business resilient:
-
-* Low (preferably zero) outstanding debt
-* Low overhead, fixed costs, and operating expenses
-* Substantial cash reserves for unexpected contingencies
-* Multiple independent products/industries/lines of business
-* Flexible workers/employees who can handle many responsibilities well
-* No single points of failure
-* Fail-safe/backup systems for all core processes
-
-Scenario planning is the essence of effective strategy. 
-Trying to base your actions on predictions of interest rates, oil prices, or stock values is a fool's game. Instead of trying to predict the future with 100 percent accuracy, Scenario Planning can help you prepare for many different possible futures.
-
-Business is never easy - it's an art as much as a science.
-Constant experimentation is the only way you can identify what will actually produce the result you desire
-
-The limits of my language are the limits of my world
- - Ludwig Wittgenstein
-
-Business school don't create successful people. 
-They simply accept them, then take credit for their success.
-
-Iteration has six major steps, WIGWAM
-
-* Watch: what's happening? what's working and what's not?
-* Ideate: What could you improve? What are your options?
-* Guess: Based on what you've learned so far, which of your ideas do you think will make the biggest impact?
-* Which: Decide which change to make.
-* Act: Actually make the change
-* Measure: What happened? Was the change positive or negative? Should you keep the change, or go back to how things were before this iteration?
-
-Feedback:
-
-* Get feedback from real potential customers instead of friends and family
-* Ask open-ended questions
-* Steady yourself, and keep calm
-* Take what you hear with a grain of salt
-* Give potential customers the opportunity to preorder
-
-Everything we hear is an opinion, not a fact. 
-Everything we see is a perspective, not the truth.
-Marcus Aurelius
