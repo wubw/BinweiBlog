@@ -2,7 +2,7 @@
 The Personal MBA
 =====================
 
-.. post:: Jan 13, 2018
+.. post:: Jan 22, 2018
    :tags: booknotes
    :category: Management
 
@@ -430,3 +430,4 @@ Common Ground is a state of overlapping interests between two or more parties.
 Negotiation is the process of exploring different options to find Common Ground. 
 The more potential paths you explorer, the greater the chance you'll be able to find one in which your interests overlap.
 
+*Written by Binwei@Oslo*
