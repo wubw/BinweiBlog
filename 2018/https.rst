@@ -6,22 +6,32 @@ Https Explainations
    :tags: security
    :category: ComputerScience
 
+Hypertext Transfer Protocol Secure (HTTPS) is a safer version of HTTP, which is the communications protocol of the World Wide Web.
+An HTTPS session is encrypted using either the SSL protocol (Secure Socket Layer) or TLS protocol (Transport Layer Security) and offers protection against "eavesdropping" and that any change in the transmitted data.
+
 Introduction
 =================
 
-Typical MitM Insertion Points:
+First Man in the middle attack in Chinese history. From "资治通鉴":
+
+春，黑山贼帅张燕与公孙续率兵十万，三道救之。
+未至，瓒密使行人赍书告续，使引五千铁骑于北隰之中，起火为应，瓒欲自内出战。
+绍候得其书，如期举火。
+瓒以为救至，遂出战。
+绍设伏击之，瓒大败，复还自守。
+
+Typical Man in the middle Insertion Points:
 
 * Browser
 * Wireless Router
 * ISP
 * Web Server
 
-Chrome browser, press F12 and goto Security tab, you can see the certificates of the https web site
-
-certmgr.msc, to see the trusted CA (Firefox has its own CA manager)
-
 SSL: Secure Sockets Layer
 TLS: Transport Layer Security
+
+Tech details
+===============
 
 TLS handshake
 
@@ -30,9 +40,6 @@ TLS handshake
 * client use the public key to verify whether this is the real website through CA
 * client start key exchange which is encrypted by using public key
 * server finished and communication begins the handshake is not encrypted
-
-Tech details
-===============
 
 Downgrade the communication version. Client claims it only has lower TLS version, and force the communication to be on lower version. Then use the opportunity to attack
 
@@ -68,38 +75,9 @@ Extended validation certificate
 
 .. image:: images/extended_validation_certificate.png
 
-SNI: Server Name Indication
-Enables multiple certs on the one IP address 
-
-SAN: Subject Alternative Name:
-Combine multiple domain names on the one cert
-
-PFS: Perfect Forward Secrecy
-Protects past sessions against future key compromise
-
-DNSSEC: Domain name system security extensions
-Protects against forged DNS records
-
-DANE: NDS Based Authentication of Named Entities
-Specifies the cert keys at the DNS level
-
-CAA: Certificate Authority Authorization
-Specifies allowable Cas for the domain at the DNS level
-
-CRL: certificate revocation list
-List of revoked certificates maintained by the CA
-
-OCSP: Online certificate status protocol
-List of revoked certificates maintained by the CA
-
-PKP: Public key pinning
-Ensures a client will only accept predefined certs
-
-HPKP:
-Defines the public keys that are allowed
-Specifies the max age
-Defines whether it applies to subdomains
-Facilitates reporting of violation
+When a web server is set up to accept https connections, the administrator must create a digital certificate for the web server.
+This certificate must then be signed by a certificate authority. This proves that the certificate owner is really the entity it states to be
+Browsers are generally distributed with the signing certificates of known certificate authorities in order to verify that the certificates were really signed by them.
 
 Tools relevant
 ====================
@@ -116,6 +94,10 @@ What Fiddler has done is a man in the middle attack on the machine
 See Cookies:
 F12 -> Application tab -> Cookies
 Secure cookie cannot be get if it is on http channel
+
+Chrome browser, press F12 and goto Security tab, you can see the certificates of the https web site
+
+certmgr.msc, to see the trusted CA (Firefox has its own CA manager)
 
 Relevant websites
 ======================
