@@ -1,0 +1,517 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Git: Getting Started &#8212; binwei  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../about/" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="binwei Blog">
+  
+  
+  <link href="True" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="git-getting-started">
+<h1><a class="toc-backref" href="#id1">Git: Getting Started</a><a class="headerlink" href="#git-getting-started" title="Permalink to this headline">¶</a></h1>
+<p>Git is an open source distributed version control system, which plays important role in current software ecosystem.
+You may find many GUI Git tools like SourceTree, Github Desktop, TortoiseGit etc, however the best way to learn Git is to deep dive into the Git commands and understand the fundamental. Let&#8217;s start the &#8216;Git journey&#8217; by using the basic commands.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#git-getting-started" id="id1">Git: Getting Started</a><ul>
+<li><a class="reference internal" href="#install-git" id="id2">Install Git</a></li>
+<li><a class="reference internal" href="#initialize-repository" id="id3">Initialize Repository</a></li>
+<li><a class="reference internal" href="#check-status" id="id4">Check Status</a></li>
+<li><a class="reference internal" href="#add-files" id="id5">Add Files</a></li>
+<li><a class="reference internal" href="#commit-to-local-repository" id="id6">Commit to Local Repository</a></li>
+<li><a class="reference internal" href="#commit-to-remote-repository" id="id7">Commit to Remote Repository</a></li>
+<li><a class="reference internal" href="#summary" id="id8">Summary</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="install-git">
+<h2><a class="toc-backref" href="#id2">Install Git</a><a class="headerlink" href="#install-git" title="Permalink to this headline">¶</a></h2>
+<p>First, go to Git download page: <a class="reference external" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
+<p>Download and install the git on your operating system.</p>
+</div>
+<div class="section" id="initialize-repository">
+<h2><a class="toc-backref" href="#id3">Initialize Repository</a><a class="headerlink" href="#initialize-repository" title="Permalink to this headline">¶</a></h2>
+<p>In order to use Git, you need to initialize a local repository first.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir FirstRepo
+<span class="nb">cd</span> FirstRepo
+git init
+</pre></div>
+</div>
+<p>The folder and file operation commands will be slightly different depends on your operating system.</p>
+<p>A hidden .git folder should be created by the above command. You can use <em>ls -a</em> to verify it.</p>
+</div>
+<div class="section" id="check-status">
+<h2><a class="toc-backref" href="#id4">Check Status</a><a class="headerlink" href="#check-status" title="Permalink to this headline">¶</a></h2>
+<p><em>git status</em> is a handy command to check the current repository status. It is recommended it is used from time to time.</p>
+<p>If you use <em>git status</em> now, the console output will be:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">On branch master</span>
+<span class="go">Inital commit</span>
+<span class="go">nothing to commit (create/copy files and use &quot;git add&quot; to track)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-files">
+<h2><a class="toc-backref" href="#id5">Add Files</a><a class="headerlink" href="#add-files" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s add some example files and folders in the repository.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">mkdir SubFolder</span>
+<span class="go">touch main.txt</span>
+<span class="go">touch SubFolder\sub.txt</span>
+</pre></div>
+</div>
+<p>Use <em>tree</em> command to verify that two files and one folder are created in the repository.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">.</span>
+
+<span class="go">├── SubFolder</span>
+
+<span class="go">│   └── sub.txt</span>
+
+<span class="go">└── main.txt</span>
+</pre></div>
+</div>
+<p>Type <em>git status</em> again, and the console output should tell you that there are &#8216;untracked files&#8217;.</p>
+</div>
+<div class="section" id="commit-to-local-repository">
+<h2><a class="toc-backref" href="#id6">Commit to Local Repository</a><a class="headerlink" href="#commit-to-local-repository" title="Permalink to this headline">¶</a></h2>
+<p>Go to the repository root folder, and run <em>git add .</em></p>
+<p>Type <em>git status</em> and you can see from console output that there are changes to be committed and no untracked files. (If you run the above command in sub folder, then only the files under subfolders will be tracked)</p>
+<p>Run <em>git commit</em> command to commit the change to local repository, and you will encounter a vi look-like program to ask you provide the description for the up-comming commit. Type i and go into text edit mode; write down the description for the commit, like &#8216;First commit&#8217;; then press Esc and :wq to save and quit that vi look like program.</p>
+<p>If everything goes well, you will see that files are commit and <em>git status</em> will tell that nothing to commit, and working directory clean.</p>
+</div>
+<div class="section" id="commit-to-remote-repository">
+<h2><a class="toc-backref" href="#id7">Commit to Remote Repository</a><a class="headerlink" href="#commit-to-remote-repository" title="Permalink to this headline">¶</a></h2>
+<p>In order to collaborate with other developers, you need to publish the repository to a remote repository or a center repository like GitHub.</p>
+<p>Now go to GitHub do the registration, create a repository on GitHub, and get the git URL of the repository.</p>
+<p>The URL looks like: <a class="reference external" href="https://github.com">https://github.com</a>/{username}/{repositoryname}.git</p>
+<p>Use the following command to &#8216;push&#8217; your local repository to the Github:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git push --set-upstream https://github.com/<span class="o">{</span>username<span class="o">}</span>/<span class="o">{</span>repositoryname<span class="o">}</span>.git master
+</pre></div>
+</div>
+<p>You will be asked to enter your Github user name and credential. After the &#8216;push&#8217; command succeeds, you can see the files appear on the Github repository.</p>
+<p>Congratulations! You manage to use the basic git commands.</p>
+</div>
+<div class="section" id="summary">
+<h2><a class="toc-backref" href="#id8">Summary</a><a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Git commands are the best way to learn git, but it is not straight forward to understand and remember. Practice will help.</p>
+<p>There will be following blogs explain further how to use git well and the git fundamental.</p>
+<p><em>Written by Binwei&#64;Oslo</em></p>
+</div>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../git_areas/">
+    Git: Areas
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'wubw-github-io';
+        var disqus_identifier = '/2017/git_getting-started/';
+        var disqus_title = 'Git: Getting Started';
+        var disqus_url = 'https://wubw.github.io/2017/git_getting-started';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../">
+    <img class="logo" src="../../_static/logo.jpg" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=wubw&repo=BinweiBlog&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+  
+  
+  <h2>
+  
+  <i class="fa fa-calendar"></i>
+    Jan 11, 2017
+  
+  </h2>
+
+  <ul>
+    
+
+  
+
+  
+
+  
+
+  
+  <li><i class="fa-fw fa fa-folder-open"></i>
+    
+      
+      <a href="../../blog/category/computerscience/">ComputerScience</a>
+      
+    </li>
+  
+
+  
+  <li><i class="fa-fw fa fa-tag"></i>
+    
+      
+      <a href="../../blog/tag/git/">git</a>
+      
+    </li>
+  
+  
+  <li>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'wubw-github-io'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    <i class="fa-fw fa fa-comments"></i>
+    <a href="#disqus_thread" data-disqus-identifier="/2017/git_getting-started/"> </a>
+  </li>
+  
+  </ul>
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About binwei</a></li>
+</ul>
+
+
+  <h3><a href="../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../2018/cryptography_introduction/">Jan 07 - Cryptography Introduction</a></li>
+    
+      <li><a href="../../2018/docker_introduction/">Jan 04 - Docker Introduction</a></li>
+    
+      <li><a href="../the_effective_executive/">Dec 29 - The Effective Executive</a></li>
+    
+      <li><a href="../introduction_to_javascript/">Sep 09 - Introduction to Javascript</a></li>
+    
+      <li><a href="../blockchain_introduction/">Sep 06 - Blockchain Introduction</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag/">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/architecture/">architecture</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/blockchain/">blockchain</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/blog/">blog</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/booknote/">booknote</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-5">
+        <a href="../../blog/tag/booknotes/">booknotes</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/career/">career</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/chinese/">chinese</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/cloud/">cloud</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/continuousdelivery/">continuousdelivery</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/database/">database</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/devops/">devops</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/docker/">docker</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/frontend/">frontend</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/git/">git</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/lean/">lean</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/nosql/">nosql</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/opensource/">opensource</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/process/">process</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/reading/">reading</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/security/">security</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/shell/">shell</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/telemetry/">telemetry</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/vi/">vi</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/web/">web</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/category/computerscience/">ComputerScience (22)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/life/">Life (1)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/literature/">Literature (3)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/management/">Management (10)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2018/">2018 (2)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2017/">2017 (34)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, binwei.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/2017/git_getting-started.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-97414429-1']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>

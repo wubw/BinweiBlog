@@ -1,0 +1,713 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Specification by Example &#8212; binwei  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../about/" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="binwei Blog">
+  
+  
+  <link href="True" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="specification-by-example">
+<h1><a class="toc-backref" href="#id1">Specification by Example</a><a class="headerlink" href="#specification-by-example" title="Permalink to this headline">¶</a></h1>
+<p>Specification by Example is a set of process patterns that helps teams build the right software product.
+With Specification by Example, teams write just enough documentation to facilitate change effectively in short iterations (Scrum or XP) or in flow-based development (Kanban).</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#specification-by-example" id="id1">Specification by Example</a></li>
+<li><a class="reference internal" href="#introduction" id="id2">Introduction</a></li>
+<li><a class="reference internal" href="#what-is-a-specification" id="id3">What is a specification</a><ul>
+<li><a class="reference internal" href="#difference-from-user-stories" id="id4">Difference from user stories</a></li>
+<li><a class="reference internal" href="#difference-from-scripts" id="id5">Difference from scripts</a></li>
+<li><a class="reference internal" href="#difference-from-software-design" id="id6">Difference from software design</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#key-process-patterns" id="id7">Key process patterns</a><ul>
+<li><a class="reference internal" href="#deriving-scope-from-goals" id="id8">Deriving scope from goals</a></li>
+<li><a class="reference internal" href="#specifying-collaboratively" id="id9">Specifying collaboratively</a></li>
+<li><a class="reference internal" href="#illustrating-specifications-using-examples" id="id10">Illustrating specifications using examples</a></li>
+<li><a class="reference internal" href="#refining-the-specifications" id="id11">Refining the specifications</a></li>
+<li><a class="reference internal" href="#automating-validation-without-changing-the-specifications" id="id12">Automating validation without changing the specifications</a></li>
+<li><a class="reference internal" href="#validating-the-system-frequently" id="id13">Validating the system frequently</a></li>
+<li><a class="reference internal" href="#evolving-living-documentation" id="id14">Evolving living documentation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#good-practices" id="id15">Good practices</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="introduction">
+<h1><a class="toc-backref" href="#id2">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>“The hardest single part of building a software system is deciding precisely what to build.”</p>
+<blockquote>
+<div>&#8211; The Mythical Man-Month</div></blockquote>
+<p>“The formulation of a problem is often more essential than its solution.”</p>
+<blockquote>
+<div>&#8211; Albert Einstein</div></blockquote>
+<p>Specification by Example is to address the above questions.</p>
+<img alt="../../_images/usageofspecificationbyexample.png" src="../../_images/usageofspecificationbyexample.png" />
+<p>Besides that, Specification by Example also ensure documentation agile teams need to build is:</p>
+<ul class="simple">
+<li>Precise and objectively testable</li>
+<li>Easy to maintain</li>
+<li>Written just-in-time</li>
+</ul>
+</div>
+<div class="section" id="what-is-a-specification">
+<h1><a class="toc-backref" href="#id3">What is a specification</a><a class="headerlink" href="#what-is-a-specification" title="Permalink to this headline">¶</a></h1>
+<p>A specification should be</p>
+<ul class="simple">
+<li>Precise and testable</li>
+<li>A true specification, not a script</li>
+<li>About business functionality, not about software design</li>
+</ul>
+<p>Once the functionality is implemented, the specification that describes it will serve a different purpose.
+It will document what the system does and alert us about functional regression.</p>
+<p>To be effective in these goals, a specification should be</p>
+<ul class="simple">
+<li>Self explanatory</li>
+<li>Focused</li>
+<li>In domain language</li>
+</ul>
+<p>An example of a very good specification with examples is shown here. Free delivery</p>
+<ul class="simple">
+<li>Free delivery is offered to VIP customers once they purchase a certain number of books.</li>
+<li>Free delivery is not offered to regular customers or VIP customers buying anything else than books.</li>
+<li>Given that the minimum number of books to get free delivery is five, then we expect the following:</li>
+</ul>
+<img alt="../../_images/exampleoffreedelivery.png" src="../../_images/exampleoffreedelivery.png" />
+<div class="section" id="difference-from-user-stories">
+<h2><a class="toc-backref" href="#id4">Difference from user stories</a><a class="headerlink" href="#difference-from-user-stories" title="Permalink to this headline">¶</a></h2>
+<p>User stories generally have three parts: “As a __ I want __ in order to __ .”
+Alternative formats exist, but all have these three components.</p>
+<p>As a process, Specification by Example works both for high-level and lower-level stories.
+Once we have a high-level example of how something would be useful, we can capture that as a high-level specification.
+Such high-level examples allow us to objectively measure whether we’ve delivered a feature.</p>
+<p>User stories have to fit into the sprint.
+When there is a bunch of those that are done, they’re tested in isolation.
+The larger user story isn’t actually tested.
+When the user stories are small grained you can’t really tell from the backlog whether things are really done.</p>
+</div>
+<div class="section" id="difference-from-scripts">
+<h2><a class="toc-backref" href="#id5">Difference from scripts</a><a class="headerlink" href="#difference-from-scripts" title="Permalink to this headline">¶</a></h2>
+<p>A specification does not say anything about application workflow or session constraints.</p>
+<p>A script explains how something can be tested.
+It describes business functionality through lower-level interactions with a system.
+A script requires the reader to work back from the actions and understand what’s really important and what exactly is being illustrated.
+Scripts also bake the test into workflow and session constraints, which might change in the future even when the underlying business rules don’t change.</p>
+<p>A specification explains what the system does.
+It focuses on the business functionality in the most direct way possible.
+Specifications are shorter because they describe the business concepts directly.
+That makes them easier to read and understand than scripts.
+Specifications are also a lot more stable than scripts, because they won’t be affected by changes in workflow and session constraints.</p>
+<p>Watch out for descriptions of flows (first do this, then do that, ...).
+Unless specifying a genuine process flow, this is often a sign that a business rule is illustrated using a script.
+Such scripts will cause a lot of long-term maintenance problems.</p>
+<p>The specification should explain what should it do rather than how should it work.</p>
+</div>
+<div class="section" id="difference-from-software-design">
+<h2><a class="toc-backref" href="#id6">Difference from software design</a><a class="headerlink" href="#difference-from-software-design" title="Permalink to this headline">¶</a></h2>
+<p>Ideally, a specification should not imply software design.
+It should explain the business functionality without prescribing how it’s going to be implemented in software.</p>
+<p>This serves two purposes:</p>
+<ul class="simple">
+<li>It allows developers to find the best possible solution now.</li>
+<li>It allows developers to improve the design in the future.</li>
+</ul>
+<p>Specifications that focus on business functionality, without describing the implementation, enable the implementation to change more easily.
+A specification that does not say anything about software design won’t need to change when the design improves.</p>
+</div>
+</div>
+<div class="section" id="key-process-patterns">
+<h1><a class="toc-backref" href="#id7">Key process patterns</a><a class="headerlink" href="#key-process-patterns" title="Permalink to this headline">¶</a></h1>
+<p>The key process patterns of Specification by Example are:</p>
+<ul class="simple">
+<li>Deriving scope from goals</li>
+<li>Specifying collaboratively</li>
+<li>Illustrating specifications using examples</li>
+<li>Refining the specifications</li>
+<li>Automating validation without changing the specifications</li>
+<li>Validating the system frequently</li>
+<li>Evolving living documentation.</li>
+</ul>
+<img alt="../../_images/keyprocesspatternsofspecificationbyexample.png" src="../../_images/keyprocesspatternsofspecificationbyexample.png" />
+<div class="section" id="deriving-scope-from-goals">
+<h2><a class="toc-backref" href="#id8">Deriving scope from goals</a><a class="headerlink" href="#deriving-scope-from-goals" title="Permalink to this headline">¶</a></h2>
+<p><strong>Feature Injection</strong></p>
+<p>It’s a popular name for extracting the scope of a project from the business goals.
+And it is a technique to iteratively derive scope from goals through high-level examples.</p>
+<p><strong>Effect mapping</strong></p>
+<p>A visualization technique for project scope through hierarchical analysis of goals, stakeholders, and features.</p>
+<p><strong>User story mapping</strong></p>
+<p>A hierarchical mapping technique for user stories that provides a “big picture” view.</p>
+</div>
+<div class="section" id="specifying-collaboratively">
+<h2><a class="toc-backref" href="#id9">Specifying collaboratively</a><a class="headerlink" href="#specifying-collaboratively" title="Permalink to this headline">¶</a></h2>
+<p>Everyone in the team should be involved in Specification by Example.</p>
+<p>Specifying collaboratively is a great way to build a shared understanding of what needs to be done and to ensure that different aspects of a system are covered by the specifications.
+Collaboration also helps teams produce specifications that are easy to understand and tests that are easy to maintain.</p>
+<p><strong>Have team members review stories early</strong></p>
+<p>When: Analysts/domain experts are a bottleneck</p>
+<p>A “cell” consisting of two developers and a tester reviews each story early on to prepare for the meeting with the product owner, identifying any open questions.</p>
+<ul class="simple">
+<li>Specification by Example relies heavily on collaboration between business users and delivery team members.</li>
+<li>Everyone on the delivery team shares the responsibility for the right specifications. Programmers and testers have to offer input about the technical implementation and the validation aspects.</li>
+<li>Most teams collaborate on specifications in two phases: Someone works up front to prepare initial examples for a feature, and then those who have a stake in the feature discuss it, adding examples to clarify or complete the specification.</li>
+<li>The balance between the work done in preparation and the work done during collaboration depends on several factors: the maturity of the product, the level of domain knowledge in the delivery team, typical change request complexity, process bottlenecks, and availability of business users.</li>
+</ul>
+<p><strong>There are many different ways to collaborate</strong></p>
+<p>Many teams found that, at the start, big workshops were useful as a means to transfer the domain knowledge and align the expectations of developers, testers, and business analysts and stakeholders.
+But the majority of teams stopped doing big workshops after a while because they discovered that they’re hard to coordinate and cost too much in terms of people’s time.</p>
+<p>Another approach is to run smaller workshops that involve one developer, one tester, and one business analyst.
+A popular name for such meetings is Three Amigos.</p>
+<p>Or let someone in the team works on specification alone first.
+To check if a specification is self-explanatory, get someone else to look at the document and try to understand it, without you saying a word about it.</p>
+<p><strong>Collaborate on defining the language</strong></p>
+<p>When: Choosing not to run specification workshops</p>
+<p>If you decide not to run big workshops and instead use one of the alternative approaches, make sure to collaborate on defining the language.</p>
+</div>
+<div class="section" id="illustrating-specifications-using-examples">
+<h2><a class="toc-backref" href="#id10">Illustrating specifications using examples</a><a class="headerlink" href="#illustrating-specifications-using-examples" title="Permalink to this headline">¶</a></h2>
+<p>Examples are a good tool for avoiding communication problems, which is a very effective way to communicate domain knowledge and ensure a shared understanding.</p>
+<p>Because examples are concrete and unambiguous, they’re an ideal tool for making requirements precise.
+This is why we use them to clarify meaning in everyday communication, and use them consistently in analysis, development, and testing.</p>
+<p>A specification that defines three key examples properly is much more useful than one that specifies a hundred examples poorly.</p>
+<ul class="simple">
+<li>A representative example illustrating each important aspect of business functionality. Business users, analysts, or customers will typically define these.</li>
+<li>An example illustrating each important technical edge case, such as technical boundary conditions. Developers will typically suggest such examples when they’re concerned about functional gaps or inconsistencies. Business users, analysts, or customers will define the correct expected behavior.</li>
+<li>An example illustrating each particularly troublesome area of the expected implementation, such as cases that caused bugs in the past and boundary conditions that might not be explicitly illustrated by previous examples. Testers will typically suggest these, and business users, analysts, or customers will define the correct behavior.</li>
+</ul>
+<p><strong>Avoid using abstract classes of equivalence</strong></p>
+<p>When: You can specify a concrete example</p>
+<p>Classes of values have to be translated into something concrete for automation, which means that whoever automates the validations will have to translate the specifications into automation code. This means more opportunities for misunderstanding and misinterpretation.
+We should have enough examples to describe the entire scope of a feature</p>
+</div>
+<div class="section" id="refining-the-specifications">
+<h2><a class="toc-backref" href="#id11">Refining the specifications</a><a class="headerlink" href="#refining-the-specifications" title="Permalink to this headline">¶</a></h2>
+<p>Collaboration on refining the specification/requirements builds trust between stakeholders and delivery team members.</p>
+<p>And collaboration requires preparation</p>
+<ul class="simple">
+<li>For teams who worked on projects where the requirements were vague and required a lot of upfront analysis, the preparation phase started two weeks before the collaborative workshop.</li>
+<li>This allowed analysts to talk to business users, collect examples from them, and start refining the examples.</li>
+<li>Teams that had more stable requirements started working on examples a few days before, collecting the obvious open questions and addressing them.</li>
+<li>All these approaches help to run a bigger workshop more efficiently.</li>
+</ul>
+</div>
+<div class="section" id="automating-validation-without-changing-the-specifications">
+<h2><a class="toc-backref" href="#id12">Automating validation without changing the specifications</a><a class="headerlink" href="#automating-validation-without-changing-the-specifications" title="Permalink to this headline">¶</a></h2>
+<p><strong>Use “Given-When-Then” language in specifications</strong></p>
+<p>In order to: Make the test easier to understand</p>
+<p>As a rule of thumb, a specification should declare the context, specify a single action, and then define the expected post-conditions.
+(Or&nbsp;Arrange-Act-Assert)</p>
+<p>When deciding whether to automate the validation of specifications using a technical tool or one for executable specifications, think about which benefits you want to get out of it.
+If we automate examples with a technical tool, we get easier automation and cheaper maintenance but lose the ability to use them for communication with business users later.
+We get very good regression tests, but the specifications will be accessible only to developers.
+Depending on your context, this might or might not be acceptable.</p>
+<p><strong>Don’t check business logic through the user interface</strong></p>
+<p>Automating just below the skin of the application is a good way to reuse real business flows and avoid duplication in the automation layer.
+Executing the checks directly using HTTP calls, not through a browser.
+Speeds up validation significantly and makes it possible to run checks in parallel.</p>
+</div>
+<div class="section" id="validating-the-system-frequently">
+<h2><a class="toc-backref" href="#id13">Validating the system frequently</a><a class="headerlink" href="#validating-the-system-frequently" title="Permalink to this headline">¶</a></h2>
+<p>Automate and include validating in the continuous integration process.</p>
+<p><strong>Don’t postpone or delegate automation</strong></p>
+<p>Because of the automation overhead, some teams delayed it.
+They described specifications with examples and then wrote code, leaving the automation for later.</p>
+</div>
+<div class="section" id="evolving-living-documentation">
+<h2><a class="toc-backref" href="#id14">Evolving living documentation</a><a class="headerlink" href="#evolving-living-documentation" title="Permalink to this headline">¶</a></h2>
+<p>Long-term value comes from living documentation</p>
+<p><strong>Use test-driven development as a stepping stone</strong></p>
+<p>When: Developers have a good understanding of TDD</p>
+<p>Explain Specification by Example as the process of gathering examples to clarify requirements, deriving tests, and automating them.
+Our focus is on collaboration and process change rather than tool.
+Keep executable specifications in a version control system.</p>
+<p><strong>Don’t treat automation code as second-grade code</strong></p>
+<p>What typically happens on projects is they put a junior programmer to write the tests and the test system.
+However, automated test systems are difficult to get right.
+Junior programmers tend to choose the wrong approximations and build something less reliable.
+Put your best architects on it.
+They have the power to say: if we change this in our design, it will make it much better and easier to get tested.</p>
+</div>
+</div>
+<div class="section" id="good-practices">
+<h1><a class="toc-backref" href="#id15">Good practices</a><a class="headerlink" href="#good-practices" title="Permalink to this headline">¶</a></h1>
+<p><strong>Base the specification language on personas</strong></p>
+<p><strong>Document your building blocks</strong></p>
+<p>It’s good practice to document the building blocks for specifications; this helps people reuse components and keep the language consistent.</p>
+<p><strong>Avoid making up your own data</strong></p>
+<p>When: Data-driven projects
+Using real data is important on data-driven projects, when a great deal can depend on slight variations and inconsistencies.</p>
+<p><strong>Get precise performance requirements</strong></p>
+<p>When: Performance is a key feature</p>
+<p><strong>Use a checklist for discussions</strong></p>
+<p>When: Cross-cutting concerns</p>
+<p>A checklist for discussions will ensure that you begin to consider all the important questions when reviewing a story.
+You can use it to decide which of the cross-cutting concerns apply to a particular story and then focus on illustrating those aspects.</p>
+<p><strong>Avoid writing specifications that are tightly coupled with code</strong></p>
+<p>Specifications that are tightly coupled with code and closely reflect the software implementation result in tests that are brittle.</p>
+<p>Technical tests are important, and I’m not arguing against having such tests that are closely coupled with the software design.
+But such tests should not be mixed with executable specifications.
+A common mistake for teams starting with Specification by Example is to drop all technical tests, such as the ones at the unit or integration level, and expect that executable specifications will cover all aspects of the system.</p>
+<p>Executable specifications guide us in delivering the right business functionality.
+Technical tests ensure that we look at low-level technical quality aspects of the system.
+We need both, but we should not mix them.</p>
+<p>Technical test automation tools are much better suited for technical tests than the tools we use to automate executable specifications.
+They’ll enable the team to maintain such tests much easier.</p>
+<p><strong>To learn about tools, try a simple project first</strong></p>
+<p>When: Working on a legacy system</p>
+<p><strong>Avoid recorded UI tests</strong></p>
+<p>Many traditional test automation tools offer record-and-replay user interface automation.
+Although this sounds compelling for initial automation, record-and-replay is a terrible choice for Specification by Example.
+This is one of the areas where automation of executable specifications is quite different than traditional automated regression testing.</p>
+<p>Avoid recording user interface automation if you can.
+Apart from being almost impossible to understand, recorded scripts are difficult to maintain.
+They reduce the cost of creating a script but significantly increase the cost of maintenance.</p>
+<p>Specifications should be described at the business rule level.
+The automation layer should handle the workflow level by combining blocks composed at the technical activity level.
+Such tests will be easy to understand, efficient to write, and relatively inexpensive to maintain.</p>
+<ul class="simple">
+<li>Refined specifications should be automated with as little change as possible.</li>
+<li>The automation layer should define how something is tested; specifications should define what is to be tested.</li>
+<li>Use the automation layer to translate between the business language and user interface concepts, APIs, and databases. Create higher-level reusable components for specifications.</li>
+<li>Automate below the user interface if possible.</li>
+<li>Don’t rely too much on existing data if you don’t have to.</li>
+<li>Validate executable specifications frequently to keep them reliable.</li>
+<li>Compared to continuous integration with unit tests, the two main challenges for continuous validation are fast feedback and stability.</li>
+<li>Set up an isolated environment for continuous validation and fully automate deployments to make it more reliable.</li>
+<li>Look for ways to get faster feedback. Split quick and slow tests, create a pack for current iteration specifications, and divide long-running packs of executable specifications into smaller packs.</li>
+<li>Don’t just disable failing tests—either fix the problems or move the tests to a pack for low-priority regression issues that’s closely monitored.</li>
+</ul>
+<p><strong>Organize current work by stories, Reorganize stories by functional areas</strong></p>
+<p>User stories are excellent as a planning tool, but they aren’t useful as a way to organize existing system functionality.</p>
+<p><em>Written by Binwei&#64;Gdynia</em></p>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../become_outlier/">
+    <i class="fa fa-arrow-circle-left"></i>
+    How to Become an Outlier
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../xunit_test_patterns/">
+    Xunit Test Patterns
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'wubw-github-io';
+        var disqus_identifier = '/2017/specification_by_example/';
+        var disqus_title = 'Specification by Example';
+        var disqus_url = 'https://wubw.github.io/2017/specification_by_example';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../">
+    <img class="logo" src="../../_static/logo.jpg" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=wubw&repo=BinweiBlog&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+  
+  
+  <h2>
+  
+  <i class="fa fa-calendar"></i>
+    Aug 25, 2017
+  
+  </h2>
+
+  <ul>
+    
+
+  
+
+  
+
+  
+
+  
+  <li><i class="fa-fw fa fa-folder-open"></i>
+    
+      
+      <a href="../../blog/category/computerscience/">ComputerScience</a>
+      
+    </li>
+  
+
+  
+  <li><i class="fa-fw fa fa-tags"></i>
+      
+    
+      
+      <a href="../../blog/tag/booknotes/">booknotes</a>,
+      
+    
+      
+      <a href="../../blog/tag/process/">process</a>
+      
+    </li>
+  
+  
+  <li>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'wubw-github-io'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    <i class="fa-fw fa fa-comments"></i>
+    <a href="#disqus_thread" data-disqus-identifier="/2017/specification_by_example/"> </a>
+  </li>
+  
+  </ul>
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About binwei</a></li>
+</ul>
+
+
+  <h3><a href="../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../2018/cryptography_introduction/">Jan 07 - Cryptography Introduction</a></li>
+    
+      <li><a href="../../2018/docker_introduction/">Jan 04 - Docker Introduction</a></li>
+    
+      <li><a href="../the_effective_executive/">Dec 29 - The Effective Executive</a></li>
+    
+      <li><a href="../introduction_to_javascript/">Sep 09 - Introduction to Javascript</a></li>
+    
+      <li><a href="../blockchain_introduction/">Sep 06 - Blockchain Introduction</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag/">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/architecture/">architecture</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/blockchain/">blockchain</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/blog/">blog</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/booknote/">booknote</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-5">
+        <a href="../../blog/tag/booknotes/">booknotes</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/career/">career</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/chinese/">chinese</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/cloud/">cloud</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/continuousdelivery/">continuousdelivery</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/database/">database</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/devops/">devops</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/docker/">docker</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/frontend/">frontend</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/git/">git</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/lean/">lean</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/nosql/">nosql</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/opensource/">opensource</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/process/">process</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/reading/">reading</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/security/">security</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/shell/">shell</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/telemetry/">telemetry</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/vi/">vi</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/web/">web</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/category/computerscience/">ComputerScience (22)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/life/">Life (1)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/literature/">Literature (3)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/management/">Management (10)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2018/">2018 (2)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2017/">2017 (34)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, binwei.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/2017/specification_by_example.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-97414429-1']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>

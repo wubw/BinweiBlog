@@ -1,0 +1,590 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Https Explainations &#8212; binwei  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="author" title="About these documents" href="../../about/" />
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="binwei Blog">
+  
+  
+  <link href="True" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="https-explainations">
+<h1><a class="toc-backref" href="#id1">Https Explainations</a><a class="headerlink" href="#https-explainations" title="Permalink to this headline">¶</a></h1>
+<p>Hypertext Transfer Protocol Secure (HTTPS) is a safer version of HTTP, which is the communications protocol of the World Wide Web.
+An HTTPS session is encrypted using either the SSL protocol (Secure Socket Layer) or TLS protocol (Transport Layer Security) and offers protection against &#8220;eavesdropping&#8221; and that any change in the transmitted data.</p>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#https-explainations" id="id1">Https Explainations</a></li>
+<li><a class="reference internal" href="#introduction" id="id2">Introduction</a></li>
+<li><a class="reference internal" href="#technical-details" id="id3">Technical Details</a><ul>
+<li><a class="reference internal" href="#tls-handshake" id="id4">TLS handshake</a></li>
+<li><a class="reference internal" href="#redirect-to-https" id="id5">Redirect to HTTPS</a></li>
+<li><a class="reference internal" href="#strict-transport-security" id="id6">Strict Transport Security</a></li>
+<li><a class="reference internal" href="#mixed-content" id="id7">Mixed Content</a></li>
+<li><a class="reference internal" href="#extended-validation-certificate" id="id8">Extended validation certificate</a></li>
+<li><a class="reference internal" href="#certificate" id="id9">Certificate</a></li>
+<li><a class="reference internal" href="#downgrade-communication-protocol" id="id10">Downgrade communication protocol</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tools-relevant" id="id11">Tools relevant</a><ul>
+<li><a class="reference internal" href="#powershell-cmlet" id="id12">PowerShell cmlet</a></li>
+<li><a class="reference internal" href="#fiddler" id="id13">Fiddler</a></li>
+<li><a class="reference internal" href="#chrome" id="id14">Chrome</a></li>
+<li><a class="reference internal" href="#certmgr" id="id15">Certmgr</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#relevant-websites" id="id16">Relevant websites</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="introduction">
+<h1><a class="toc-backref" href="#id2">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>First Man in the middle attack in Chinese history. From &#8220;资治通鉴&#8221;:</p>
+<p>春，黑山贼帅张燕与公孙续率兵十万，三道救之。
+未至，瓒密使行人赍书告续，使引五千铁骑于北隰之中，起火为应，瓒欲自内出战。
+绍候得其书，如期举火。
+瓒以为救至，遂出战。
+绍设伏击之，瓒大败，复还自守。</p>
+<p>Man in the middle attack will cause a lot of damage.</p>
+<p>In the web/cloud world, typical &#8220;Man in the middle Insertion&#8221; points can be the following options:</p>
+<ul class="simple">
+<li>Browser</li>
+<li>Wireless Router</li>
+<li>ISP</li>
+<li>Web Server</li>
+</ul>
+<p>SSL: Secure Sockets Layer
+TLS: Transport Layer Security</p>
+<p>SSL and TLS are both cryptographic protocols that provide authentication and data encryption between servers, machines and applications operating over a network.
+SSL is the predecessor to TLS.</p>
+</div>
+<div class="section" id="technical-details">
+<h1><a class="toc-backref" href="#id3">Technical Details</a><a class="headerlink" href="#technical-details" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tls-handshake">
+<h2><a class="toc-backref" href="#id4">TLS handshake</a><a class="headerlink" href="#tls-handshake" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The client sends a &#8220;Client hello&#8221; message to the server, along with the client&#8217;s random value and supported cipher suites.</li>
+<li>The server responds by sending a &#8220;Server hello&#8221; message to the client, along with the server&#8217;s random value.</li>
+<li>The server sends its certificate to the client for authentication and may request a certificate from the client. The server sends the &#8220;Server hello done&#8221; message.</li>
+<li>If the server has requested a certificate from the client, the client sends it.</li>
+<li>The client creates a random Pre-Master Secret and encrypts it with the public key from the server&#8217;s certificate, sending the encrypted Pre-Master Secret to the server.</li>
+<li>The server receives the Pre-Master Secret. The server and client each generate the Master Secret and session keys based on the Pre-Master Secret.</li>
+<li>The client sends &#8220;Change cipher spec&#8221; notification to server to indicate that the client will start using the new session keys for hashing and encrypting messages. Client also sends &#8220;Client finished&#8221; message.</li>
+<li>Server receives &#8220;Change cipher spec&#8221; and switches its record layer security state to symmetric encryption using the session keys. Server sends &#8220;Server finished&#8221; message to the client.</li>
+<li>Client and server can now exchange application data over the secured channel they have established. All messages sent from client to server and from server to client are encrypted using session key.</li>
+</ul>
+</div>
+<div class="section" id="redirect-to-https">
+<h2><a class="toc-backref" href="#id5">Redirect to HTTPS</a><a class="headerlink" href="#redirect-to-https" title="Permalink to this headline">¶</a></h2>
+<p>If your web site upgrade to https from http, you can do Redirecting to https:</p>
+<ul class="simple">
+<li>Client send http request</li>
+<li>Server return HTTP 301 (Moved Permanently)</li>
+<li>Client starts https request</li>
+</ul>
+<p>However, redirecting model has &#8220;Man in the middle&#8221; risk, not safe.</p>
+</div>
+<div class="section" id="strict-transport-security">
+<h2><a class="toc-backref" href="#id6">Strict Transport Security</a><a class="headerlink" href="#strict-transport-security" title="Permalink to this headline">¶</a></h2>
+<p>A safer way is to use HTTP strict transport security (HSTS).
+Force all the http requests converted into https, including CSS, Javascript, fonts, images, favicon, media, etc.</p>
+<p>You will not see 301 response, but the following content in the header:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">Strict</span><span class="o">-</span><span class="n">Transport</span><span class="o">-</span><span class="n">Security</span><span class="p">:</span>
+<span class="nb">max</span><span class="o">-</span><span class="n">age</span><span class="o">=</span><span class="mi">15552000</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Go to HTTP site again, and you will get response 307 (Temporary Redirect).</p>
+<p>If there is Man in the middle attack, client may never receive response 307. A even safer way is to make reloaded.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">strict</span><span class="o">-</span><span class="n">transport</span><span class="o">-</span><span class="n">security</span><span class="p">:</span> <span class="nb">max</span><span class="o">-</span><span class="n">age</span><span class="o">=</span><span class="mi">31536000</span><span class="p">;</span> <span class="n">includeSubDomain</span><span class="p">;</span><span class="n">preload</span>
+</pre></div>
+</div>
+<p>The relevant website is: <a class="reference external" href="https://hstspreload.org/">https://hstspreload.org/</a></p>
+</div>
+<div class="section" id="mixed-content">
+<h2><a class="toc-backref" href="#id7">Mixed Content</a><a class="headerlink" href="#mixed-content" title="Permalink to this headline">¶</a></h2>
+<p>If your page contains unsecure resource, e.g. images, videos in iframe, https is not impleted correctly.</p>
+<p>If you just use //www.resourceaddress in your code, then it will &#8216;inherit&#8217; the parent scheme when get the resource.</p>
+<p>Alternative solution is to use Content Security Policy (CSP).</p>
+<img alt="../../_images/csp.png" src="../../_images/csp.png" />
+<p>Content Security Policy (CSP) is a computer security standard introduced to prevent cross-site scripting (XSS), clickjacking and other code injection attacks resulting from execution of malicious content in the trusted web page context.</p>
+</div>
+<div class="section" id="extended-validation-certificate">
+<h2><a class="toc-backref" href="#id8">Extended validation certificate</a><a class="headerlink" href="#extended-validation-certificate" title="Permalink to this headline">¶</a></h2>
+<p>An Extended Validation Certificate (EV) is a certificate used for HTTPS websites and software that proves the legal entity controlling the website or software package.
+Obtaining an EV certificate requires verification of the requesting entity&#8217;s identity by a certificate authority (CA).</p>
+<img alt="../../_images/extended_validation_certificate.png" src="../../_images/extended_validation_certificate.png" />
+</div>
+<div class="section" id="certificate">
+<h2><a class="toc-backref" href="#id9">Certificate</a><a class="headerlink" href="#certificate" title="Permalink to this headline">¶</a></h2>
+<p>When a web server is set up to accept https connections, the administrator must create a digital certificate for the web server.
+This certificate must then be signed by a certificate authority. This proves that the certificate owner is really the entity it states to be.
+Browsers are generally distributed with the signing certificates of known certificate authorities in order to verify that the certificates were really signed by them.</p>
+</div>
+<div class="section" id="downgrade-communication-protocol">
+<h2><a class="toc-backref" href="#id10">Downgrade communication protocol</a><a class="headerlink" href="#downgrade-communication-protocol" title="Permalink to this headline">¶</a></h2>
+<p>One possible attack of https will be the client try to downgrade the communication version.
+Client claims it only has lower TLS version, and force the communication to be on lower version.
+Then use the opportunity to attack with the known vulnerabilities.</p>
+</div>
+</div>
+<div class="section" id="tools-relevant">
+<h1><a class="toc-backref" href="#id11">Tools relevant</a><a class="headerlink" href="#tools-relevant" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="powershell-cmlet">
+<h2><a class="toc-backref" href="#id12">PowerShell cmlet</a><a class="headerlink" href="#powershell-cmlet" title="Permalink to this headline">¶</a></h2>
+<p>New-SelfSignedCertificate, Export-PfxCertificate can generate certificate locally (pfx file)</p>
+<p>To be used for release signing, a Software Publisher Certificate (SPC), and its private and public keys, must be stored in a Personal Information Exchange (.pfx) file.
+However, some certificate authorities (CAs) use different file formats to store this data.
+For example, some CAs store the certificate&#8217;s private key in a Private Key (.pvk) file and store the certificate and public key in a .spc or .cer file.</p>
+</div>
+<div class="section" id="fiddler">
+<h2><a class="toc-backref" href="#id13">Fiddler</a><a class="headerlink" href="#fiddler" title="Permalink to this headline">¶</a></h2>
+<p>Port 443 is the default port for https.</p>
+<p>By default, Fiddler can monitor http very well, but not https.
+Fiddler almost can see no communication if visit https websites.</p>
+<p>Check on the following options in Fiddler can see the https communication:
+HTTPS tab, Decrypt HTTPS traffic.
+What Fiddler will do is a man in the middle attack on the machine.</p>
+</div>
+<div class="section" id="chrome">
+<h2><a class="toc-backref" href="#id14">Chrome</a><a class="headerlink" href="#chrome" title="Permalink to this headline">¶</a></h2>
+<p>Press F12 -&gt; Application tab -&gt; Cookies.
+Secure cookie cannot be get if it is on http channel.</p>
+<p>Press F12 and goto Security tab, you can see the certificates of the https web site.</p>
+</div>
+<div class="section" id="certmgr">
+<h2><a class="toc-backref" href="#id15">Certmgr</a><a class="headerlink" href="#certmgr" title="Permalink to this headline">¶</a></h2>
+<p>certmgr.msc, to see the trusted CA (Firefox has its own CA manager)</p>
+</div>
+</div>
+<div class="section" id="relevant-websites">
+<h1><a class="toc-backref" href="#id16">Relevant websites</a><a class="headerlink" href="#relevant-websites" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference external" href="https://badssl.com/">https://badssl.com/</a></li>
+<li>Web page to see the browser for various features: <a class="reference external" href="http://caniuse.com">http://caniuse.com</a></li>
+<li>You can see https is faster to load: httpvshttps.com. F12 -&gt; Network -&gt; Waterfall, the reason is https allows streaming content come all together.</li>
+<li>Certificate is not free. But you can use Let&#8217;s encrypt: letsencrypt.org</li>
+<li>certbot.eff.org can automate the certificate process</li>
+<li>Cloudflare: Can handle https for you easier.</li>
+<li>Test how well you implement ssl: www.ssllabs.com</li>
+<li>HTTPS improves SEO: <a class="reference external" href="https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html">https://webmasters.googleblog.com/2014/08/https-as-ranking-signal.html</a></li>
+</ul>
+<p><em>Written by Binwei&#64;Oslo</em></p>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../the_personal_mba/">
+    <i class="fa fa-arrow-circle-left"></i>
+    The Personal MBA
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../blockchain_scenario/">
+    Blockchain Scenario
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'wubw-github-io';
+        var disqus_identifier = '/2018/https/';
+        var disqus_title = 'Https Explainations';
+        var disqus_url = 'https://wubw.github.io/2018/https';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../">
+    <img class="logo" src="../../_static/logo.jpg" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=wubw&repo=BinweiBlog&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+
+  
+  
+  <h2>
+  
+  <i class="fa fa-calendar"></i>
+    Jan 24, 2018
+  
+  </h2>
+
+  <ul>
+    
+
+  
+
+  
+
+  
+
+  
+  <li><i class="fa-fw fa fa-folder-open"></i>
+    
+      
+      <a href="../../blog/category/computerscience/">ComputerScience</a>
+      
+    </li>
+  
+
+  
+  <li><i class="fa-fw fa fa-tag"></i>
+    
+      
+      <a href="../../blog/tag/security/">security</a>
+      
+    </li>
+  
+  
+  <li>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'wubw-github-io'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    <i class="fa-fw fa fa-comments"></i>
+    <a href="#disqus_thread" data-disqus-identifier="/2018/https/"> </a>
+  </li>
+  
+  </ul>
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../about/">About binwei</a></li>
+</ul>
+
+
+  <h3><a href="../../blog/">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../blockchain_scenario/">Feb 26 - Blockchain Scenario</a></li>
+    
+      <li><a href="../the_personal_mba/">Jan 22 - The Personal MBA</a></li>
+    
+      <li><a href="../cryptography_introduction/">Jan 07 - Cryptography Introduction (with .NET code example)</a></li>
+    
+      <li><a href="../docker_introduction/">Jan 04 - Docker Introduction</a></li>
+    
+      <li><a href="../../2017/the_effective_executive/">Dec 29 - The Effective Executive</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag/">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/architecture/">architecture</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/blockchain/">blockchain</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/blog/">blog</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-5">
+        <a href="../../blog/tag/booknotes/">booknotes</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/career/">career</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/chinese/">chinese</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/cloud/">cloud</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/continuousdelivery/">continuousdelivery</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/database/">database</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/devops/">devops</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/docker/">docker</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/frontend/">frontend</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/git/">git</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/lean/">lean</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/nosql/">nosql</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/opensource/">opensource</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/process/">process</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/reading/">reading</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/security/">security</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/shell/">shell</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/telemetry/">telemetry</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/vi/">vi</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/web/">web</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/category/">Categories</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/category/computerscience/">ComputerScience (24)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/life/">Life (1)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/literature/">Literature (3)</a></li>
+    
+  
+    
+    <li><a href="../../blog/category/management/">Management (11)</a></li>
+    
+  
+  </ul>
+
+  <h3><a href="../../blog/archive/">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2018/">2018 (5)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2017/">2017 (34)</a></li>
+    
+  
+  </ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search/" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, binwei.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/2018/https.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-97414429-1']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>
