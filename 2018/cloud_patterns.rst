@@ -1,112 +1,28 @@
 
-2018/Cloud_Patterns
+Cloud Patterns
 ===================
 
 .. post:: Mar 07, 2018
    :tags: architecture, cloud
    :category: ComputerScience
 
+Microservice is a software architecture style, in which complex applications are composed of small, autonomous process communicating with each other using language-agnostic API.
+It has very low platform/behavioral/temporal coupling.
+This blog introduces the microservice and common cloud patterns.
+
 .. contents::
 
-Microservices
-is a software architecture style, in which complex applications are composed of small, autonomous process communicating with each other using language-agnostic API
-Very low platform/behavioral/temporal coupling  
-
-Saga
-https://docs.particular.net/nservicebus/sagas/
-
-A saga is a class that represents a running instance of a business process. Depending on the actual capabilities of the bus you use, the saga can be persisted, suspended and resumed as appropriate. 
-
-Event sourcing: contain all the event and changes
-By adding event sourcing to an application, you get a hold of raw data. 
-By combining event sourcing and CQRS you end up with raw business events stored in the command stack properly denormalized for the sake of the application core functions.
-At any time, though, you can add an extra module that reads raw data and transforms that into other meningful chunks of information for whatever business purpose you might have.
-
-When it comes to highlighting the benefits of event sourcing, the first point usually mentioned is this: with events you never miss a thing of what happens within the system.
-
-.. image:: images/multiple_projections.png
-
-In a create, read, update, delete (CRUD) system, you typically have one representation of data - mostly relational - and one or more simple projects that most of the time just adapter tabular data to the needs of the presentation layer.
-With event sourcing, you take this model much further, and lowering the abstraction level of the stored data is the key factor.
-The more domain-accurate information you store, the richer and more numerious projections you can build at any later time.
-
-In-house business intelligence with events and CQRS
-Dino Esposito
-
-The four most common design patterns for data integration are broadcast, aggregation, bidirectional synchronization and correlation.
-
-Static files on webserver antipattern
-
-* Load increase
-* Cost
-* Update requires deployment
-* Limited storage on server
-
-Static Content Hosting Pattern -> put the files to storage service, e.g. Azure blob
-
-Storage limits mitigation - replication
-
-* Multiple blobs
-* Multiple containers\buckets
-* Multiple accounts
-* How to do the balancing?
-
-Content Delivery Network (CDN) pattern
-
-Uploading to storage
-Do not use web server to do upload, use storage service
-
-.. image:: images/scale_up_and_out.png
-
-Circuit breaker pattern
-
-* Circuit breaker pattern prevent repeatedly trying to execute an operation that is likely to fail
-* The circuit breaker is a proxy that monitors the number of recent failures
-* Prevents wasting valuable resources because of the wait
-* Normally, the client has some retry logic
-
-Multiple tenants app
-
-* Per-tenant cost
-* Scale: number of tenants, data volume, workload
-* Tenant isolation: security, performance, lifetime management, etc
-* business continuity, disaster recovery
-* customization per-tenant (for some ISVs)
-
-.. image:: images/tenant_isolation.png
-
-Event sourcing:
-An approach to persistence that concentrates on persisting all the changes to a persistent state, rather than persisting the current application state itself.
-Combined the usage of snapshot.
-
-Microservices Design Principles:
-
-* High cohesion
-* Autonomous
-* Business domain centric
-* Resilience
-* Observable
-* Automation
+Microservices Design Principles
+=================================
 
 High cohesion
+---------------
 
-* single focus
-* single responsibility: SOLID principle, Only change for one reason
-* Reason represents: A business function, A business domain
-* Encapsulation principle: OOP principle
-* Easily writable code
-* Why: Scalability, Flexibility, Reliability
+High cohesion means single focus and single responsibility.
+It follows SOLID principle, which means service only change for one reason.
 
-Approach: High Cohesion 
-
-* Identify a single focus: Business function, Business domain 
-* Split into finer grained services 
-* Avoid "Is kind of the same" 
-* Don't get lazy! 
-* Don't be afraid to create many services 
-* Question in code\peer reviews: Can this change for more than one reason 
-
-Microservices Design Principles: Autonomous 
+Autonomous 
+-----------------
 
 * Loose coupling 
 * Honor contracts and interfaces 
@@ -116,66 +32,37 @@ Microservices Design Principles: Autonomous
 * Backwards compatible 
 * Concurrent development 
 
-Approach: Autonomous 
+Approach: 
 
-* Loosely coupled 
-* Communication by network 
-		Synchronous 
-		Asynchronous (Publish events, Subscribe to events)
+* Communication by network: synchronous, asynchronous (publish/subscribe to events)
 * Technology agnostic API 
 * Avoid client libraries 
-* Contracts between services 
-		Fixed and agreed interfaces 
-		Shared models 
-		Clear input and output 
+* Contracts between services: fixed and agreed interfaces, shared models, clear input and output 
 * Avoid chatty exchanges between services 
-* Avoid sharing between services 
-		Databases 
-		Shared libraries 
-* Microservice ownership by team 
-		Responsibility to make autonomous 
-		Agreeing contracts between teams 
-		Responsible for long-term maintenance 
-		Collaborative development (Communicate contract requirements, Communicate data requirements)
-		Concurrent development 
-* Versioning 
-		Avoid breaking changes 
-		Backwards compatibility 
-		Integration tests 
-		Have a versioning strategy (Concurrent versions: old and new; Semantic versioning: Major.Minor.Patch (e.g. 15.1.2); Coexisting endpoints: /V2/customer/)
+* Avoid sharing between services: databases, shared libraries 
+* Microservice ownership by team: responsibility to make autonomous, agreeing contracts between teams, responsible for long-term maintenance, collaborative development (communicate contract requirements, communicate data requirements), concurrent development 
+* Versioning: avoid breaking changes, backwards compatibility, integration tests, have a versioning strategy (concurrent versions: old and new; semantic versioning: Major.Minor.Patch (e.g. 15.1.2); coexisting endpoints: /V2/customer/)
 
+Business Domain Centric 
+----------------------------
 
-
-Design Principles: Business Domain Centric 
-
-* Service represents business function 
-		Accounts Department 
-		Postage calculator 
-* Scope of service 
-* Bounded context from DDD 
-* Identify boundaries\seams 
-* Shuffle code if required 
-		Group related code into a service 
-		Aim for high cohesion 
+* Service represents business function, e.g. accounts department or postage calculator 
+* Scope of service and identify boundaries (Bounded context from DDD)
+* Shuffle code if required: group related code into a service, aim for high cohesion 
 * Responsive to business change 
 
-Approach: Business Domain Centric 
+Approach: 
 
-* Business function or business domain 
-* Approach 
-		Identify business domains in a coarse manner 
-		Review sub groups of business functions or areas 
-		Review benefits of splitting further 
-		Agree a common language 
+* Identify business domains in a coarse manner 
+* Review sub groups of business functions or areas 
+* Review benefits of splitting further and fix incorrect boundaries: merge or split 
+* Agree a common language 
 * Microservices for data (CRUD) or functions 
-* Fix incorrect boundaries 
-		Merge or split 
 * Explicit interfaces for outside world 
 * Splitting using technical boundaries 
-		Service to access archive data 
-		For performance tuning 
 
-Microservices Design Principles: Resilience 
+Resilience 
+---------------
 
 * Embrace failure 
 		Another service 
@@ -217,6 +104,7 @@ Approach: Resilience
 * Log timeouts 
 
 Microservices Design Principles: Observable 
+-----------------------------------------------
 
 * System Health 
 		Status 
@@ -269,6 +157,7 @@ Approach: Observable
 				Passed service to service 
 
 Microservices Design Principles: Automation 
+---------------------------------------------
 
 * Tools to reduce testing 
 		Manual regression testing 
@@ -313,6 +202,9 @@ Approach: Automation
 		Better customer experience 
 
 .. image:: images/principles_table.png
+
+Others
+--------
 
 Communication: Synchronous 
 
@@ -508,6 +400,87 @@ Microservices Provisos
 * Overhead to mange microservices 
 * Cloud technologies 
 * Culture change 
+
+Saga
+==========
+
+https://docs.particular.net/nservicebus/sagas/
+
+A saga is a class that represents a running instance of a business process. 
+Depending on the actual capabilities of the bus you use, the saga can be persisted, suspended and resumed as appropriate. 
+
+Event sourcing
+=================
+
+Event sourcing contain all the event and changes
+By adding event sourcing to an application, you get a hold of raw data. 
+By combining event sourcing and CQRS you end up with raw business events stored in the command stack properly denormalized for the sake of the application core functions.
+At any time, though, you can add an extra module that reads raw data and transforms that into other meningful chunks of information for whatever business purpose you might have.
+
+When it comes to highlighting the benefits of event sourcing, the first point usually mentioned is this: with events you never miss a thing of what happens within the system.
+
+.. image:: images/multiple_projections.png
+
+In a create, read, update, delete (CRUD) system, you typically have one representation of data - mostly relational - and one or more simple projects that most of the time just adapter tabular data to the needs of the presentation layer.
+With event sourcing, you take this model much further, and lowering the abstraction level of the stored data is the key factor.
+The more domain-accurate information you store, the richer and more numerious projections you can build at any later time.
+
+An approach to persistence that concentrates on persisting all the changes to a persistent state, rather than persisting the current application state itself.
+Combined the usage of snapshot.
+
+CQRS
+=========
+
+In-house business intelligence with events and CQRS
+Dino Esposito
+
+Data Integration patterns
+===========================
+
+The four most common design patterns for data integration are broadcast, aggregation, bidirectional synchronization and correlation.
+
+Static files on webserver antipattern
+
+* Load increase
+* Cost
+* Update requires deployment
+* Limited storage on server
+
+Static Content Hosting Pattern -> put the files to storage service, e.g. Azure blob
+
+Storage limits mitigation - replication
+
+* Multiple blobs
+* Multiple containers\buckets
+* Multiple accounts
+* How to do the balancing?
+
+Content Delivery Network (CDN) pattern
+
+Uploading to storage
+Do not use web server to do upload, use storage service
+
+.. image:: images/scale_up_and_out.png
+
+Circuit breaker pattern
+
+* Circuit breaker pattern prevent repeatedly trying to execute an operation that is likely to fail
+* The circuit breaker is a proxy that monitors the number of recent failures
+* Prevents wasting valuable resources because of the wait
+* Normally, the client has some retry logic
+
+Multiple tenants app
+
+* Per-tenant cost
+* Scale: number of tenants, data volume, workload
+* Tenant isolation: security, performance, lifetime management, etc
+* business continuity, disaster recovery
+* customization per-tenant (for some ISVs)
+
+.. image:: images/tenant_isolation.png
+
+Others
+===========
 
 Scaling Applications with Microservices and NServiceBus
 
