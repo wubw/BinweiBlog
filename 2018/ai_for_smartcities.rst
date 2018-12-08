@@ -6,7 +6,7 @@ AI for Smart Cities
    :tags: ai, smartcity
    :category: ComputerScience
 
-I had the horner to give an 'AI for Smart Cities' presentation in 'Big Data & AI Asia' conference Dec 5. 
+I had the honer to give an 'AI for Smart Cities' presentation in 'Big Data & AI Asia' conference Dec 5. 
 The conference was hold in Suntec and it was a big event around hundreds people participated. 
 
 .. image:: images/suntec.jpg
@@ -26,21 +26,21 @@ This is a picture of my presentation. And in this blog, I will briefly introduce
 Why Cities need to be smart?
 =============================
 
-According to statistics, urbanization is increasing world wide and it also bring challenges: 
+According to statistics, urbanization is increasing world-wide and it also bring challenges: 
 
 * By 2050 cities will accommodate about 66% percent of the world's population
 * In 2012 cities occupied only about 3% of the global land area
 * In 2012 cities consumed about 75% of natural resources
 * In 2012 cities produced 60%-80% of all greenhouse gas (GHG) emissions
 
-In order to address the above challenges, new and efficient ways have to be found for ctiy operation. 
+In order to address the above challenges, new and efficient ways have to be found for city operation. 
 According to investigation from Cisco, there are improvements potential on many city operation aspects.
 
 .. image:: images/smartcity_improvementpoints.png
 
 In order to be more efficient to operate city, we need to rely on digital way to have better insight of infrastructure status, 
 automate operation to replace repetitive human work, take better action based on historical data, 
-optmize infrastructure efficiency, etc.
+optimize infrastructure efficiency, etc.
 
 The crucial parts of the digital way are to get the data, manage the data, bring value from the data, and take action accordingly.
 We call this new way of operating city as 'Smart city', which is mainly a data business.
@@ -51,7 +51,7 @@ Data from cities
 The Smart city business all starts from data. 
 In order to find a better way to operate city, first you need to understand how the city is operating.
 
-Everyone in the cities is generating new data every day, e.g. shoping records, register personal data online, medical data etc.
+Everyone in the cities is generating new data every day, e.g. shopping records, register personal data online, medical data etc.
 It is huge amount of data set from human being.
 
 With the boost of IoT technology, we predict even more data will come from sensors than human being.
@@ -64,7 +64,7 @@ Yes, it is big data problem!
 In order to process the big data, we need high automation level and new ways of processing. 
 AI technology needs to be adopted. 
 
-Even though AI is mainly about data analytics part, without proper data acquisition, data management, data visulization, 
+Even though AI is mainly about data analytics part, without proper data acquisition, data management, data visualization, 
 it will be difficult to succeed.
 
 Why AI is relevant?
@@ -81,9 +81,9 @@ Still it is data business, it is all about data.
 There are different ways to categorize AI technology:
 
 * Classical rule based AI, Machine Learning, Deep learning
-* Supevised and unsupervised learning depends on whether the data is labled or not
-* Regression or classification depends on whether the label is continous or not
-* In-house algorithem or cloud SaaS services
+* Supervised and unsupervised learning depends on whether the data is labled or not
+* Regression or classification depends on whether the label is continuous or not
+* In-house algorithm or cloud SaaS services
 
 I am pretty sure there are other ways to categorize AI, and I do not want to be too technical in this blog and will talk about more in later blogs.
 One thing worth mentioning is all the above AI technical choices are relevant to Smart city context which depends on detailed scenario.
@@ -145,7 +145,7 @@ The raw data will be pre-processed in the gateway, then send to server for furth
 The main metrics we are measuring is peak speed during trip, levelling issues, door operation, car vibration, etc.
 
 The methodology of anomaly detection, which belongs to unsupervised learning. 
-To make it extremly to explain, it figures out the normal pattern from operation data first. 
+To put it simple, it figures out the normal pattern from operation data first. 
 Then use the pattern to detect anomaly in the future.
 
 Once anomaly is detected, then further analysis will start to see whether to send alert to users or not.
@@ -178,7 +178,7 @@ Edge Computing
 We see edge computing is playing important role in smart lift project. 
 Edge computing can address the following issues:
 
-* Reduce operational cost by reducing the data transfered
+* Reduce operational cost by reducing the data transferred
 * Take actions for urgent issues by avoiding back-and-forth communication
 * Do data processing for offline scenario
 * Address some scenario requires high data sampling resolution
