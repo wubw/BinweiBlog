@@ -6,7 +6,7 @@ Personal Branding
    :tags: career
    :category: Management
 
-To be a great technical person, you do not only do exceptional technical work, and also exceptional job to see your skills.
+To be a great technical expert, you do not only do exceptional technical work, and also exceptional job to see your skills.
 
 Build your personal brand
 ===========================
