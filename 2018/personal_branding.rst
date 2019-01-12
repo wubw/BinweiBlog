@@ -35,11 +35,17 @@ Methods
 
 There are various methods to build personal branches, some of them are easy while the others are hard.
 
-            Easy        Hard        Hardest
-Conference  Attend      Speak       Create
-Forum       Lurk        Post        Build
-Blog        Read        Write       Tribe
-Framework   Learn       Master      Create
++-------------+----------+-----------+-------------+
+|             | Easy     | Hard      | Hardest     |
++-------------+----------+-----------+-------------+
+| Conference  | Attend   | Speak     | Create      |
++-------------+----------+-----------+-------------+
+| Forum       | Lurk     | Post      | Build       |
++-------------+----------+-----------+-------------+
+| Blog        | Read     | Write     | Tribe       |
++-------------+----------+-----------+-------------+
+| Framework   | Learn    | Master    | Create      |
++-------------+----------+-----------+-------------+
 
 The personal brand needs to be built step by step.
 
