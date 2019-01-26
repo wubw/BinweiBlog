@@ -3,20 +3,19 @@ Machine Learning Basic
 ===========================
 
 .. post:: Jan 13, 2019
-   :tags:
-   :category:
+   :tags: ai
+   :category: ComputerScience
 
 This blog introduces the basic knowledge of machine learning. The details of algorithm and programming will come in later blogs.
-机器学习：不显式编程地赋予计算机能力的研究领域
+Machine learning is a technology which can resolve the computational problem without programming specifically.
 
 .. contents::
 
 Process
 ============
 
-Machine learning project has its own process, which start with asking the right questions.
+Machine learning project has its own process, which starts with asking the right questions.
 
-* Choosing what question to ask is the most important part of the process
 * Ask yourself: Do you have the right data to answer the question?
 * Ask yourself: Do you know how you'll measure success?
 
@@ -29,7 +28,7 @@ People are highly involved in the iteration of machine learning, e.g. adjustin
 CRISP-cycle
 ------------------
 
-Cross-industry standard process for data mining, also known as CRISP-DM
+Cross-industry standard process for data mining, also known as CRISP-DM. It is also very relevant to machine learning projects.
 
 * Business understanding
 * Data understanding
@@ -51,8 +50,8 @@ The value you want to predict is in the training data. The data is labeled.
 Supervised Learning includes the following algorithms:
 
 * K-Nearest neighbors
-* Linear regression (sigmoid function)
-* Logistic regression (one-versus-all (OvA) strategy or one-versus-the-rest, one-versus-one (OvO) strategy)
+* Linear regression
+* Logistic regression (sigmoid function, one-versus-all (OvA) strategy or one-versus-the-rest, one-versus-one (OvO) strategy)
 * Support vector machines (SVMs)
 * Decision trees and random forests
 * Neural network
@@ -81,29 +80,51 @@ Visualization and dimensionality reduction
 * Locally-Linear embedding (LLE)
 * t-distributed stochastic neighbor embedding (t-SNE)
 
-simplify the data without losing too much information
-One way to do this is to merge several correlated features into one => feature extraction
+In machine learning, kernel methods are a class of algorithms for pattern analysis, whose best known member is the support vector machine (SVM). 
+The general task of pattern analysis is to find and study general types of relations 
+(for example clusters, rankings, principal components, correlations, classifications) in datasets. 
+In its simplest form, the kernel trick means transforming data into another dimension that has a clear dividing margin between classes of data.
+For many algorithms that solve these tasks, 
+the data in raw representation have to be explicitly transformed into feature vector representations via a user-specified feature map: 
+in contrast, kernel methods require only a user-specified kernel, i.e., a similarity function over pairs of data points in raw representation.
 
-线性判别分析（Linear Discriminant Analysis)
+To simplify the data without losing too much information, one way to do this is to merge several correlated features into one => feature extraction
+
+Linear Discriminant Analysis: characterizes or separates two or more classes of objects or events. 
+The resulting combination may be used as a linear classifier, or more commonly, for dimensionality reduction before later classification.
 
 Association rule learning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Apriori
+Association rule learning is a rule-based machine learning method for discovering interesting relations between variables in large databases. 
+It is intended to identify strong rules discovered in databases using some measures of interestingness.
+This rule-based approach also generates new rules as it analyzes more data. 
+The ultimate goal, assuming a large enough dataset, is to help a machine mimic the human brain’s feature extraction and abstract association capabilities from new uncategorized data.
+
+* Apriori: It proceeds by identifying the frequent individual items in the database and extending them to larger and larger item sets as long as those item sets appear sufficiently often in the database.
 * Eclat
 
-Unsupervised learning is also used on Anomaly detection use cases. distributed Gaussian正则分布
+Unsupervised learning is also used on Anomaly detection use cases, e.g. distributed Gaussian.
 
-Semisupervised learning
+Semi-supervised learning
 ------------------------------
 
-deep belief networks (DBN) based on unsupervised components called restricted Boltzmann machines(RBMs)
+Semi-supervised learning is a class of machine learning tasks and techniques that also make use of unlabeled data for training – 
+typically a small amount of labeled data with a large amount of unlabeled data.
+
+Deep belief networks (DBN)：
+Based on unsupervised components called restricted Boltzmann machines(RBMs).
+Deep belief network (DBN) is a generative graphical model, 
+or alternatively a class of deep neural network, composed of multiple layers of latent variables ("hidden units"), 
+with connections between the layers but not between units within each layer.
 
 Reinforcement learning
 -----------------------------
 
-agent can observe the environment, select and perform actions and get rewards in return. 
-It must then learn by itself what is the best strategy, called a policy to get the most reward over time
+Reinforcement learning (RL) is an area of machine learning concerned with how software agents ought to take actions in an environment so as to maximize some notion of cumulative reward. 
+
+Agent can observe the environment, select and perform actions and get rewards in return. 
+It must then learn by itself what is the best strategy, called a policy to get the most reward over time.
 
 Other algorithms
 -------------------
@@ -111,52 +132,53 @@ Other algorithms
 Batch learning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-the system is incapable of learning incrementally: it must be trained using all the available data.
-	or offline learning. Retrain the model if necessary
+The system is incapable of learning incrementally: it must be trained using all the available data. 
+It can also be called offline learning. 
+Retrain the model if necessary.
 
 Online learning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-you train the system incrementally by feeding it data instances sequentially, either individually or by small groups called mini-batches or out-of-core learning, incremental learning
-learning rate: how fast they should adapt to changing data
+The system is trained incrementally by feeding it data instances sequentially, 
+either individually or by small groups called mini-batches or out-of-core learning, incremental learning.
+
+Learning rate: how fast they should adapt to changing data.
 
 Instance based vs Model based learning
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Instance based learning: the system learns the examples by heart, then generalizes to new cases using a similarity measure
-Model based: to build a model
+Instance based learning: the system learns the examples by heart, then generalizes to new cases using a similarity measure.
+Instance based learning is a family of learning algorithms that, instead of performing explicit generalization, 
+compares new problem instances with instances seen in training, which have been stored in memory.
 
-.. image:: images/machine_learning_algorithm.png
+Model based: to build a model first.
 
 Accuracy and Precision
 =======================
 
-There is no surprise for Machine Learning projects, one of the goal is achieve high enough accuracy.
+There is no surprise for Machine Learning projects, one of the goal is to achieve high enough accuracy. 
 
 The following picture explains the difference between Accuracy and Precision well.
 
 .. image:: images/accuracy_precision.jpg
 
-* High variance: overfitting
-* High bias: underfitting
+* High variance: is normally overfitting problem
+* High bias: is normally underfitting problem
 
 Utility function or fitness function
 ---------------------------------------
 
-measures how good your model is or you can define a cost function that measures how bad it is
-cost function apply on training set, gradient descent, used in regression
-Stochastic Gradient Descent (SGD) classifier
-
-我们需要对比模型的输出和真实值之间的误差。损失函数可以衡量输出结果对比真实数据的好坏。
+Untility function measures how good your model is or you can define a cost function that measures how bad it is.
+Cost function apply on training set, gradient descent, used in regression.
+Alternative option of gradient descent is Stochastic Gradient Descent (SGD) classifier.
 
 Regularization
 --------------------
 
-Overfit: resolved by regulation, by reducing number of theta (degree of polynomial)
+Overfit: resolved by regulation, by reducing number of theta (degree of polynomial).
 
-The amount of regularization to apply during learning can be controlled by a hyperparameter. A hyperparameter is a parameter of a learning algorithm (not of the model)
-
-The importance of data versus algorithms
+The amount of regularization to apply during learning can be controlled by a hyperparameter. 
+A hyperparameter is a parameter of a learning algorithm (not of the model).
 
 Measurement
 -------------------------------
@@ -165,42 +187,39 @@ Root mean square error (RMSE): measures the standard deviation
 Mean Absolute Error (MAE)
 The higher the norm index, the more it focuses on large values and neglects small ones. This is why the RMSE is more sensitive to outlier than the MAE.
 
-F1 score: for skewed class.
+Precision = TP/TP+FP
 
-precision = TP/TP+FP
-recall = TP/TP+FN
-If someone says 'let's reach 99% precision', you should ask, 'at what recall'
-ROC curve is a measure of binary classifier. Measure ROC AUC (area under the curve)
+Recall = TP/TP+FN
 
-精度 = 1-错误率
-训练误差 = 经验误差
-新样本上叫泛化误差
-只要相信“P != NP"，过拟合就不可避免
+If someone says 'let's reach 99% precision', you should ask, 'at what recall'.
 
-TP, FP, TN, FN
-查准率P = TP/(TP+FP)
-查全率R = TP/(TP+FN)
-查准率和查全率是一对矛盾的度量，一般来说，查准率高时，查全率往往偏低；而查全率高时，查准率往往偏低。例如，若希望将好瓜尽可能低选出来，则通过增加选瓜的数量来实现，如果将所有西瓜都选上，那么所有的好瓜也必然都被选上了，但这样查准率就会降低；若希望选出的瓜中好瓜比例尽可能高，则可只挑选有把握的瓜，但这样就难免会漏掉不少好瓜，使得查全率较低。通常只有在一些简单任务中，才可使得查全率和查准率都很高
-PR曲线
-平衡点（Break-Even point) 查准率 = 查全率
-ROC 受试者工作特性：Receiver Operating Characteristic
-代价矩阵(cost matrix)：在不同的场合，错误的代价会不一样
+F1 score is useful for skewed class. F1 = 2*P*R/(P+R)
+
+ROC (receiver operating characteristic) curve is a measure of binary classifier. 
+The ROC curve is created by plotting the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings.
+Measure ROC AUC (area under the curve)
+
+Break-Even point P = R
 
 K-folds cross-validation
 ----------------------------
 
-3 dataset: train set, cross-validation set, test dataset
-Accuracy is generally not the preferred performance measure for classifiers, especially when you are dealing with skewed datasets
+3 dataset: train set, cross-validation set, test dataset.
+
+Accuracy is generally not the preferred performance measure for classifiers, especially when you are dealing with skewed datasets.
+
 A much better way to evaluate the performance of a classifier is to look at the confusion matrix.
 
-训练/测试集的划分要尽量保持数据分布的一致性，避免因数据划分过程引入额外的偏差而对最终结果产生影响： 分层采样 - stratified sampling
+Cost matrix: 
+Cost matrix is similar to the confusion matrix except the fact that we are calculating the cost of wrong prediction or right prediction.
+In different context, the cost of error will be different.
 
-均方误差（mean squared error)
+Training and test dataset need to ensure data distribution is consistent, to avoid the data distributed not evenly and impact the final results. stratified sampling
 
 Data Amount
 --------------
 
-The amount of data is also important for accuracy
+The amount of data is also important for accuracy.
 
 .. image:: images/importance_of_data_versus_algorithms.png
 
@@ -220,7 +239,6 @@ Slightly rotating the image led the model to correctly classify the image as a c
 
 The above image is what’s called as an adversarial image, trying to fool your model into thinking the image is something you want it to be instead of what the image actually is.
 
-I bring this example to illustrate the problem with the current AI trend. 
 We have many technologies that allow us to use AI/ML (and not just deep learning) as a blackbox. 
 The real danger is in the application, especially in healthcare and defense. 
 For example, how would you convince that your model for predicting cancer actually works? 
@@ -228,28 +246,29 @@ How do you know your model is not susceptible to noise? How do you know that you
 How do you actually read interpretability here? 
 If you can’t interpret what the model has learnt, then you can’t sell it.
 
-https://www.theverge.com/2017/11/2/16597276/google-ai-image-attacks-adversarial-turtle-rifle-3d-printed
+Another case can be found here:
 
-interpretability. 
+https://www.theverge.com/2017/11/2/16597276/google-ai-image-attacks-adversarial-turtle-rifle-3d-printed
 
 But the questions to be asked are:
 
 * How would you now ensure that the results be consistent in application, without posing any vulnerabilities or risk?
 * Did you really need a AI/ML solution?
 
-If you can't explain it simply, you don't understand it well enough
-Albert Einstein
-
-.. image:: images/ai_chasm.jpg
+If you can't explain it simply, you don't understand it well enough.
+- Albert Einstein
 
 Others
 ==========
 
+The good news is there is no need for you to build everything from scrach. 
+You can use cloud machine learning services out-of-box.
+
 Cloud machine learning services
 -----------------------------------------
 
-Azure Cognitive Services
-    Pattern recognition-as-a-Service
+Azure Cognitive Services: 
+Pattern recognition-as-a-Service
 
 .. image:: images/azure_cognitive_services.png
 
@@ -258,16 +277,12 @@ Deep learning
 
 Will explain the details of deep learning in later blogs.
 
-随着数据的增多，到达一定量后，深度学习算法的表现会明显优于传统的机器学习算法。
+With the increasing data especially reach some amount, the deep learning algorithm will have better performance than machine learning.
 
 .. image:: images/why_deep_learning.jpg
 
-在机器学习中特征选择部分一般需要人的先验知识的介入来设计好的特征提取方法，
-比如人知道轮子一般是圆的，一般出现在交通工具上，有轮胎、轮毂等部件，基于先验知识，人可以选取适合提取轮子特征的方法，再设计分类器以识别轮子。
-而深度学习通常由多个层组成。
-它们通常将更简单的模型组合在一起，通过将数据从一层传递到另一层来构建更复杂的模型。
-通过大量数据的训练自动得到一个能识别轮子的模型，不需要人工设计特征提取环节。
-这是深度学习随着数据量的增加而优于其他学习算法的主要原因之一。
+Normally, machine learning needs human being to be involved to extract features rely on human experience.
+However deep learning consists of several layers. They combine simpler models together and pass data from one layer to another to build up a complicated model.
 
 .. image:: images/machine_learning_and_deep_learning.png
 
