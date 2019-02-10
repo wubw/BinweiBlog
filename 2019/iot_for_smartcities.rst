@@ -1,0 +1,16 @@
+
+2019/Iot_For_Smartcities
+========================
+
+.. post:: Feb 10, 2019
+   :tags: iot, booknotes, smartcity
+   :category: ComputerScience
+
+Smart cities: Everyone's connected
+If everyone, every home, and every business is connected via the IoT, why not take the next step and connect your entire neighborhood, or even the whole city? Connected devices can help reduce congestion on local roadways, alert the fire department in case of emergencies, and even signal the need for road maintenance or additional police patrols. The smart city might mean a smaller government – or a more intrusive one. It all depends
+The IoT has a lot to offer municipalities of all size. In fact, there's a recognized smart city concept floating around, kind of a template or set of guidelines that cities across the United States and around the world can model going forward.
+The goals of the smart city are to make better use of public resources, increase the quality of services offered to citizens, and reduce operational costs of the public administrations. To achieve these goals, the smart city must deploy an infrastructure that provides simple and economical access to most if not all public services, including transportation and parking, lighting, utilities, surveillance and maintenance of public areas, and more.
+What does this theoretical smart city concept mean in practice? We're talking about all sorts of potential public benefits, including more efficient traffic flow, better management of public buildings and areas, reducing the (huge) costs of public lighting, better management waste removal and other public utilities, and more effective policing and emergency services. These are all worthwhile goals.
+As with all IoT related activities, the smart city will be powered by data collected from smart devices of all shapes and sizes. All this data can also be used to increase the transparency of the local government, enhance the awareness of the public about the status of their city, and stimulate citizen's participation in the public administration.
+There are the obvious technical and financial challenges, of course (it's all rather complex and expensive to implement), but cities face additional political issues. With literally hundreds of billions of dollars in spending at stake, who makes the purchasing decisions? And who benefits from local and state contracts? Who makes the decision, especially when technology must necessarily bridge multiple adjacent municipalities? And how do governments deal with the privacy and security issues inherent with the massive level of data collection and de facto public surveillance.
+Once these challenges can be overcome (and they inevitably will be), expect your city to install thousands of sensors on local streets, parks, and buildings, the better to gather information about public usage, air quality, noise levels, and the like and then use the collected data to provide better and more efficient services. The future is bright for cities and citizens everywhere.
