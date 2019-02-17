@@ -12,11 +12,6 @@ Buyers self-educate, leaving the seller totally out of the loop.
 Without deep buyer understanding, it's increasingly difficult to get business. 
 You're dealing with educated people who want conversations and collaboration, not pitches of any sort.
 
-You know what buyers pick as the differentiator in their decisions? The sales experience itself.
-To become the differentiator, you need to always be learning. 
-We need to provide value in every conversation and manage the customer experience.
-Learning agility is your only sustainable competitive advantage.
-
 .. contents::
 
 Reframing Failures
@@ -41,10 +36,16 @@ While it's admirable to strive for the stars, research shows that big goals can 
 especially before you've achieved a level of proficiency.
 
 Rapid learning
+-----------------
 
 * Breaking new info down into discrete chunks
 * Searching for the 'minimum effective dose'
 * The goal is to find the least amount of work needed to produce outstanding results fast
+
+You know what buyers pick as the differentiator in their decisions? The sales experience itself.
+To become the differentiator, you need to always be learning. 
+We need to provide value in every conversation and manage the customer experience.
+Learning agility is your only sustainable competitive advantage.
 
 Understand Buyers
 ==============================
@@ -60,6 +61,7 @@ The more you know about what makes your buyers tick, the better off you'll be.
 Start by finding out who is involved in making decisions.
 
 Once you nail down the positions, you need to understand their roles and responsibilities, objectives, motivations, status quo, and challenges. 
+
 This essential info helps you:
 
 * Craft relevant, enticing messages
@@ -98,6 +100,9 @@ Ask questions:
 Immerse yourself in the status quo. 
 Search for its weakness, shortcomings, and gaps. 
 Once you have a working knowledge of your biggest competitor - the status quo - you'll be able to have more intelligent conversations with your prospects.
+
+Business case
+------------------
 
 Many companies fail to arm their sellers with a strong business case. 
 They still believe that their products or services sell themselves.
@@ -139,6 +144,9 @@ Define the buyer's journey
 |                           | sense to change from the  |                           | more work with them?      |
 |                           | status quo?               |                           |                           |
 +---------------------------+---------------------------+---------------------------+---------------------------+
+
+Gain insights
+-----------------
 
 Whenever you're talking to prospects, try asking the following questions to gain even greater insight into their buying journey:
 
@@ -236,12 +244,12 @@ They still role-play. They debrief regularly. They exchange ideas with their col
 
 While your time is a finite resource, your energy level is a renewable one.
 
-Take time out to think and reflect, by yourself
+Take time out to think and reflect, by yourself.
 
 Fast Growth
 ------------
 
-Make your own personal growth and development the number-one priority
+Make your own personal growth and development the number-one priority.
 
 It seems strange to recommend teaching others while you're still learning yourself. 
 After all, we so quickly defer to the experts. However, the upside can be huge. 
@@ -271,9 +279,10 @@ Never go behind someone's back
 * If you need to meet with people other than the person you're currently working with, make sure you find a valid reason for it and. 
 * If possible, engage your current contact in setting it up.
 
-Hope is rampant in sales. We need it to keep going - but we also need to avoid being fooled by false hope. 
+Hope is rampant in sales. 
+We need it to keep going - but we also need to avoid being fooled by false hope. 
 The longer a deal stays in your pipeline, the less likely you are to ever close it, even if your prospect claimed that he or she desperately needed your offering. 
 If the sales process does get stalled out, the only person who loses is you. 
-Purge your pipeline
+Purge your pipeline.
 
 *Written by Binwei@Singapore*
