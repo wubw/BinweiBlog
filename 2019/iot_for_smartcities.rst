@@ -1,5 +1,5 @@
 
-2019/Iot_For_Smartcities
+Iot for Smart Cities
 ========================
 
 .. post:: Feb 10, 2019
@@ -10,28 +10,37 @@ Smart cities: Everyone's connected
 If everyone, every home, and every business is connected via the IoT, why not take the next step and connect your entire neighborhood, or even the whole city? 
 Connected devices can help reduce congestion on local roadways, alert the fire department in case of emergencies, and even signal the need for road maintenance or additional police patrols. 
 The smart city might mean a smaller government – or a more intrusive one. 
-It all depends
+It all depends.
+
+Introduction
+===============
+
 The IoT has a lot to offer municipalities of all size. 
 In fact, there's a recognized smart city concept floating around, kind of a template or set of guidelines that cities across the United States and around the world can model going forward.
+
 The goals of the smart city are to make better use of public resources, increase the quality of services offered to citizens, and reduce operational costs of the public administrations. 
 To achieve these goals, the smart city must deploy an infrastructure that provides simple and economical access to most if not all public services, including transportation and parking, lighting, utilities, surveillance and maintenance of public areas, and more.
 What does this theoretical smart city concept mean in practice? 
 We're talking about all sorts of potential public benefits, including more efficient traffic flow, better management of public buildings and areas, reducing the (huge) costs of public lighting, better management waste removal and other public utilities, and more effective policing and emergency services. 
-These are all worthwhile goals.
+
 As with all IoT related activities, the smart city will be powered by data collected from smart devices of all shapes and sizes. 
 All this data can also be used to increase the transparency of the local government, enhance the awareness of the public about the status of their city, and stimulate citizen's participation in the public administration.
+
 There are the obvious technical and financial challenges, of course (it's all rather complex and expensive to implement), but cities face additional political issues. 
-With literally hundreds of billions of dollars in spending at stake, who makes the purchasing decisions? 
-And who benefits from local and state contracts? 
-Who makes the decision, especially when technology must necessarily bridge multiple adjacent municipalities? 
-And how do governments deal with the privacy and security issues inherent with the massive level of data collection and de facto public surveillance.
+
+* With literally hundreds of billions of dollars in spending at stake, who makes the purchasing decisions? 
+* And who benefits from local and state contracts? 
+* Who makes the decision, especially when technology must necessarily bridge multiple adjacent municipalities? 
+* And how do governments deal with the privacy and security issues inherent with the massive level of data collection and de facto public surveillance.
+
 Once these challenges can be overcome (and they inevitably will be), expect your city to install thousands of sensors on local streets, parks, and buildings, the better to gather information about public usage, air quality, noise levels, and the like and then use the collected data to provide better and more efficient services. 
 The future is bright for cities and citizens everywhere.
 
 Smart infrastructure
-----------------------
+=========================
 
 A smart city starts with enhanced smart infrastructure. 
+
 The IoT is built on the collection of various types of data, and the typical city offers a plethora of data just waiting to be collected.
 That means building out an infrastructure that includes the neccessary sensor devices, of various types, and a communication networks to link them all together.
 For instance, to properly monitor the continuing safety of a bridge requires a variety of sensor types, including temperature, humidity, vibration, and pressure sensors. 
@@ -39,6 +48,7 @@ In earthquake-prone regions, add seismic activity sensors and accelerometers to 
 
 All these sensors have to be connected to a central system that monitors data in real time and analyzes the historical data for trends.
 All the data is relevant, and all must be collated and analyzed.
+
 The challenge is deploying all the necessary sensors and then networking them together in an efficient manner.
 A city, then, must construct some sort of low-power wireless sensor network (WSN) to connect these and other sensors in the public purview.
 
@@ -48,8 +58,11 @@ The system automatically enters the issue into its main database and assign repa
 
 Police and other emergency responders also benefit from faster, smarter communications. 
 Security systems are connected directly into the city's central system so that police are notified the instant an alarm goes off.
+
 Same things with firefighters. A smoke alarm goes off, the data get sent directly to the nearest fire department. 
-Before they pull fire truck out of the station, they know where in the building the fire is active, the best route into and through the building, and what obstacles they might face. They also get the latest floor plans of the burning building, previously stored in their central database.
+Before they pull fire truck out of the station, they know where in the building the fire is active, the best route into and through the building, and what obstacles they might face. 
+They also get the latest floor plans of the burning building, previously stored in their central database.
+
 Emergency medical technicians (EMT) also get smarter and more effective thanks to the IoT. 
 When a call comes in, they receive data from any wearable medical devices on the citizen, as well as the person's complete medical history. 
 The responders know what to expect before they ever get there and can thus be better prepared for that particular medical emergency.
@@ -59,13 +72,16 @@ Whether it's a flood, tornado, snowstorm, or hurricane - or mass shooting, explo
 Smart Roads and Traffic management
 -------------------------------------
 
-Cities, whether urban or suburban, have to deal with a lot of motorized vehicles. We're talking traffic control, road maintenance, parking management. It's a major headache. 
+Cities, whether urban or suburban, have to deal with a lot of motorized vehicles. 
+We're talking traffic control, road maintenance, parking management. 
+It's a major headache. 
 
 Smart parking
 ---------------
 
 If you live in a city of any decent size, you know how hard it is to find a parking place, especially during popular events.
 Wouldn't it be great if you knew exactly where the nearest open space was, so you wouldn't spend half your time driving around looking for it?
+
 Smart parking technology is out to solve this particular problem. 
 
 Smart Traffic management
@@ -75,10 +91,13 @@ Traffic itself can be a nightmare, with massive congestion commonplace in many m
 
 When you want to avoid traffic jams and minimize the number of red lights you have to stop at, it's time to turn to the IoT.
 By constantly monitoring traffic flow with its roadside sensors, the IoT's smart systems can manipulate traffic signals and even lane availability to make sure the greatest number of drivers get to their destinations with the least number of interruptions.
-What we';l get with the IoT is more sensors monitoring more cirtical points, providing a denser grid of data.
+
+What we'll get with the IoT is more sensors monitoring more cirtical points, providing a denser grid of data.
 Sensors can be embedded in roadways or installed street-side in traffic signals or light poles; different types of sensors will monitor different things, such as vehicle traffic, air quality, noise levels, and the like.
+
 Data can also be co-opted from drivers' smarthpones or smart cars.
 Manage traffic signals and other activities to keep cars moving as rapidly as legally possible and lots of good things result - drivers get where they're going faster, there are fewer accidents, road deterioration is minimized, and the air quality improves.
+
 It's all about Smart Transportation Systems (STS)
 
 Smart Roads
@@ -103,7 +122,8 @@ If that power consumption can be reduced by even a small amount, the savings can
 Smart Utilities
 ================
 
-Many cities run at least some of their own utilities - water, waste management, even gas and electricity. Keeping costs down for both the city and its residents is an important challenge
+Many cities run at least some of their own utilities - water, waste management, even gas and electricity. 
+Keeping costs down for both the city and its residents is an important challenge
 
 Smart Waste management
 ------------------------
@@ -114,10 +134,13 @@ This will reduce costs by optimizing the truck's route and make for more efficie
 Smart water management
 --------------------------
 
-Municipal water management is also a major source for IoT optimization. Right now, most cities still employ meter readers to walk through neighborhoods and take manual meter readings.
+Municipal water management is also a major source for IoT optimization. 
+Right now, most cities still employ meter readers to walk through neighborhoods and take manual meter readings.
+
 Going forward, cities will install smart water meters with embedded sensors and radio-frequency (RF) transmitters to monitor individual household water consumption.
 By collecting real-time data, the water utility can notify customers (via phone, email, or text) if usage levels are unusual, thus warning of potential water leaks. 
-The data will also provide cities with insight into overall usage trends on a neighborhood-by neighborhood basis.
+
+The data will also provide cities with insight into overall usage trends on a neighborhood-by-neighborhood basis.
 
 Smart grid
 --------------
@@ -127,9 +150,11 @@ Power usage can get a lot more effcient when we connect various smart devices to
 
 It's a modernized electrical grid - the collection of power plants, transformers, and transmission lines that bring electricity to all the homes and businesses in a given area.
 Moving forward, we need a smarter grid, one built from the ground up to handle larger power loads - and better manage those loads.
+
 This new grid, the so-called smart grid, will use digital communications technology to collect and disseminate data about energy usage - the behaviors of both consumers and suppliers.
 That data can then be used to improve energy efficiency, helping consumers use less energy and save money.
-The smart grid will enable two-way communication between the utility and its customers, which will let smart home devices talk to the utility and make for more efficient energy usage. This new grid will also contain sensors along trasmission lines to better monitor power usage in all possible ways and respond more quickly to changing energy demand.
+The smart grid will enable two-way communication between the utility and its customers, which will let smart home devices talk to the utility and make for more efficient energy usage. 
+This new grid will also contain sensors along trasmission lines to better monitor power usage in all possible ways and respond more quickly to changing energy demand.
 
 Smarter energy management
 -----------------------------
@@ -146,13 +171,21 @@ This will not only help alleviate overall demand for electricity, but also lower
 A self-healing grid
 ---------------------
 
-Today, a small power outage quickly becomes a larger one, thanks to the domino effect of failures cascading along the line. Comapneis often don't know where problems lie until customers call in the complain.
+Today, a small power outage quickly becomes a larger one, thanks to the domino effect of failures cascading along the line. 
+Comapneis often don't know where problems lie until customers call in the complain.
 And it often takes an inordinate amount of time to repair the damage and bring blackened areas back online.
-A smart grid will better manage blackouts and damages, due to what the industry calls distributed intelligence. This involves capturing data at the 'edge' of the grid, where the electricity is consumed, by smart power meters and sensors in homes and businesses. By analyzing this data on the spot in real timem more information and faster decisions can be made, especially in emergency situations.
+
+A smart grid will better manage blackouts and damages, due to what the industry calls distributed intelligence. 
+This involves capturing data at the 'edge' of the grid, where the electricity is consumed, by smart power meters and sensors in homes and businesses. 
+By analyzing this data on the spot in real timem more information and faster decisions can be made, especially in emergency situations.
+
 Distributed intelligence will enable utilities to know about outages at the moment they occur, well before custoemrs call in.
 The power company will be able to quickly pinpoint the source of an outage so that repair crews can immediately be dispatched to the problem area.
-The smart grid will also enable utilities to better isolate power outages before they affect the rest of the grid, rerouting power paths around the problem area to keep the power flowing to the majority of customers. This will harden the entire system against all manner of emergencies, from severe storms to sunspot activity to terrorist attacks.
-In addition to minimizing the extend of an outage, the smart grid will also be more easily repairable. Service will be able to come back online more quickly after an emergency, with selective enabling - routing power to emergency services first, for example. In this mannger, the smart grid becomes a self-healing distribution system.
+The smart grid will also enable utilities to better isolate power outages before they affect the rest of the grid, rerouting power paths around the problem area to keep the power flowing to the majority of customers. 
+This will harden the entire system against all manner of emergencies, from severe storms to sunspot activity to terrorist attacks.
+In addition to minimizing the extend of an outage, the smart grid will also be more easily repairable. 
+Service will be able to come back online more quickly after an emergency, with selective enabling - routing power to emergency services first.
+In this mannger, the smart grid becomes a self-healing distribution system.
 
 Collecting and using the data
 -----------------------------------
@@ -169,7 +202,8 @@ Building the smart grid
 
 Creating a smart power grid is going to be a lot of work and cost a lot of money. 
 The new smart grid will consist of millions of individuals pieces and parts - power lines, sensors, controls, computer systems, and the like.
-Not all neccessary technologies are widely available today; some are still in development and need extensive testing before being publicly deployed. It will take time for it all to come together
+Not all neccessary technologies are widely available today; some are still in development and need extensive testing before being publicly deployed. 
+It will take time for it all to come together.
 
 Consider the following technologies thought to be part and parcel of the smart grid:
 
@@ -181,4 +215,7 @@ Consider the following technologies thought to be part and parcel of the smart g
 * Smart power generation, to match electricity production with demand by using generators that can start and stop idenpendently of other units. This is called load balancing and can be automated via the sensors, controls and systems of the smart grid.
 * Intelligent control systems, capable of constant monitoring, instant diagnosis, and appropriate solutions to grid disruptions or outages. These systems will incorporate distributed intelligent agents, analytical tools and algorithms, and operational applications.
 
-To a large extend, the smart grid is being piecemealed together from these and other technologies. Some experts estimate that it will take at least a decade for all the pieces to come together - but when they do, we'll all see immediate and significant impact.
+To a large extend, the smart grid is being piecemealed together from these and other technologies. 
+Some experts estimate that it will take at least a decade for all the pieces to come together - but when they do, we'll all see immediate and significant impact.
+
+*Written by Binwei@Singapore*
