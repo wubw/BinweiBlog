@@ -1,67 +1,69 @@
 
-2019/Azure_Security
+Azure Security
 ===================
 
 .. post:: Feb 24, 2019
    :tags: security, cloud
    :category: ComputerScience
 
+Cyber Security is important to digital transformation. 
+To use Azure well, the understanding of the security building blocks is crucial.
+
 Azure security services out of a box 
 --------------------------------------
 
 Azure security general 
-    ○ Azure Security Center 
-    ○ Azure Key Vault 
-    ○ Azure Disk Encryption 
-    ○ Log Analytics 
-    ○ Azure Dev/Test Labs 
+
+* Azure Security Center 
+* Azure Key Vault 
+* Azure Disk Encryption (IaaS VM disk)
+* Log Analytics 
+
 Azure Storage Security 
-    ○ Azure Storage Service Encryption 
-    ○ StorSimple Encrypted Hybrid Storage 
-    ○ Azure Client-Side Encryption 
-    ○ Azure Storage Shared Access Signatures 
-    ○ Azure Storage Account Keys 
-    ○ Azure File Shares with SMB 3.0 Encryption 
-    ○ Azure Storage Analytics 
+
+* Azure Storage Service Encryption (for data at rest)
+* StorSimple Encrypted Hybrid Storage (an integrated storage solution that manages storage tasks between on-premises devices and Azure cloud storage.)
+* Azure Client-Side Encryption 
+* Azure Storage Shared Access Signatures 
+* Azure Storage Account Keys 
+* Azure File Shares with SMB 3.0 Encryption: The Server Message Block (SMB) protocol is a network file sharing protocol that allows applications on a computer to read and write to files and to request services from server programs in a computer network. The SMB protocol can be used on top of its TCP/IP protocol or other network protocols. Using the SMB protocol, an application (or the user of an application) can access files or other resources at a remote server. This allows applications to read, create, and update files on the remote server. It can also communicate with any server program that is set up to receive an SMB client request.
+* Azure Storage Analytics 
+
 Backup and Disaster Recovery 
-    ○ Azure Backup 
-    ○ Azure Site Recovery 
+
+* Azure Backup 
+* Azure Site Recovery 
+
 Azure Database Security 
-    ○ Azure SQL Firewall 
-    ○ Azure SQL Authentication 
-    ○ Azure SQL Transparent Data Encryption 
-    ○ Azure SQL Database Auditing 
+
+* Azure SQL Firewall 
+* Azure SQL Authentication 
+* Azure SQL Transparent Data Encryption 
+* Azure SQL Database Auditing 
+
 Azure Identity and Access Management 
-    ○ Azure Role Based Access Control 
-    ○ Azure Active Directory /B2C/B2B 
-    ○ Azure Multi-Factor Authentication 
+
+* Azure Role Based Access Control 
+* Azure Active Directory /B2C/B2B 
+* Azure Multi-Factor Authentication 
+
 Azure Networking 
-    ○ Network Security Groups 
-    ○ Azure VPN Gateway 
-    ○ Azure Application Gateway 
-    ○ Azure Load Balancer 
-    ○ Azure Traffic Manager 
-    ○ Azure Application Proxy 
-    ○ Azure security services out of a box 
 
-4 Easy Dance Moves Anyone Can Master 
-
-	• Access control 
-	• Data protection at rest 
-	• Data protection in transit 
-    Application security 
+* Network Security Groups: While Virtual Network (VNET) is the cornerstone of Azure networking model and provides isolation and protection. Network Security Group (NSG) is the main tool you need to use to enforce and control network traffic rules at the networking level. Customers can control access by permitting or denying communication between the workloads within a virtual network, from systems on customer’s networks via cross-premises connectivity, or direct Internet communication.
+* Azure VPN Gateway: A VPN gateway is a specific type of virtual network gateway that is used to send encrypted traffic between an Azure virtual network and an on-premises location over the public Internet. 
+* Azure Application Gateway: Azure Application Gateway is a web traffic load balancer that enables you to manage traffic to your web applications.
+* Azure Load Balancer: With Azure Load Balancer, you can scale your applications and create high availability for your services. 
+* Azure Traffic Manager: Azure Traffic Manager is a DNS-based traffic load balancer that enables you to distribute traffic optimally to services across global Azure regions, while providing high availability and responsiveness.
+* Azure Application Proxy: Azure Active Directory's Application Proxy provides secure remote access to on-premises web applications. After a single sign-on to Azure AD, users can access both cloud and on-premises applications through an external URL or an internal application portal. 
 
 .. image:: images/azure_data_encryption.png
 
 WAF: web application firewall
 
-Hybrid identity with Microsoft Azure
-Create a Directory
-    Name must be unique on the internet
+Hybrid identity with Microsoft Azure: Microsoft’s identity solutions span on-premises and cloud-based capabilities, creating a single user identity for authentication and authorization to all resources, regardless of location.
 
-
-Comparision (table)
----------------------
+Authentication options
+--------------------------
 
 Azure Active Directory
 
@@ -80,37 +82,317 @@ Active Directory Domain services
 * Full featured implementation
 * Infrastructure is built and maintained
 * Fine-grain control of user environment
+* Aimed for deployments without AD DS 
+* Applications within the configured virtual network can leverage Azure AD in a similar way to AD DS (LDAP, join domain, Kerberos, NTLM) 
+* Useful where AD DS needed but don't want the management or cost of traditional AD DS  
 
 Custom domain name
-	• To simplify the full name of azure AD url
-    Verify through your own hosting website (e.g. hostmonster) 
 
-Install Windows Azure AD for PowerShell
-	• Search 'use powershell with azure active directory'
-	• Go to web site: https://msdn.microsoft.com/en-us/library/jj151815.aspx
-    Install the necessary software for powershell
+* To simplify the full name of azure AD url
+* Verify through your own hosting website (e.g. hostmonster) 
 
-Command line: Windows Azure Active Directory Module for Windows PowerShell
+Azure Security Features
+	- Operations
+		○ Operations Management Suite Security and Audit Dashboard
+		○ Azure Resource Manager
+		○ Application Insights
+		○ Azure Monitor
+		○ Log Analytics
+		○ Azure Advisor
+		○ Azure Security Center
+	- Applications
+		○ Web Application vulnerability scanning
+		○ Penetration testing
+		○ Web Application firewall
+		○ Authentication and authorization in Azure App Service
+		○ Layered Security Architecture
+		○ Web server diagnostics and application diagnostics
+	- Storage
+		○ Role-based access control (RBAC)
+		○ Shared Access Signature (SAS)
+		○ Encryption in Transit
+		○ Encryption at rest
+		○ Storage Analytics
+		○ Enabling Browser-based clients using CORS
+	- Networking
+		○ Network Layer Controls
+		○ Network Security Groups
+		○ Route Control and Forced Tunneling
+		○ Virtual Network Security Appliances
+		○ Azure Virtual Network
+		○ VPN Gateway
+		○ Express Route
+		○ Application Gateway
+		○ Web Application Firewall
+		○ Traffic Manager
+		○ Azure Load Balancer
+		○ Internal DNS
+		○ Azure DNS
+		○ Log Analytics NSGs
+		○ Azure Security Center
+	- Compute
+		○ Antimalware & Antivirus
+		○ Hardware Security Module
+		○ Virtual machine backup
+		○ Azure site recovery
+		○ SQL VM TDE (transparent data encryption)
+		○ VM Disk Encryption
+		○ Virtual networking
+		○ Patch updates
+		○ Security policy management and reporting
+		○ Azure Security Center
+	- Identity
+		○ Secure Identity
+        Secure Apps and data
 
- 
-Azure Portal:
-	• Create user
-	• Create group
-Sign-in in Url:
-Login.microsoftonline.com
-All the above actions can be done by Powershell
-Connect-MsolService: to connect by using user name and password
-New-MsolService: create a new user
-Set-MsolService: change the user properties
-Set-MsolUserPassWord
-
-External account
-Register devices
-
-Connect tool: to connect the local AD to Azure AD
+Azure AD Connect tool: to connect the local AD to Azure AD
 And you can activate or deactivate the sync between Azure AD and local AD
 Synchronization Service Manager 
- 
-Azure Premium user: 
-	can create group
-    Get report
+Azure AD Connect !== AD Federation
+
+Security Basics
+-----------------
+
+Every company has some level of security requirement that stretches across almost every element of the business
+It's important to think of security in layers rather than a single protection element
+It's also important to ensure security while not crippling the business ability to operate
+Make security a core step of any new project, of change control, of anything you do
+Defense in Depth: The best security is based on layers of protection and this is especially true with networking
+
+Key Security Areas
+--------------------
+
+* Identity and access: Being sure you are who you say you are
+* Network security: Secure access, isolation, and publishing
+* Data protection: Encryption of data at rest and in transit
+* Protecting secrets: Keys, certificates, credentials
+* System integrity: Patched, protected, etc
+* Insight: Auditing, system state, health
+
+Authentication in the Public cloud
+-----------------------------------
+
+Communication over the public cloud has to be focused on protocols commonly available
+HTTP and HTTPS with HPPTS preferred and often required because it is encrypted with SSL
+
+Authentication commonly used:
+
+* OAuth
+* Auth 2 (used by Azure AD)
+* SAML
+
+Azure Key Vault
+-----------------
+
+An Azure resource provider backed by pools of hardware security modules (HSMs)
+
+Provides storage:
+
+* Secrets - Pieces of data (under 25KB) that can be stored and retrieved 
+* Keys - Stored and then used within the key vault to perform cryptographic operations (but cannot be retrieved) 
+* Certificates - Management of x509 certificates including lifecycle 
+
+HSM-protected and software-protected keys
+Authentication and Authorization 
+Authentication is via Azure AD OAuth2 tokens 
+Authorization is via Access Control List (ACL) on the key vault 
+Typical structure is as follows: Key Vault Owner;Key/Secret Owner;App Operator;Auditor 
+
+Connecting Virtual Networks 
+
+* If Virtual networks exist in the same region and use the same Azure AD tenant network peering can be used to connect them using the Azure backbone network 
+* Another option is to utilize site-to-site VPN or ExpressRoute where network peering is not possible 
+* Site-to-site VPN or ExpressRoute are used to connect to on-premises locations 
+
+NSG Rules: Rules are based on 5-tuple and have priority and action (allow or deny) 
+
+* Source IP address (can be a range using CIDR format) 
+* Source port 
+* Destination IP address (can be a range using CIDR format) 
+* Destination port 
+* Protocol (TCP, UDP, or *)
+
+Non-VNet Azure Services 
+
+* Most non-laaS services do not directly integrate with VNets 
+* The services have an Internet public facing endpoint 
+* Some services provide a configurable firewall to control access based on public IP address and if from an Azure service 
+* When enabling for Azure services it means any service for any tenant running in Azure 
+* If more granularity required, look to utilize a public IP from the source service and restrict based on that IP 
+
+Virtual Appliances 
+
+* A large number of virtual appliances are available in the Azure Marketplace 
+* Licensing can be based on: Bring your own license or Hourly billing 
+* Essentially a VM with pre-configured software and configuration to perform a certain set of functionality 
+* Common examples include firewalls and load balancers 
+
+Azure Application Gateway 
+
+* A layer 7 reverse-proxy solution 
+* Terminates the client connection and forwards requests to target 
+* Application protocols support HTTP, HTTPS and WebSockets 
+* Supports SSL termination (offloading the CPU from the endpoints) 
+* Internet facing and Internal (VNet) applications 
+* Provides a layer of abstraction from the requesting client and the back-end service 
+
+Web Application Firewall
+
+* optional addition to Azure Applicaiton Gateway
+* Provides a web application firewall solution
+* Implements CRS 3.0 by default (2.2.9 also available)
+* Rules can be disabled on an individual basis if required
+* Detection or prevention mode
+
+https://docs.microsoft.com/en-us/azure/security/azure-security-getting-started
+
+Azure resource manager
+
+* every object is a resource
+* every resource belongs to a single resource group
+* resource groups are not a resource access boundary
+
+Resource Groups
+
+* resources in a resource group should share a common lifecycle
+* Resource groups can be heterogeneous or homogeneous
+* Resource groups are not a boundary of access
+
+Role-based access control
+
+* With ARM the access to resources and the actions possible can be finely controlled
+* A major use for resource group is with RBAC by grouping resources together in a resource group then delegate authority to groups of users on the resource group
+* RBAC and also apply to entire subscriptions or an individual resource
+* Enables assignment of roles at various levels: The subscription; A resource group; An individual resource 
+* Assigned rights are inherited by child objects 
+* Combine with Azure AD groups which contain users 
+* Assign Azure AD groups to a role at the desired level 
+
+Built-in roles
+
+* large number of in-box roles
+* not every role applies to infrastructure
+* when looking at a resource only its relevant roles will be displayed
+* classic resource have smaller set of available roles and only at subscription level
+* select a role and a resource provider to see detailed permissions of the role
+
+Privileged Identity management: Azure AD P2
+
+No standing privileges is a common security goal 
+Ideally accounts have privileges elevated only when required 
+Azure AD Privileged Identity Management (PIM) enables users/groups to have roles assigned 
+The user must then request elevation, typically also with MFA along with an optional comment 
+The elevation is for a configurable amount of time per role 
+A big focus is for a single identity across all systems and clouds 
+It is critical that the identity is as secure and monitored as possible 
+Azure AD Identity Protection provides a centralized view of risk events, risk users and vulnerabilities 
+Can be utilized as part of conditional access to add user risk level as a condition 
+
+Azure Trust center: you can see the certificates
+http://azure.microsoft.com/en-us/support/trust-center/compliance/ 
+
+Security terminology
+-----------------------
+
+Asset: People, property, or information (database, software code, company records)
+Threat: Person or process that can exploit a vulnerability (intentionally or accidentally) to obtain, damager, or destroy an asset
+Vulnerability: Weakness or gap in a security program that can be exploited by threats to gain unauthorized access to an asset
+Risk: The potential for loss, damage, or destruction of an asset as a result of a threat exploiting a vulnerability
+
+What to keep in mind
+
+- Logically segment subnets: use nsgs for inter-subnet traffic
+- Control routing: used with virtual network applicances
+- Enable forced trunneling: constrain outbound VM traffic
+- Disable RDP/SSH: employ P2S or S2S VPNs
+- Enable Azure Security Center: Prevent, detect, and respond to threats
+
+AAA: authentication, authorization, accounting
+
+ARM policy
+
+SIEM (Security information and event management)
+
+OS Requirements 
+Virtual Machines 
+	Disabling unused services on VM 
+		I.e., no guest accounts, services run with least privilege 
+	Keep machines patched, up to date 
+	Updating out of date software 
+    Azure Security Center can help here 
+
+Password / User Account Policies 
+	Initial password issuance 
+	Password strength 
+	Password reuse 
+	Frequency of change 
+	Admin password special requirements 
+	Hash algorithms / key lengths 
+	Inactivity, login failure, account blocking 
+	Non-obvious account names 
+	Delivery of account/password materials 
+	De-provisioning / access revocation 
+    No sharing of accounts 
+
+Idaas = Identity as a service
+
+How else does IDaaS help? 
+	DDOS prevention at the provider, not at your app 
+	User Management 
+	Block suspicious login 
+	Prompt for MFA 
+	Protocol based protection at the app (OpenlD Connect / OAuth2) 
+	Centralized user deprovisioning 
+	Audit logs, reports 
+    Compliance 
+
+Database Access Requirements 
+	Limited to individuals 
+		o Application / system accounts 
+		o Few admin / read only 
+	All access to data is controlled via applications 
+	Never, never, never log in to the database and fix issues directly with content/data 
+		o At least this is the goal 
+        o Build tools to solve data problems instead, track repeat offenders 
+
+Data Encryption
+- Azure communications are HTTPS
+- SQL Transparent Data Encryption (TDE)
+- Encrypt blobs at the client (with Key Vault)
+- Encrypt blobs at storage (Storage Service Encryption)
+
+Typical Capabilities 
+	Browser Based Authentication 
+	Mobile Device Authentication 
+	Multi-Factor Authentication 
+	Login to your corporate directory 
+	Single Sign On (to SaaS apps) 
+	Social Login 
+
+Do not copy production db, but use SQL DB Data Masking
+
+Key Vault 
+	Store your private keys, shared secrets, other connections, securely 
+	FIPS compliant option HSM storage ($$) 
+	Examples 
+		o Private keys, certs, passwords 
+		Connection strings 
+		o Secrets and account names for service bus, storage, search, redis, etc. 
+    KEY ROLLING MAGIC!!! 
+
+Azure Security Center 
+    Recommend actions to take to secure your VMS 
+    Define policies 
+    Export logs for analysis 
+    Integration with Operations Management System (OMS) 
+
+Compliance Requirements 
+	Infrastructure 
+		ISO 27001 
+		0 SAS 70 Type Il, SSAE 16 
+	Audit 
+		Third party review/ NIST SP 800-53 
+		Third party pen test OWASP or OSSTMM 
+		Third party NESSUS scan 
+
+* Azure Dev/Test Labs 
