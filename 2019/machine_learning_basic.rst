@@ -169,7 +169,7 @@ Utility function or fitness function
 ---------------------------------------
 
 Untility function measures how good your model is or you can define a cost function that measures how bad it is.
-Cost function apply on training set, gradient descent, used in regression.
+Cost function applies on training set, gradient descent, used in regression.
 Alternative option of gradient descent is Stochastic Gradient Descent (SGD) classifier.
 
 Regularization
@@ -184,7 +184,9 @@ Measurement
 -------------------------------
 
 Root mean square error (RMSE): measures the standard deviation
+
 Mean Absolute Error (MAE)
+
 The higher the norm index, the more it focuses on large values and neglects small ones. This is why the RMSE is more sensitive to outlier than the MAE.
 
 Precision = TP/TP+FP
@@ -237,7 +239,8 @@ As much as the image looks like a cat, the image is digitally altered which conf
 
 Slightly rotating the image led the model to correctly classify the image as a cat (and as an animal)
 
-The above image is what’s called as an adversarial image, trying to fool your model into thinking the image is something you want it to be instead of what the image actually is.
+The above image is what’s called as an adversarial image, 
+trying to fool your model into thinking the image is something you want it to be instead of what the image actually is.
 
 We have many technologies that allow us to use AI/ML (and not just deep learning) as a blackbox. 
 The real danger is in the application, especially in healthcare and defense. 
