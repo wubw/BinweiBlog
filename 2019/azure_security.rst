@@ -2,7 +2,7 @@
 Azure Security
 ===================
 
-.. post:: Feb 24, 2019
+.. post:: April 19, 2019
    :tags: security, cloud
    :category: ComputerScience
 
@@ -70,8 +70,6 @@ Identity and Access
 * Azure Active Directory /B2C/B2B 
 * Azure Multi-Factor Authentication 
 * Hybrid identity with Microsoft Azure: Microsoft’s identity solutions span on-premises and cloud-based capabilities, creating a single user identity for authentication and authorization to all resources, regardless of location.
-* Secure Identity
-* Secure Apps and data
 
 Network Security
 -------------------
@@ -82,15 +80,11 @@ Network Security
 * Azure Load Balancer: With Azure Load Balancer, you can scale your applications and create high availability for your services. 
 * Azure Traffic Manager: Azure Traffic Manager is a DNS-based traffic load balancer that enables you to distribute traffic optimally to services across global Azure regions, while providing high availability and responsiveness.
 * Azure Application Proxy: Azure Active Directory's Application Proxy provides secure remote access to on-premises web applications. After a single sign-on to Azure AD, users can access both cloud and on-premises applications through an external URL or an internal application portal. 
-* Network Layer Controls
-* Route Control and Forced Tunneling
-* Virtual Network Security Appliances
-* Azure Virtual Network
-* Express Route
-* Azure Load Balancer
-* Internal DNS
-* Azure DNS
-* Log Analytics NSGs
+* Route Control and Forced Tunneling: Forced tunneling lets you redirect or "force" all Internet-bound traffic back to your on-premises location via a Site-to-Site VPN tunnel for inspection and auditing.
+* Virtual Network Security Appliances: Use your favorite network virtual appliances in Azure
+* Azure Virtual Network: Your private network in the cloud
+* Express Route: Experience a faster, private connection to Azure
+* Internal DNS & Azure DNS
 
 Data Protection
 ------------------
@@ -106,8 +100,11 @@ Azure Storage Security
 * Azure Storage Analytics 
 * Role-based access control (RBAC)
 * Encryption in Transit
-* Storage Analytics
 * Enabling Browser-based clients using CORS
+
+.. image:: images/azure_data_encryption.png
+
+Do not copy production db, but use SQL DB Data Masking
 
 Backup and Disaster Recovery 
 
@@ -118,7 +115,7 @@ Azure Database Security
 
 * Azure SQL Firewall 
 * Azure SQL Authentication 
-* Azure SQL Transparent Data Encryption 
+* Azure SQL Transparent Data Encryption: Transparent Data Encryption (TDE) encrypts SQL Server, Azure SQL Database, and Azure SQL Data Warehouse data files, known as encrypting data at rest.
 * Azure SQL Database Auditing 
 
 Protecting secrets
@@ -136,9 +133,6 @@ Applications
 * Web Application firewall (WAF)
 * Layered Security Architecture
 * Web server diagnostics and application diagnostics
-
-Compute
-
 * Antimalware & Antivirus
 * Hardware Security Module
 * Virtual machine backup
@@ -164,7 +158,7 @@ Authentication in the Public cloud
 -----------------------------------
 
 Communication over the public cloud has to be focused on protocols commonly available. 
-HTTP and HTTPS with HPPTS preferred and often required because it is encrypted with SSL.
+HPPTS is preferred and often required because it is encrypted with SSL.
 
 Authentication commonly used:
 
@@ -179,7 +173,6 @@ Azure Active Directory
 * Identity infrastructure of the future
 * Expanding constantly
 * Limited but growing features
-* Infrastructure background is a service
 * Limited control over user environment
 
 Active Directory Domain services
@@ -191,7 +184,6 @@ Active Directory Domain services
 * Full featured implementation
 * Infrastructure is built and maintained
 * Fine-grain control of user environment
-* Aimed for deployments without AD DS 
 * Applications within the configured virtual network can leverage Azure AD in a similar way to AD DS (LDAP, join domain, Kerberos, NTLM) 
 * Useful where AD DS needed but don't want the management or cost of traditional AD DS  
 
@@ -211,6 +203,7 @@ Azure AD Connect
 Azure AD Connect tool is to connect the local AD to Azure AD.
 
 And you can activate or deactivate the sync between Azure AD and local AD.
+
 Azure AD Connect !== AD Federation
 
 Privileged Identity management: Azure AD P2
@@ -238,6 +231,8 @@ Typical Capabilities
 * Single Sign On (to SaaS apps) 
 * Social Login 
 
+.. image:: images/azure_security_case_study_1.png
+
 Identity as a service
 -------------------------
 
@@ -248,11 +243,9 @@ How else does IDaaS help?
 * Block suspicious login 
 * Prompt for MFA 
 * Protocol based protection at the app (OpenlD Connect / OAuth2) 
-* Centralized user deprovisioning 
+* Centralized user management 
 * Audit logs, reports 
 * Compliance 
-
-.. image:: images/azure_security_case_study_1.png
 
 Azure Key Vault
 =======================
@@ -325,9 +318,9 @@ Azure Application Gateway
 
 Web Application Firewall
 
-* optional addition to Azure Applicaiton Gateway
+* Optional addition to Azure Applicaiton Gateway
 * Provides a web application firewall solution
-* Implements CRS 3.0 by default (2.2.9 also available)
+* Implements CRS 3.0 by default (2.2.9 also available) (Core Rule Set)
 * Rules can be disabled on an individual basis if required
 * Detection or prevention mode
 
@@ -341,18 +334,6 @@ Some practices
 
 Other Services and practices
 ==================================
-
-Data Encryption
---------------------
-
-* Azure communications are HTTPS
-* SQL Transparent Data Encryption (TDE)
-* Encrypt blobs at the client (with Key Vault)
-* Encrypt blobs at storage (Storage Service Encryption)
-
-.. image:: images/azure_data_encryption.png
-
-Do not copy production db, but use SQL DB Data Masking
 
 Azure Security Center 
 --------------------------
@@ -408,7 +389,7 @@ Database Access Requirements
 * Never, never, never log in to the database and fix issues directly with content/data: At least this is the goal; Build tools to solve data problems instead, track repeat offenders 
 
 Resource and Role
-========================
+-------------------
 
 Azure resource manager
 
