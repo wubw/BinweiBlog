@@ -140,6 +140,8 @@ https://azure.microsoft.com/en-us/documentation/articles/sql-data-warehouse-over
 
 https://azure.microsoft.com/en-us/documentation/articles/sql-data-warehouse-load-polybase-guide/
 
+https://techcommunity.microsoft.com/t5/DataCAT/Azure-SQL-Data-Warehouse-Workload-Patterns-and-Anti-Patterns/ba-p/305472
+
 .. image:: images/sql-data-warehouse-diagram.png
 
 Comparision
