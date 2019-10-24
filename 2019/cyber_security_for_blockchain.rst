@@ -1,10 +1,86 @@
 
-2019/Cyber_Security_For_Blockchain
+Cyber Security for Blockchain
 ==================================
 
 .. post:: Jun 09, 2019
    :tags: blockchain, security
    :category: ComputerScience
+
+This year, I worked on a project and the topic for me is cyber security for blockchain in Oil and Gas industry. 
+It was really good experience since I got the chance to think through this topic and deliver research report to client.
+Both cyber security and blockchain are interesting areas for me, besides the above project I still have a lot of things not mentioned mainly technical things.
+So I decide to write this blog as supplement to above project.
+
+.. contents::
+
+Blockchain allows people to exchange assets and perform transactions without a third party.
+In order to compromise or hack a blockchain network, someone would have to gain control of the majority of computers in that network.
+This is extremely difficult to do which is guaranteed by Blockchain.
+
+To simply say Blockchain is safe and can protect your data is wrong, since the strength of Blockchain can only cover security from one perspective.
+
+The blockchain is an incorruptible digital ledger of economic transactions that can be programmed to record not just financial transactions but virtually everything of value  
+Don and Alex Tapscott: Blockchain Revolution 
+
+Strength
+================
+
+There is no longer a single point of failure, and this is what makes blockchain infinitely more secure than what we have today.
+Blockchain isn't just for assets, though. It extends to contracts.
+
+And also, along with that, understand that we only have two possible operations on blockchain: we can only read data and we can only add new data.
+There's no concept of an edit or delete, and this is what we talk about when we talk about immutability on the blockchain.
+
+A block cannot be forged or modified, because it is digitally signed by the creator. 
+The creator of a block is either publicly known (Proof of Stake) or difficult to become (Proof of Work), making masquerading as the real creator difficult or impossible.
+
+Blockchain Platform Status
+================================
+
+private blockchain, and the most common ones are R3 Corda, Hyperledger, and Quorum.
+
+• Ethereum
+Ethereum currently does not have any advanced privacy options, but this is planned to change.
+• Hyperledger
+1. Channels: Subsections of the blockchain that make transactions visible only to members.
+2. Private Transactions: Hashes of private data are stored to publicly verify it on the blockchain.
+3. Zero-Knowledge Technology: Provers can demonstrate knowledge of a secret without revealing the secret itself.
+• Corda
+Parties on the Corda Network can be represented in one of two ways:
+Party: A public key and name
+Anonymous Party: Only a public key.
+
+Ethereum currently uses Proof of Work for consensus. 
+And Casper is the planned migration of Ethereum from Proof of Work to Proof of Stake.
+
+Azure, blockchain as service 
+
+TEEs (Trusted Execution Environments) 
+
+Hyperledger 
+
+Microsoft Coco Framework 
+
+R3 Corda (finance and bank) 
+
+JP Morgan Quorum 
+
+Ethereum vs Hyperledger 
+The use of public keys for identity management is a logical choice since knowledge of a public key is necessary for verification of digital signatures. Both Ethereum and Hyperledger Fabric use digital signatures on transactions and blocks to verify the identity of the creator and that the signed data has not been modified since signing. Public key cryptography is used in the blockchain as a method for managing users’ identities without revealing real world identities.   
+In Ethereum, users are identified by an address that is directly related to the user's public key. This provides identity verification while preserving anonymity.   
+In Hyperledger Fabric, users are identified via X.509 certificates. These certificates provide several pieces of information about the user, but one of these is also the user's public key. 
+Zero-knowledge proofs are a cryptographic principle used in some blockchains to increase the privacy of users. Currently, Ethereum does not have support for zero-knowledge proofs, but adding the necessary functionality for zkSNARKS, a type of zero-knowledge proof, is currently included in the Ethereum development roadmap. Hyperledger Fabric does not currently support zero-knowledge proofs as a privacy feature. 
+
+.. image:: images/ethereum-vs-hyperledger.jpeg
+
+Hash functions are at the core of all blockchain technology. One of the primary uses for hash functions is chaining blocks together. In both Ethereum and Hyperledger Fabric, blocks include the hash of the previous block to tie the blockchain into a cohesive whole. 
+Merkle trees are a data structure that allows authenticated storage with efficient data retrieval. Both Ethereum and Hyperledger Fabric are smart contract platforms that use a particular type of Merkle tree called the Patricia tree to store the current state of their virtual machine. 
+Hash functions are used as the cryptographic puzzle at the center of the Proof of Work consensus algorithm. Ethereum currently uses Proof of Work for consensus, though a switch to Proof of Stake has been built into the road map from the beginning. There are only two consensus alogrithms implemented in Hyperledger Fabric - Solo and Kafka. SOLO is for development and Kafka is for production.  
+
+.. image:: images/ethereum-vs-hyperledger2.jpeg
+
+Security Roles in Blockchain
+=================================
 
 Ethereum Wallets
 	- Do not store any money
@@ -27,181 +103,63 @@ Ethereum Accounts
         Cannot be restored if access is lost 
         Cannot be suspended or censored 
 
-How to get current time in a smart contract?
-	- This is tricky, all contracts should be deterministic
-	- Every network participant had different time
-    - Can get a timestamp from a block
-
-https://brokenlibrarian.org/bitcoin/
-
-Individual Bitcoiners may talk about the future of Bitcoin as a currency, but the vast majority of Bitcoin transactions today are the buying and selling of Bitcoins themselves using real-world money, and not the buying of goods or services using Bitcoins. 
-There is an extremely limited number of things you can spend Bitcoins on without first converting them to real-world money, and many of those are done through third-party Bitcoin-to-dollars systems where the merchant never sees any Bitcoins.
-
-The original design of Bitcoin did not account for the possibility of specialized, expensive hardware which could make mining without that hardware almost useless. Certain kinds of ATI Radeon video cards proved so effective at performing Bitcoin hashing that mining solely on a general-purpose PC gives negligible results, due to the vastly increased hashing difficulty. Miners purchased huge amounts of these video cards to create custom (and often hilarous) "mining rigs" which do nothing but convert electricity into waste heat and Bitcoins.
-
-The stakes have been raised again with the advent of specialized Bitcoin-only ASIC hardware which is even more effective than the video cards were. With huge amounts of specialized Bitcoin computing hardware being added to the network every week, the difficulty has been rising extremely quickly; currently, the majority of ASIC equipment cannot mine Bitcoins fast enough to pay for its own electricity requirements, much less its original purchase price. The more hashing power is connected to the Bitcoin network, the less profitable mining becomes for everybody.
-
-The future of Bitcoin mining appears to be in the hands of a small minority of users who can afford ASIC equipment, making the "distributed" nature of Bitcoin something of a joke. In addition, the Bitcoin network now must use vast amounts of power just to maintain itself, power typically generated by fossil fuel plants and in amounts far out of proportion to its actual usefulness. It is a tremendous waste of actual real-world resources that could be better used on something important (like, for example, watching cat videos).
-
-
-7) Is Bitcoin actually anonymous?
-
-In one sense, yes. A Bitcoin address is not necessarily tied to any single person.
-
-In most other senses, no. By design, Bitcoin relies on distributed verification of transactions and balances. This means that every single transaction performed by a Bitcoin address is always going to be visible to the entire rest of the network. There is literally no privacy when it comes to Bitcoin addresses, and once someone can associate your identity with a public address, it is relatively simple for them to track literally all of your activity using that address. This includes, for example, transferring your balance to a different Bitcoin address in an attempt to re-anonymize yourself.
-
-
-Rose Greenhow was a spy for Confederate Army and got information from Union Army. The information was all encrypted.
-
-Byzantine Fault Tolerance: BFT
-
-Blockchain use following cryptography:
-	- Public key cryptography
-	- Zero-knowledge proof: Prove knowledge of a secret without revealing it
-	- Hash Functions
-
-Zero-knowledge proofs are often referred to as zk-SNARKs, which stand for 'Zero-Knowledge Succinct Non-Interactive Arguments of Knowledge' or zk-SNARKs for short.
-Being able to answer a question of 'does a user have enough money to send to another user' without knowing who the user is, or exactly how much they have, is one of the primary use cases for Zero-knowledge Proofs in blockchain.
-
-Public vs. Private Blockchain 
-	- Public Blockchain 
-		○ Anyone can write to the blockchain
-		○ Every node contains a copy of the complete chain 
-		○ Best security and trust between peers 
-		○ Hashing puzzles are time consuming
-		○ Some enterprises nervous about public blockchain 
-	- Private Blockchain
-		○ Private blockchains have been controversial 
-		○ Enterprises favour a more controlled blockchain 
-		○ An enterprise writes transactions 
-		○ Doesn't have same decentralized security as public blockchain 
-        ○ The company decides who can read and verify blocks 
-
-Permissioned and permissionless
-
-Sending a digital copy concept it's not so great when it comes to things like money, stocks and bonds, music, loyalty points, intellectual property, tickets to a game or concert.
-Blockchain allows people to exchange assets and perform transactions without a third party.
-In order to compromise or hack a blockchain network, someone would have to gain control of the majority of computers in that network.
-This is extremely difficult to do.
-There is no longer a single point of failure, and this is what makes blockchain infinitely more secure than what we have today.
-Blockchain isn't just for assets, though. It extends to contracts.
-
-We fill up this page with any kind of data imaginable, and, while most of the time today, we're talking about recording financial transactions on this page, or this ledger, or this block,
-we can record any kind of data we want, e.g. financial transactions, voting records, results, land titling, medical records. 
-
-The issue with single entry accounting is that it mandated that there was a single authority, which is the reason why there was the necessity for a king or a queen to control the ledger.
-In order to have trade, right, at the international level, we needed to have at least two authorities.
-Blockchain is the very first implementation of triple entry accounting, where we have an asset being recorded on the ledger in the context of a transaction
-The third entry and triple entry accounting is cryptography, where we have a cryptographic account of the transaction stored permanently and immutably on the ledger.
-A ledger is a collection of transactions.
-It is not a collection of assets. Assets are part of a transaction, but the ledger records the transaction.
-In blockchain, the differentiator is that no one owns the ledger, or all of the participants own the ledger.
-
-And also, along with that, understand that we only have two possible operations on blockchain: we can only read data and we can only add new data.
-There's no concept of an edit or delete, and this is what we talk about when we talk about immutability on the blockchain.
-
-A block cannot be forged or modified, because it is digitally signed by the creator. The creator of a block is either publicly known (Proof of Stake) or difficult to become (Proof of Work), making masquerading as the real creator difficult or impossible.
-
-Traditional cyber security
-	- Centralized
-	- Perimeter-focused
-	- Trusted or semi-trusted infrastructure
-Blockchain
-	- Decentralized
-	- Distributed
-    - Untrusted Infrastructure
-
-Public Blockchain
-    - permissionless: Anyone can effectively join the blockchain, this means that they can read, write, or participate with a public blockchain. Public chains are decentralized and no one eneity has control over the network and they are secure in that the data can't be changed once validated on the blockchain.
-Private Blockchain
-    - Permissioned: Permissioned networks place restrictions on who is allowed to participate in the network and in what transactions.
-
-
-
-So, public blockchain platforms like Bitcoin, Ethereum, Litecoin tend to get talked about a lot right now, and these are what we also refer to as permissionless blockchain platforms meaning that they really strive to, by design, increase and protect the user's anonymity.
-Private blockchains tend to come with identity management tools or a modular architecture, where you can plug in your own identity management solution. This can be anything from an Active Directory deployment to an OAuth solution using Google, Facebook, LinkedIn, etc.
-
-private blockchain, and the most common ones are R3 Corda, Hyperledger, and Quorum.
-
+Identity
 So, when you're thinking in your head about public versus private blockchain understand that it all begins with identity management, and in a private blockchain I know who all the participants are right from the beginning.
 In the public blockchain, again, I don't know who those participants are, and that's not to say that I can't build a permission solution on a public platform,
 
-Considerations on permissioned vs permissionless blockchain:
-	1. Governance: how is the application oversight occuring?
-	2. Integration: how does the blockchain work with your existing applications and can smart contracts be used?
-	3. Smart Contract functionality: Does your enterprise plan on using smart contracts?
-	4. Cryptocurrency requirement: enterprise blockchains generally don't use cryptocurrency so that can help you decide
-	5. Consensus algorithm: the algorithm can be very different if you are going to have miners vs enterprise nodes
-    6. Costing model: cost burdened by the enterprise or shared among a consortium
+consensus
+https://blog.csdn.net/lsttoy/article/details/61624287
 
-Proof of Activity
+The blockchain is built of several different types of components, each with a specific role to play within the blockchain’s operation: 
 
-Users in a Proof of Stake blockchain can "stake" or promise not to use the tokens they own. This gives them the opportunity to be selected as the next user to create or "forge" a new block and earn the reward. A block forger is pseudo-randomly selected from all of the users who have staked some of their assets, and the selection process is biased based on the size of the stake.
-For example, imagine that a wheel is divided into sections where the size of a section is proportional to the size of a user’s stake. The next block creator would be chosen by spinning the wheel and seeing whose section comes out on top. In Proof of Stake, each user has a copy of the wheel and they are all synchronized so that each person can independently determine the selection and get the same result. This is why Proof of Stake uses a pseudo-random instead of a random selection process.
+Ledger: A distributed, immutable historical record 
+Peer Network: Stores, updates, and maintains the ledger 
+Membership Services: User authentication, authorization, and identity management 
+Smart Contract: Program that runs on the blockchain 
+Wallet: Stores users' credentials 
+Events: Notifications of updates and actions on the blockchain 
+Systems Management: Component creation, modification, and monitoring 
+Systems Integration: Integration of blockchain with external systems. 
 
-Ethereum currently uses Proof of Work for consensus. And Casper is the planned migration of Ethereum from Proof of Work to Proof of Stake.
+Potential Problems
+========================
 
-Public key math foundation
-	- Multiplication vs factoring
-	- Exponent vs logarithm
-Identity in the blockchain is based on public key cryptography. A person’s address on the blockchain is their public key.
+https://brokenlibrarian.org/bitcoin/
 
-Privacy
-We'll start with zero knowledge proofs.
-They use cryptography and cryptographic algorithms to allow a user to prove knowledge of a secret without revealing the actual secret.
-A common example of this type of proof includes a colorblind person and two objects identical except for the color.
-The colorblind person shows one object to the prover, conceals both objects, and then shows one to the prover again.
-The prover then says whether or not they are the same object.
-Since the only way of determining this reliably is that the objects are different colors,
-the prover can prove the difference in colors without revealing the color of either object.
+Double spending
+Sending a digital copy concept it's not so great when it comes to things like money, stocks and bonds, music, loyalty points, intellectual property, tickets to a game or concert.
 
-Another approach is stealth addresses.
-Stealth addresses involve using one-time addresses to perform transactions on the blockchain.
-A stealth address is just a one-time address that makes it impossible to link a transaction to a known account.
-What this does is prevents the data mining attacks on privacy that we discussed earlier.
+Solutions
+==============
 
-The following are only some of the mechanisms developed and implemented in various blockchains:
-• Zero-Knowledge Proofs
-A prover proves knowledge of a secret without revealing it.
-• Stealth Addresses
-Using one-time addresses for sending/receiving transactions for an account.
-• Ring Signatures
-Type of digital signatures that lets any member of the group sign, but no one can tell which one signed.
-• CoinJoin
-Transactions from several senders to several recipients are mixed together to hide who is paying whom.
-• Confidential Transactions
-Uses homomorphic encryption to allow transactions to be processed while encrypted. Proves transaction value is in a range of values to prove that overspending did not occur.
+Can use Azure KeyVault to store the key and do block versioning 
 
+.. image:: images/key-rotation.png
 
-• Ethereum
-Ethereum currently does not have any advanced privacy options, but this is planned to change.
-• Hyperledger
-1. Channels: Subsections of the blockchain that make transactions visible only to members.
-2. Private Transactions: Hashes of private data are stored to publicly verify it on the blockchain.
-3. Zero-Knowledge Technology: Provers can demonstrate knowledge of a secret without revealing the secret itself.
-• Corda
-Parties on the Corda Network can be represented in one of two ways:
-Party: A public key and name
-Anonymous Party: Only a public key.
+.. image:: images/proof-of-stake.jpg
 
+.. image:: images/immutability.png
 
-Consensus is a way to ensure the nodes on the network verify the transactions and agree with their order and existence on the ledger. In the case of applications like a cryptocurrency, this process is critical to prevent double spending or other invalid data being written to the underlying ledger, which is a database of all the transactions.
+Do you need a blockchain? 
 
-Proof of Stake:
-Validator, forging, stake, pool
-With Proof of Stake (PoS) we have “Validators” – “Forging”, instead of "Miners" – "Mining". There are no computational cycles running through massive amounts of math problems trying to solve a problem like PoW. With PoS, we have validators sending a special type of transaction across the network, which gets locked into a deposit (otherwise known as validator pool) and that’s called “staking”.
-Once this validator has thrown his hat into the proverbial arena, then an algorithm pseudo-randomly selects a validator during each time slot (for example, every period of 10 seconds might be a time slot), and assigns that validator the right to create a single block. This block must point to some previous block (normally the block at the end of the previously longest chain), and over time, most blocks converge into a single constantly growing chain.
-The next step is for the validator to validate a grouping of transactions. Once that’s completed, they receive their staked funds back, plus the transaction fees (sometimes rewards when coin supply is being inflated from time-to-time) for that block.
-If the validator decides to act in a bad way (i.e. bad actor) and validate fraudulent transactions, they lose their stake that’s being held at the moment and are booted from the validator pool going forward (losing rights to forge). This is a built-in incentive mechanism to ensure they are forging valid transactions and not fraudulent ones.
+Do you need a shared database between multiple parties 
+Do the parties have conflicting interests or are not trusted 
+Can everyone play by the same rules? 
+Do you need an immutable log? 
+Public blockchain or private blockchain 
 
-Proof of Capacity, Proof of Burn
+.. image:: images/do-you-need-blockchain.png
 
-51% attack = Sybil attack
+Bitcoin uses Merkle tree while Ethereum use Patrica tree 
+Ethereum moves to proof of stake: Casper 
 
-Delegated Proof of Stake (DPoS)
-Directed Acyclic Graph (DAG)
-Proof of Authority (PoA)
+Ethereum code is public: 
+Can be examined 
+Can be validated 
+Can be exploited if poorly written, e.g. the DAO 
 
-there are two significant concerns currently inhibiting Internet of Things adoption, security and scalability.
-
-In terms of security, IoT devices and the networks they are plugged into can be susceptible to cyberattacks, putting private or personal data at risk. Many IoT devices are designed to operate on low power networks, utilizing only the essential components for connecting while excluding the computing power necessary to run custom cybersecurity protocols. That being said, a breach in a single device could compromise an entire network, rendering vast amounts of confidential information vulnerable to attack. Additionally, the majority of IoT networks operate on centralized cloud solutions, both for storage and processing purposes. This type of centralized architecture leaves a network exposed to cyber threats and also limits a network’s ability to share and process information. As the global IoT network expands to billions of new devices over the next few years, the sheer amount of data generated will overwhelm our current IT infrastructure, restricting much of the value IoT networks create.
+Dapp advantages 
+Reduces fees 
+Reduces reliance on central resource 
+DDoS free 
+Removes personal trust from the transaction 
