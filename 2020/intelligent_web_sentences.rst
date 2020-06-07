@@ -112,7 +112,7 @@ Your annual salary / 2,080 hours = your hourly rate
 
 Then decide how to invest your time with hourly rate in mind. Always look for ways you can spend some money to save time
 
-How can one become part of 1%
+Become the 1%
 -------------------------------
 
 Do what the 1% does.
@@ -189,6 +189,8 @@ They intentionally build a network of people who are better than they are in the
 People who make them uncomfortable and insecure. 
 People who challenge them to rise above mediocrity and achieve a life of success and integrity.
 
+最后，你的身材，你的外形是你最好的名片。好好打理自己的名片
+
 为人处事
 ===========
 
@@ -264,96 +266,154 @@ Cool psychological hacks
 生活哲理
 =========
 
-长期的安逸和舒适，削减了我们应对变化环境的能力，我们身边一切让生活变得更便利的东西：网购、外卖、空调，都在试图让我们逐渐依赖现代文明的保障，这种保障在不知不觉中夺走你的体能，同时也会将你的意志力一并打包带走。
+关于体育
+---------
+
+长期的安逸和舒适，削减了我们应对变化环境的能力，我们身边一切让生活变得更便利的东西：网购、外卖、空调，都在试图让我们逐渐依赖现代文明的保障。
+这种保障在不知不觉中夺走你的体能，同时也会将你的意志力一并打包带走。
 体育运动真正的价值和意义，在于引导人们不断尝试新的极限，挑战原本被认为不可能的事情。
 生活的意义，就是挑战极限，与自己作斗争，不断的提升自己的能力边界和上限；毕竟，即便是享受生活，也需要强健的体魄。
 不要让体力，成为你从未预料的那块最短的木板。
 
-高人指路
-贵人相助
-小人监督
-敌人成就
+关于各种人
+------------
+
+年少时，很少去想各种人对于生活的重要性。
+其实在成长路上，各种人都是不能避免的，也有其相应的作用。
+
+* 高人指路
+* 贵人相助
+* 小人监督
+* 敌人成就
+
+其它有意思的语句
+----------------
 
 你现在的气质里，藏着你读过的书，走过的路和爱过的人
+
 你是砍柴的，他是放羊的，你和他聊了一天，他的羊吃饱了，你的柴呢？
-一个不成熟的人的标志是他愿意为了某个理由轰轰烈烈地死去，而一个成熟的人的标志是他愿意为了某个谦恭的理由活着。——塞林格《麦田里的守望者》
-备考就像黑屋子里洗衣服，你不知道洗干净没有，只能一遍一遍去洗。等到上了考场的那一刻，灯光亮了。你发现只要你认真洗过，那件衣服光亮如新，而你以后每次穿上那件衣服都会想起那段岁月
-失去的东西，其实从来未曾真正地属于你，也不必惋惜。——《玫瑰的故事
-人的一切痛苦，本质上都是对自己的无能的愤怒。——王小波
-哪里会有人喜欢孤独，不过是不喜欢失望罢了。——村上春树《挪威的森林
-之后的二十年，你更可能因为那些你没有去做的事情而后悔，而不是因为那些你做了的事。所以，扔开绳索，从安全的港口出发，在航行中遭遇信风、探索、梦想和发现。——马克·吐温
-一个人知道自己为什么而活，就可以忍受任何一种生活。——尼采
-我年青时以为金钱就是一切，而今年事已迈，发现果真如此。——奥斯卡.王尔德
-做你自己，因为别人都有人做了。——王尔德
+
+一个不成熟的人的标志是他愿意为了某个理由轰轰烈烈地死去，而一个成熟的人的标志是他愿意为了某个谦恭的理由活着。
+——塞林格《麦田里的守望者》
+
+备考就像黑屋子里洗衣服，你不知道洗干净没有，只能一遍一遍去洗。
+等到上了考场的那一刻，灯光亮了。
+你发现只要你认真洗过，那件衣服光亮如新，而你以后每次穿上那件衣服都会想起那段岁月
+
+失去的东西，其实从来未曾真正地属于你，也不必惋惜。
+——玫瑰的故事
+
+人的一切痛苦，本质上都是对自己的无能的愤怒。
+——王小波
+
+哪里会有人喜欢孤独，不过是不喜欢失望罢了。
+——村上春树挪威的森林
+
+之后的二十年，你更可能因为那些你没有去做的事情而后悔，而不是因为那些你做了的事。
+所以，扔开绳索，从安全的港口出发，在航行中遭遇信风、探索、梦想和发现。
+——马克·吐温
+
+一个人知道自己为什么而活，就可以忍受任何一种生活。
+——尼采
+
+我年青时以为金钱就是一切，而今年事已迈，发现果真如此。
+——奥斯卡.王尔德
+
+做你自己，因为别人都有人做了。
+——王尔德
+
 人会有三次成长
-第一次是在，发现自己不是世界中心的时候；
-第二次是在，发现即使再怎么努力，终究还是有些事令人无能为力的时候；
-第三次是在，明知道有些事可能会无能为力，但还是会尽力争取的时候。
-人一到群体中，智商就严重降低。为了获得认同，个体愿意抛弃是非，用智商去换取那份让人倍感安全的归属感。——勒庞《乌合之众
-受人之恩不要忘，与人之恩不要提。——日本寺院
+
+* 第一次是在，发现自己不是世界中心的时候；
+* 第二次是在，发现即使再怎么努力，终究还是有些事令人无能为力的时候；
+* 第三次是在，明知道有些事可能会无能为力，但还是会尽力争取的时候。
+
+人一到群体中，智商就严重降低。为了获得认同，个体愿意抛弃是非，用智商去换取那份让人倍感安全的归属感。
+——勒庞乌合之众
+
+受人之恩不要忘，与人之恩不要提。
+——日本寺院
+
 如果不知道一句话是否当讲，那就闭嘴别讲。
+
 当别人在劝你接受一件事的时候，应该要做到嘴上多肯定，心里多否定。
+
 以你的努力程度，还轮不到拼天赋。
-你现在的生活也许不是你想要的，但绝对是你自找的。
 
 You will never reach your destination if you stop and throw stones at every dog that barks
 - Winston Churchill
-
-.. image:: images/boredom.png
 
 个人提高
 ==========
 
 思维升级
+----------
+
 而真正能够帮助你减肥的，不是管住嘴，而是借助饮食，运动的规律性来加速你的新陈代谢率。
 真正能让你摆脱工作负循环的，不是加班加点的穷忙，而是懂得做好计划，提升能力，辨别事情的轻重缓急。
 其实，一个人对于时间的认知，往往决定了升维思考的高度。
 当把思考架构于时间之上，我们的思维视角就提升到了一个新的高度。
 
-去掉节点意识
+行动力
+----------
+
 比如我下周一开始，或者我明年再开始这样的意识，告诉自己一定要立马行动，行动力往往就拉开了你和别人的差距，所以，告诉自己一定不要拖延
 睡前你可以对自己一天中所做的事情进行反思，今天哪些地方做的很好，哪些地方还有待欠缺，哪些事情影响了自己的心情，浪费了自己的时间，然后用一句话对自己所做的事情进行一个小结
+
+遇到不知道的就立刻去查资料，遇到感兴趣的也是
+
+「两分钟法则」：如果一件事能在两分钟之内决定并完成，那就立即着手去做，不要犹豫
+
 作品意识
+----------
+
 当我们通过积累、刻意练习出现一些效果的时候，你要学会把练习变成一种输出，也就是作品意识
 现在是分享时代，不断积累和输出，既是对自己的一个督促，也是在等待机会到来时的一种储备
 
 费曼学习法
-第1步，学习一样新东西之后，用尽可能简单的语言解释给小孩听，或者对相关课题不了解的朋友听
-第2步，找出别人听不懂的地方，或者是你本身无法简单解释的概念
-第3步，回到学习资源，重新学习你的弱点，意识到能够简单地解释清楚为止
-第4步，重复以上三个步骤，一直到你完全熟练相关的课题为止
+----------
 
-.遇到不知道的就立刻去查资料，遇到感兴趣的也是
-「两分钟法则」如果一件事能在两分钟之内决定并完成，那就立即着手去做，不要犹豫
-
-What are the top hobbies that make you smarter?
-Cubing (Solving Rubik's Cubes)
-Writing Books
-Studying Philosophy
-Mental Math
+* 第1步，学习一样新东西之后，用尽可能简单的语言解释给小孩听，或者对相关课题不了解的朋友听
+* 第2步，找出别人听不懂的地方，或者是你本身无法简单解释的概念
+* 第3步，回到学习资源，重新学习你的弱点，意识到能够简单地解释清楚为止
+* 第4步，重复以上三个步骤，一直到你完全熟练相关的课题为止
 
 Dunning Kruger Effect
+-------------------------
+
+很多时候没，人们总是忽视学习新领域的难度，同时又低估了日积月来实践带来的成果。
+Dunning Kruger Effect 很好地解释了这点。
 
 .. image:: images/dunning_kruger_effect.png
 
-I always look to Guy Kawasaki's 10-20-30 Rule.
-1. 10 Slides
-2. 20 Minutes to deliver the presentation
-3. 30 is the minimum font size you are to use.
+关于持续学习，需要进入一种沉浸状态Flow。解决的问题需要根据自己当前的能力进行调整。
+
+.. image:: images/boredom.png
+
+Presentation 10-20-30 rule
+-------------------------------
+
+Guy Kawasaki's 10-20-30 Rule.
+
+* 10 Slides
+* 20 Minutes to deliver the presentation
+* 30 is the minimum font size you are to use.
 
 教育
 =========
 
 The most important things you can teach your child are:
 
-1-5 years old:
+1-5 years old
+----------------
 
 * don't be afraid to try new things, even when you fall, I'll be there to catch you
 * be nice to others
 * say "thank you", and "sorry" when needed
 * I'll always be there for you, you can count on that
 
-5-15 years old:
+5-15 years old
+-----------------
 
 * mean words can hurt, use them carefully
 * nice words can make people feel better, learn those words
@@ -366,7 +426,8 @@ The most important things you can teach your child are:
 * developing core values for life
 * power of decision, perseverance, delayed gratification, diligence, kindness, goodness
 
-16 to 25 year old:
+16 to 25 year old
+----------------------
 
 * how to make great decisions
 * how to recognize, admit, correct own life mistakes
@@ -377,7 +438,7 @@ The most important things you can teach your child are:
 * believing in yourself
 * value yourself
 * respect yourself
-* respect others, but don't let them think  that they take advantage of you
+* respect others, but don't let them think that they take advantage of you
 * don't be fooled by people's words, watch their actions
 * live with integrity
 * using your talents to enrich the world
@@ -389,35 +450,5 @@ The most important things you can teach your child are:
 * not letting emotions rule your life
 * acknowledging what's good and what's bad in own life, taking appropriate steps
 * remember, that you are not alone, I'll be there when you need me, but at times for the sake of learning life, I'll let you pull yourself up by your own boot strings
-
-
-善⾔者并不是演讲⽐赛得过什么奖，辩论赛多么⽜逼，⽽是通过和对⽅交流，短时间内可以正确识别并找出对方需求，然后寥寥数语就可以解决问题的人
-在外求学和工作时，一周给家里视频一至两次，且每次不要超过30分钟。与家里保持联系，父母会觉得温暖。同时时间不要过长，别让父母觉得你还是小孩子
-人生中的大部分苦恼和遗憾，都是钱不够引起的
-要会赚钱，但不要急功近利
-不要追机会，⽽要成为⼀个机会追你的⼈
-有钱人更擅长投资，每一次投资都有长远的目的
-用至少5年，深耕一个领域，做到1%，完成大量作品，是牛逼的唯一捷径
-把钱当做「生产资料」，而不是「生活资料」
-普通⼈是「存量思维」：⼿⾥有多少资源，才敢做多⼤的事情。 富人是「增量思维」：先定好一个目标，再开始考虑要怎样筹措资源。贫富差距就是这样拉开的
-你手里的资金越多，你站的越高，对人性的把握越深
-钱，权，色，一有俱有，一无俱无。盯准一个，必能成事；想要两个，陷入纠结；想要三个，必死无疑
-钱能解决的事情，就用钱来解决；钱解决不了的事情，才考虑时间来解决
-不逼自己一把，你永远不知道自己有多牛逼
-持续性复盘反思，才能形成正向反馈
-自我麻痹和感动，比放纵堕落更可怕
-年轻人弱小的时候应该选择容错率高的⼯作，否则⾛错⼀步，万劫不复。容错率低的⾏业，⽐如卖保险、直销、传销，毕业⽣做了基本是耽误了⾃⼰
-喜欢讲道理的人人缘都不好，也做不成事
-评价你职场价值的唯一标准，就是结果
-学会搭圈子，共享资源，形成朋友圈的合力，做大事
-见不得人好的人，自己也不会好到哪去。有钱人擅长交换有用信息、互相帮助，而穷人稍微有些出头的窍门就不愿告知他人、生怕被他人知道，闭门造车。格局决定结局
-工作以后，早点建立自己的个人品牌，越早越受益
-超高性价比的投资——定期运动
-保持苗条的身材，是你社交最值钱的名片
-想得到一样东西，你首先要「认可自己」配得上它。好的东⻄，敢想也敢要。要相信⾃⼰配得上你不相信⾃⼰配得上，你就永远配不上
-结果只是一时，把握规律才能常胜。要有对掌握规律的坚持，而不是对结果的执着
-所谓渣不渣，全看立场和利益。⽴场和利益和你不⼀致，就是渣。⽴场和利益⼀致就是不渣。曾经的感情毛都不算
-别总是骂别人是傻逼，多想想他哪里牛逼。别盲目妒忌身边人的成功，学会借鉴对方成功的经验
-⼀个⼈真正长大，⼀定会经历几个撕心裂肺的瞬间，和三观的⼀次次颠覆。在这之后，开始⾃愈，最终学会看破不说破，知世故⽽不世故，温柔对待这个世界的好与不好
 
 *Written by Binwei@Singapore*
