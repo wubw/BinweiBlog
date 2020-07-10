@@ -3,8 +3,8 @@ Book note: Xiao Gou Qian Qian
 ================================
 
 .. post:: Jul 09, 2020
-   :tags: Life
-   :category: investment
+   :tags: investment
+   :category: Life
 
 Xiao Gou Qian Qian is the Chinese name of the book: Ein Hund Namens Money
 
